@@ -197,16 +197,29 @@ A book can have any number of genres (including 0)
 </tr>
 </table>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You do not need to specify the serial number if you wish so.<br>
+Liberry will then auto-generate a valid serial number for the new book.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add t/Harry Botter and the Baby&#8217;s Potty a/Raylei Jolking sn/02010 g/children</code></p>
+<p><code>add t/Harry Botter and the Baby&#8217;s Potty a/Raylei Jolking sn/B2010 g/children</code></p>
 </li>
 <li>
-<p><code>add t/Inferno a/Tande sn/24493 g/classic g/epic</code></p>
+<p><code>add t/Inferno a/Tande g/classic g/epic</code></p>
 </li>
 </ul>
 </div>
@@ -255,8 +268,8 @@ Format: <code>delete [INDEX]</code> or <code>delete [sn/BOOK_SN]</code></p>
 Deletes the 1st book in the results of the <code>find</code> command.</p>
 </li>
 <li>
-<p><code>delete sn/20422</code><br>
-Deletes the book with serial number <code>sn/20422</code>.</p>
+<p><code>delete sn/B0422</code><br>
+Deletes the book with serial number <code>sn/B0422</code>.</p>
 </li>
 </ul>
 </div>
@@ -390,12 +403,12 @@ Format: `loan sn/BOOK_SN &#8230;&#8203; `</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loan sn/00041</code><br>
-Loans the book with serial number 00041</p>
+<p><code>loan sn/B0041</code><br>
+Loans the book with serial number B0041</p>
 </li>
 <li>
-<p><code>loan sn/00201 sn/12929 sn/00203</code><br>
-Loans the books with serial numbers 00201, 12929 and 00203</p>
+<p><code>loan sn/B0201 sn/B2929 sn/B0203</code><br>
+Loans the books with serial numbers B0201, B2929 and B0203</p>
 </li>
 </ul>
 </div>
@@ -497,7 +510,7 @@ e.g. <code>edit p/91234567 e/21 Jane St West Building</code></p>
 </li>
 <li>
 <p><strong>Loan</strong> : <code>loan sn/BOOK_SN&#8230;&#8203;</code><br>
-e.g. <code>loan sn/00201 sn/12929 sn/00203</code></p>
+e.g. <code>loan sn/B0201 sn/B2929 sn/B0203</code></p>
 </li>
 <li>
 <p><strong>Renew</strong> : <code>renew INDEX… [-all]</code></p>
@@ -511,4 +524,4 @@ e.g. <code>loan sn/00201 sn/12929 sn/00203</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-28 07:41:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-28 08:29:45 UTC</div></div></div></body></html>
