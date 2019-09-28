@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Liberry - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Liberry - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>AY1920S1-CS2103T-F13-1</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -13,16 +13,9 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#using-normal-mode">3.1. Using Normal Mode</a></li>
+<li><a href="#using-serve-mode">3.2. Using Serve Mode</a></li>
+<li><a href="#saving-the-data">3.3. Saving the Data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -34,7 +27,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Liberry is a desktop app for librarians to <strong>quickly manage their community libraries!</strong> Liberry is optimized for librarians who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). You can type quickly and serve your long line of borrowers in a short amount of time. Liberry can manage all your books and borrowers efficiently and meticulously. Jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started now! Enjoy!</p>
 </div>
 </div>
 </div>
@@ -47,10 +40,10 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level3/releases">here</a>.</p>
+<p>Download the latest <code>Liberry.jar</code> <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your Liberry.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -63,25 +56,6 @@
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
@@ -101,32 +75,115 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>find t/TITLE</code>, <code>BOOK_TITLE</code> is a parameter which can be used as <code>find t/Harry Potter</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>t/TITLE [g/GENRE]</code> can be used as <code>t/Harry Potter g/fiction</code> or as <code>t/Harry Potter</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>&#8230;&#8203;</code>​ after them can be used multiple times including zero times e.g. <code>[g/GENRE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>g/fiction</code>, <code>g/fiction g/adventure</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>t/TITLE a/AUTHOR</code>, <code>a/AUTHOR t/TITLE</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="using-normal-mode"><a class="link" href="#using-normal-mode">3.1. Using Normal Mode</a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>The Normal Mode is for librarians to manage the books in the library. Commands in normal mode are not specific to any borrowers. The Normal Mode also provides some utility commands to help the librarian use Liberry. Commands that are specific to Serve Mode cannot be used while in Normal Mode.</p>
+</div>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
+<div class="paragraph">
+<p>Opens the help window, which includes a list of possible commands<br>
+Format: <code>help</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<div class="sect3">
+<h4 id="locating-books-by-title-code-find-code"><a class="link" href="#locating-books-by-title-code-find-code">3.1.2. Locating books by title: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Shows all relevant books found.<br>
+Format: <code>find [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>harry</code> will match <code>Harry</code></p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Har</code> will not match <code>Harry</code></p>
+</li>
+<li>
+<p>Books matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>harry</code> will return both <code>Harry Potter</code> and <code>Harry Botter</code></p>
+</li>
+<li>
+<p><code>[t/TITLE]</code> will be used to search through book titles</p>
+</li>
+<li>
+<p><code>[a/AUTHOR]</code> will be used to search through or filter by authors</p>
+</li>
+<li>
+<p><code>[g/GENRE]</code> will be used to search through or filter by genre</p>
+</li>
+<li>
+<p><code>[sn/BOOK_SN]</code> will be used to search through book serial numbers</p>
+</li>
+<li>
+<p>Only 1 of the following 3 flags can be used</p>
+</li>
+<li>
+<p><code>[-overdue]</code> will only show overdue books</p>
+</li>
+<li>
+<p><code>[-loaned]</code> will only show loaned books</p>
+</li>
+<li>
+<p><code>[-available]</code> will only show available books</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find t/Animal Farm a/George Orwell</code><br>
+Search for the book titled “Animal Farm” by the author “George Orwell”</p>
+</li>
+<li>
+<p><code>find g/mystery g/children -available</code><br>
+Search for children mystery books that are not on loan</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-book-code-info-code"><a class="link" href="#viewing-a-book-code-info-code">3.1.3. Viewing a book: <code>info</code></a></h4>
+<div class="paragraph">
+<p>View more information about a book in the results list<br>
+Format: <code>info INDEX</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.1.4. Clearing all entries : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Clears the most recent search<br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-book-code-add-code"><a class="link" href="#adding-a-book-code-add-code">3.1.5. Adding a book: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds a new book to library records.<br>
+Format: <code>add t/TITLE a/AUTHOR sn/BOOK_SN [g/GENRE]</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -135,7 +192,7 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;<
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+A book can have any number of genres (including 0)
 </td>
 </tr>
 </table>
@@ -146,33 +203,154 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add t/Harry Botter and the Baby&#8217;s Potty a/Raylei Jolking sn/02010 g/children</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add t/Inferno a/Tande sn/24493 g/classic g/epic</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-book-code-delete-code"><a class="link" href="#deleting-a-book-code-delete-code">3.1.6. Deleting a book : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Deletes the specified book from the address book.<br>
+Format: <code>delete INDEX</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Deletes a book from the library records. Used when book is lost or trashed.
+Format: <code>delete [INDEX]</code> or <code>delete [sn/BOOK_SN]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Deletes the book at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed book list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p><code>[INDEX]</code> will delete the book with the book at this index in the results list</p>
+</li>
+<li>
+<p><code>[sn/BOOK_SN]</code> will delete the book with this serial number</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find t/harry</code><br>
+<code>delete 1</code><br>
+Deletes the 1st book in the results of the <code>find</code> command.</p>
+</li>
+<li>
+<p><code>delete sn/20422</code><br>
+Deletes the book with serial number <code>sn/20422</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="registering-a-new-borrower-code-register-code"><a class="link" href="#registering-a-new-borrower-code-register-code">3.1.7. Registering a new borrower: <code>register</code></a></h4>
+<div class="paragraph">
+<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated.<br>
+Format: <code>register u/NAME p/PHONE_NUMBER a/ADDRESS</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>register u/matt p/83938249 a/8th Ave The Martian #02-21</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-code-undo-code"><a class="link" href="#undoing-code-undo-code">3.1.8. Undoing: <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Undo the previous command/action.<br>
+Format: <code>undo</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-redo"><a class="link" href="#redoing-redo">3.1.9. Redoing: redo</a></h4>
+<div class="paragraph">
+<p>Redo the most recent undo should there be no more commands/actions after the most recent undo<br>
+Format: <code>redo</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="toggling-night-mode-code-toggleui-code"><a class="link" href="#toggling-night-mode-code-toggleui-code">3.1.10. Toggling night mode: <code>toggleui</code></a></h4>
+<div class="paragraph">
+<p>Toggles between day mode and night mode for the UI<br>
+Format: <code>toggleui</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.11. Exiting the program : <code>exit</code></a></h4>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-serve-mode"><a class="link" href="#using-serve-mode">3.2. Using Serve Mode</a></h3>
+<div class="paragraph">
+<p>The Serve Mode is for librarians to serve borrowers. All commands in Serve Mode are done on a specific borrower currently served by the librarian. All commands in Normal Mode can be used in Serve Mode too.</p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="entering-serve-mode-code-serve-code"><a class="link" href="#entering-serve-mode-code-serve-code">3.2.1. Entering Serve Mode: <code>serve</code></a></h4>
+<div class="paragraph">
+<p>Enters Serve Mode. All commands/actions will be done on this specific borrower. A list of the borrower’s currently loaned books and their serial numbers will be displayed.<br>
+Format: <code>serve id/BORROWER_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>serve id/peterparker</code><br>
+Enters save mode serving borrower with id <code>peterparker</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-serve-mode-code-done-code"><a class="link" href="#exiting-serve-mode-code-done-code">3.2.2. Exiting Serve Mode: <code>done</code></a></h4>
+<div class="paragraph">
+<p>Exits Serve Mode.<br>
+Format: <code>done</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">3.2.3. Editing a borrower: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edit borrower’s particulars.<br>
+Format: <code>edit [u/NAME] [p/PHONE_NUMBER] [a/ADDRESS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the currently serving borrower&#8217;s particulars.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -180,12 +358,6 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <li>
 <p>Existing values will be updated to the input values.</p>
 </li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
 </ul>
 </div>
 </div>
@@ -196,44 +368,21 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>edit p/91234567 e/21 Jane St West Building</code><br>
+Edits the phone number and borrower&#8217;s address to be <code>91234567</code> and <code>21 Jane St West Building</code> respectively.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>edit n/Betsy Crower</code><br>
+Edits the name of the borrower to be <code>Betsy Crower</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="loaning-books-code-loan-code"><a class="link" href="#loaning-books-code-loan-code">3.2.4. Loaning books: <code>loan</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
+<p>Loan book(s) by their serial number<br>
+Format: `loan sn/BOOK_SN &#8230;&#8203; `</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -241,82 +390,41 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p><code>loan sn/00041</code><br>
+Loans the book with serial number 00041</p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>loan sn/00201 sn/12929 sn/00203</code><br>
+Loans the books with serial numbers 00201, 12929 and 00203</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="renewing-books-code-renew-code"><a class="link" href="#renewing-books-code-renew-code">3.2.5. Renewing books: <code>renew</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
+<p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates<br>
+Format: <code>renew INDEX… [-all]</code><br>
+Including <code>-all</code> will renew all currently loaned books</p>
 </div>
 </div>
-</div>
+<div class="sect3">
+<h4 id="returning-books-code-return-code"><a class="link" href="#returning-books-code-return-code">3.2.6. Returning books: <code>return</code></a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Return book(s) that were loaned by the borrower<br>
+Format: <code>return INDEX… [-all]</code><br>
+Including <code>-all</code> will return all currently loaned books</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
+</div>
+<div class="sect3">
+<h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">3.2.7. Paying fines: <code>pay</code></a></h4>
+<hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.3. Saving the Data</a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
-<div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Liberry data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
 </div>
 </div>
 </div>
@@ -326,7 +434,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Liberry folder.</p>
 </div>
 </div>
 </div>
@@ -336,31 +444,71 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
 <p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Find a book</strong> : <code>find [[t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available]</code><br>
+e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find g/mystery g/children -available</code></p>
+</li>
+<li>
+<p><strong>View book info</strong> : <code>info INDEX</code></p>
+</li>
+<li>
+<p><strong>Clear results</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Add a book</strong> : <code>add t/TITLE a/AUTHOR sn/BOOK_SN [g/GENRE]</code><br>
+e.g. <code>add t/Harry Botter and the Baby&#8217;s Potty a/Reali Jolking sn/02010 g/children</code></p>
+</li>
+<li>
+<p><strong>Delete a book</strong> : <code>delete INDEX</code> or <code>delete sn/BOOK_SN</code></p>
+</li>
+<li>
+<p><strong>Register a borrower</strong> : <code>register u/NAME p/PHONE_NUMBER a/ADDRESS</code><br>
+e.g. <code>register u/matt p/83938249 a/8th Ave The Martian #02-21</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Toggle night mode</strong>: <code>toggleui</code></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Serve mode</strong> : <code>serve id/BORROWER_ID</code><br>
+e.g. <code>serve id/peterparker</code></p>
+</li>
+<li>
+<p><strong>Exit serve mode</strong> : <code>done</code></p>
+</li>
+<li>
+<p><strong>Edit a borrower</strong> : <code>edit [[u/NAME] [p/PHONE_NUMBER] [a/ADDRESS]]</code><br>
+e.g. <code>edit p/91234567 e/21 Jane St West Building</code></p>
+</li>
+<li>
+<p><strong>Loan</strong> : <code>loan sn/BOOK_SN&#8230;&#8203;</code><br>
+e.g. <code>loan sn/00201 sn/12929 sn/00203</code></p>
+</li>
+<li>
+<p><strong>Renew</strong> : <code>renew INDEX… [-all]</code></p>
+</li>
+<li>
+<p><strong>Return</strong> : <code>return INDEX… [-all]</code></p>
+</li>
+<li>
+<p><strong>Pay fines</strong> : <code>pay AMOUNT</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-08 11:38:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-28 07:41:20 UTC</div></div></div></body></html>
