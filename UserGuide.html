@@ -78,7 +78,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>find t/TITLE</code>, <code>BOOK_TITLE</code> is a parameter which can be used as <code>find t/Harry Potter</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>t/TITLE [g/GENRE]</code> can be used as <code>t/Harry Potter g/fiction</code> or as <code>t/Harry Potter</code>.</p>
+<p>Items in square brackets are optional e.g. <code>t/TITLE [g/GENRE]</code> can be used as <code>t/Harry Potter g/fiction</code> or as <code>t/Harry Potter</code>.</p>
+</li>
+<li>
+<p>Curly brackets indicate that at least 1 of the optional parameters have to be given e.g. <code>{ [t/TITLE] [a/AUTHOR] }</code> can be used as <code>t/Harry Potter</code></p>
 </li>
 <li>
 <p>Items with <code>&#8230;&#8203;</code>​ after them can be used multiple times including zero times e.g. <code>[g/GENRE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>g/fiction</code>, <code>g/fiction g/adventure</code> etc.</p>
@@ -106,7 +109,8 @@ Format: <code>help</code></p>
 <h4 id="locating-books-by-title-code-find-code"><a class="link" href="#locating-books-by-title-code-find-code">3.1.2. Locating books by title: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Shows all relevant books found.<br>
-Format: <code>find [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available]</code></p>
+Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] } [NUMBER]</code><br>
+Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] [-rated] [-popular] [-new] } [NUMBER]</code> <strong> - Coming in v2.0</strong></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -144,6 +148,21 @@ Format: <code>find [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-o
 </li>
 <li>
 <p><code>[-available]</code> will only show available books</p>
+</li>
+<li>
+<p>Adding one of the following will sort the books such that:</p>
+</li>
+<li>
+<p><code>[-rated]</code> will list the top 10 highly rated books <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><code>[-popular]</code> will list the top 10 most borrowed books <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><code>[-new]</code> will list the 10 newest books <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><code>[NUMBER]</code> will list this <code>NUMBER</code> of books instead</p>
 </li>
 </ul>
 </div>
@@ -216,7 +235,7 @@ Liberry will then auto-generate a valid serial number for the new book.
 <div class="ulist">
 <ul>
 <li>
-<p><code>add t/Harry Botter and the Baby&#8217;s Potty a/Raylei Jolking sn/B2010 g/children</code></p>
+<p><code>add t/Harry Botter and the Baby&#8217;s Potty a/Raylei Jolking sn/B02010 g/children</code></p>
 </li>
 <li>
 <p><code>add t/Inferno a/Tande g/classic g/epic</code></p>
@@ -268,8 +287,8 @@ Format: <code>delete [INDEX]</code> or <code>delete [sn/BOOK_SN]</code></p>
 Deletes the 1st book in the results of the <code>find</code> command.</p>
 </li>
 <li>
-<p><code>delete sn/B0422</code><br>
-Deletes the book with serial number <code>sn/B0422</code>.</p>
+<p><code>delete sn/B00422</code><br>
+Deletes the book with serial number <code>sn/B00422</code>.</p>
 </li>
 </ul>
 </div>
@@ -277,8 +296,8 @@ Deletes the book with serial number <code>sn/B0422</code>.</p>
 <div class="sect3">
 <h4 id="registering-a-new-borrower-code-register-code"><a class="link" href="#registering-a-new-borrower-code-register-code">3.1.7. Registering a new borrower: <code>register</code></a></h4>
 <div class="paragraph">
-<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated.<br>
-Format: <code>register u/NAME p/PHONE_NUMBER a/ADDRESS</code></p>
+<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated and displayed. Borrowers are expected to know his ID in order for loans to be processed+
+Format: <code>register u/NAME p/PHONE_NUMBER e/EMAIL</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -286,7 +305,7 @@ Format: <code>register u/NAME p/PHONE_NUMBER a/ADDRESS</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>register u/matt p/83938249 a/8th Ave The Martian #02-21</code></p>
+<p><code>register u/matt p/83938249 e/matt@damon.com</code></p>
 </li>
 </ul>
 </div>
@@ -306,17 +325,38 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="toggling-night-mode-code-toggleui-code"><a class="link" href="#toggling-night-mode-code-toggleui-code">3.1.10. Toggling night mode: <code>toggleui</code></a></h4>
+<h4 id="set-loan-time-code-setloantime-code"><a class="link" href="#set-loan-time-code-setloantime-code">3.1.10. Set loan time: <code>setLoanTime</code></a></h4>
 <div class="paragraph">
-<p>Toggles between day mode and night mode for the UI<br>
-Format: <code>toggleui</code></p>
+<p>Sets the standard number of days for any book loan<br>
+Format: <code>setLoanTime DAYS</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.11. Exiting the program : <code>exit</code></a></h4>
+<h4 id="set-renewal-time-code-setrenewtime-code"><a class="link" href="#set-renewal-time-code-setrenewtime-code">3.1.11. Set renewal time: <code>setRenewTime</code></a></h4>
+<div class="paragraph">
+<p>Sets the standard number of days for any book renewal<br>
+Format: <code>setRenewTime DAYS</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="set-fine-in-cents-code-setfineamt-code"><a class="link" href="#set-fine-in-cents-code-setfineamt-code">3.1.12. Set fine (in cents): <code>setFineAmt</code></a></h4>
+<div class="paragraph">
+<p>Sets the amount of fine per book per day, in cents<br>
+Format: <code>setFineAmt CENTS</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.13. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="toggling-night-mode-code-toggleui-code-strong-coming-in-v2-0-strong"><a class="link" href="#toggling-night-mode-code-toggleui-code-strong-coming-in-v2-0-strong">3.1.14. Toggling night mode: <code>toggleui</code> <strong> - Coming in v2.0</strong></a></h4>
+<div class="paragraph">
+<p>Toggles between day mode and night mode for the UI<br>
+Format: <code>toggleui</code></p>
 </div>
 <hr>
 </div>
@@ -356,7 +396,7 @@ Format: <code>done</code></p>
 <h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">3.2.3. Editing a borrower: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edit borrower’s particulars.<br>
-Format: <code>edit [u/NAME] [p/PHONE_NUMBER] [a/ADDRESS]</code></p>
+Format: <code>edit { [u/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -381,8 +421,8 @@ Format: <code>edit [u/NAME] [p/PHONE_NUMBER] [a/ADDRESS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit p/91234567 e/21 Jane St West Building</code><br>
-Edits the phone number and borrower&#8217;s address to be <code>91234567</code> and <code>21 Jane St West Building</code> respectively.</p>
+<p><code>edit p/91234567 e/jane@austen.com</code><br>
+Edits the phone number and borrower&#8217;s email address to be <code>91234567</code> and <code>jane@austen.com</code> respectively.</p>
 </li>
 <li>
 <p><code>edit n/Betsy Crower</code><br>
@@ -392,10 +432,10 @@ Edits the name of the borrower to be <code>Betsy Crower</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="loaning-books-code-loan-code"><a class="link" href="#loaning-books-code-loan-code">3.2.4. Loaning books: <code>loan</code></a></h4>
+<h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">3.2.4. Loaning book(s): <code>loan</code></a></h4>
 <div class="paragraph">
 <p>Loan book(s) by their serial number<br>
-Format: `loan sn/BOOK_SN &#8230;&#8203; `</p>
+Format: <code>loan sn/BOOK_SN&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -403,18 +443,18 @@ Format: `loan sn/BOOK_SN &#8230;&#8203; `</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loan sn/B0041</code><br>
-Loans the book with serial number B0041</p>
+<p><code>loan sn/B00041</code><br>
+Loans the book with serial number B00041</p>
 </li>
 <li>
-<p><code>loan sn/B0201 sn/B2929 sn/B0203</code><br>
-Loans the books with serial numbers B0201, B2929 and B0203</p>
+<p><code>loan sn/B00201 sn/B02929 sn/B00203</code><br>
+Loans the books with serial numbers B00201, B02929 and B00203</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="renewing-books-code-renew-code"><a class="link" href="#renewing-books-code-renew-code">3.2.5. Renewing books: <code>renew</code></a></h4>
+<h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">3.2.5. Renewing book(s): <code>renew</code></a></h4>
 <div class="paragraph">
 <p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates<br>
 Format: <code>renew INDEX… [-all]</code><br>
@@ -422,7 +462,7 @@ Including <code>-all</code> will renew all currently loaned books</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="returning-books-code-return-code"><a class="link" href="#returning-books-code-return-code">3.2.6. Returning books: <code>return</code></a></h4>
+<h4 id="returning-book-s-code-return-code"><a class="link" href="#returning-book-s-code-return-code">3.2.6. Returning book(s): <code>return</code></a></h4>
 <div class="paragraph">
 <p>Return book(s) that were loaned by the borrower<br>
 Format: <code>return INDEX… [-all]</code><br>
@@ -431,6 +471,56 @@ Including <code>-all</code> will return all currently loaned books</p>
 </div>
 <div class="sect3">
 <h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">3.2.7. Paying fines: <code>pay</code></a></h4>
+<div class="paragraph">
+<p>Reduces the oustanding amount of borrower&#8217;s fines by AMOUNT (in cents) and adds a transaction record to his account<br>
+Format: <code>pay AMOUNT</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reserve-a-book-code-reserve-code-strong-coming-in-v2-0-strong"><a class="link" href="#reserve-a-book-code-reserve-code-strong-coming-in-v2-0-strong">3.2.8. Reserve a book: <code>reserve</code> <strong> - Coming in v2.0</strong></a></h4>
+<div class="paragraph">
+<p>Reserve a particular book
+Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Reserves the book at the specified <code>INDEX</code>  for the currently served user.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed book list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p><code>[INDEX]</code> indicates the book at this index in the search results list</p>
+</li>
+<li>
+<p><code>[sn/BOOK_SN]</code> indicates the particular book with this serial number</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find t/lord</code><br>
+<code>reserve 2</code><br>
+reserve the 2nd book in the results of the <code>find</code> command for the currently served user</p>
+</li>
+<li>
+<p><code>reserve sn/B02422</code><br>
+Reserves the book with serial number <code>sn/B02422</code> for the currently served user</p>
+</li>
+</ul>
+</div>
 <hr>
 </div>
 </div>
@@ -460,8 +550,9 @@ Including <code>-all</code> will return all currently loaned books</p>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Find a book</strong> : <code>find [[t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available]</code><br>
-e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find g/mystery g/children -available</code></p>
+<p><strong>Find a book</strong> : <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code><br>
+e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find g/mystery g/children -available</code><br>
+<code>[-rated] [-popular] [-new]</code> <strong> - Coming in v2.0</strong></p>
 </li>
 <li>
 <p><strong>View book info</strong> : <code>info INDEX</code></p>
@@ -471,14 +562,14 @@ e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find g/mystery g/chi
 </li>
 <li>
 <p><strong>Add a book</strong> : <code>add t/TITLE a/AUTHOR sn/BOOK_SN [g/GENRE]</code><br>
-e.g. <code>add t/Harry Botter and the Baby&#8217;s Potty a/Reali Jolking sn/02010 g/children</code></p>
+e.g. <code>add t/Harry Botter and the Baby&#8217;s Potty a/Reali Jolking sn/B02010 g/children</code></p>
 </li>
 <li>
 <p><strong>Delete a book</strong> : <code>delete INDEX</code> or <code>delete sn/BOOK_SN</code></p>
 </li>
 <li>
-<p><strong>Register a borrower</strong> : <code>register u/NAME p/PHONE_NUMBER a/ADDRESS</code><br>
-e.g. <code>register u/matt p/83938249 a/8th Ave The Martian #02-21</code></p>
+<p><strong>Register a borrower</strong> : <code>register u/NAME p/PHONE_NUMBER e/EMAIL</code><br>
+e.g. <code>register u/matt p/83938249 e/matt@damon.com</code></p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
@@ -490,7 +581,19 @@ e.g. <code>register u/matt p/83938249 a/8th Ave The Martian #02-21</code></p>
 <p><strong>Toggle night mode</strong>: <code>toggleui</code></p>
 </li>
 <li>
+<p><strong>Set standard number of days for a loan</strong> : <code>setLoanTime DAYS</code></p>
+</li>
+<li>
+<p><strong>Set standard number of days for a renewal</strong> : <code>setRenewTime DAYS</code></p>
+</li>
+<li>
+<p><strong>Set fine</strong> : <code>setFineAmt CENTS</code></p>
+</li>
+<li>
 <p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+<li>
+<p><strong>Rate a book</strong> : <code>rate INDEX r/RATING</code> <strong> - Coming in v2.0</strong></p>
 </li>
 </ul>
 </div>
@@ -505,23 +608,26 @@ e.g. <code>serve id/peterparker</code></p>
 <p><strong>Exit serve mode</strong> : <code>done</code></p>
 </li>
 <li>
-<p><strong>Edit a borrower</strong> : <code>edit [[u/NAME] [p/PHONE_NUMBER] [a/ADDRESS]]</code><br>
-e.g. <code>edit p/91234567 e/21 Jane St West Building</code></p>
+<p><strong>Edit a borrower&#8217;s particulars</strong> : <code>edit { [u/NAME] [p/PHONE_NUMBER] [e/email] }</code><br>
+e.g. <code>edit p/91234567 e/jane@austen.com</code></p>
 </li>
 <li>
-<p><strong>Loan</strong> : <code>loan sn/BOOK_SN&#8230;&#8203;</code><br>
-e.g. <code>loan sn/B0201 sn/B2929 sn/B0203</code></p>
+<p><strong>Loan book(s)</strong> : <code>loan sn/BOOK_SN&#8230;&#8203;</code><br>
+e.g. <code>loan sn/B00201 sn/B02929 sn/B00203</code></p>
 </li>
 <li>
-<p><strong>Renew</strong> : <code>renew INDEX… [-all]</code></p>
+<p><strong>Renew book(s)</strong> : <code>renew INDEX… [-all]</code></p>
 </li>
 <li>
-<p><strong>Return</strong> : <code>return INDEX… [-all]</code></p>
+<p><strong>Return book(s)</strong> : <code>return INDEX… [-all]</code></p>
 </li>
 <li>
 <p><strong>Pay fines</strong> : <code>pay AMOUNT</code></p>
 </li>
+<li>
+<p><strong>Reserve book</strong> : <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code> <strong> - Coming in v2.0</strong></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-30 08:11:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-30 15:13:46 UTC</div></div></div></body></html>
