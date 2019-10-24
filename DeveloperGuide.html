@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Liberry- Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>LiBerry- Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Liberry</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Liberry- Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">LiBerry</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>LiBerry- Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>AY1920S1-CS2103T-F13-1</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -26,6 +26,7 @@
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#book-loaning-feature">3.5. Book loaning feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -245,13 +246,13 @@ when a user executes a new command:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("add t/Animal Farm a/George")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+<img src="images/AddBookLogicSequenceDiagram.png" alt="AddBookLogicSequenceDiagram">
 </div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>add t/Animal Farm a/George</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -260,7 +261,7 @@ when a user executes a new command:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>AddCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -614,6 +615,308 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="book-loaning-feature"><a class="link" href="#book-loaning-feature">3.5. Book loaning feature</a></h3>
+<div class="sect3">
+<h4 id="functionalities"><a class="link" href="#functionalities">3.5.1. Functionalities</a></h4>
+<div class="paragraph">
+<p>The functionalities and commands associated with the book loaning feauture are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loan sn/BOOK_SN</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Loans out a book based on its serial number.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>return INDEX [-all]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Returns a book based on the index of that book shown on the GUI.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>renew INDEX [-all]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Renews a book based on the index of that book shown on the GUI.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>reserve sn/BOOK_SN</code> or <code>reserve INDEX</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reserves a book based on its serial number or index of that book shown on the GUI.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>pay AMOUNT</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pay a fine amount for overdue books.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The rationale for the different types of arguments for the loan, return, renew and reserve may not be apparent at first,
+but it is actually very simple.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When borrowers come to the librarian (our user) to borrow a book, the book itself would have
+a serial number. Thus, the user just types in the serial number of the book to be loaned out, instead of using the find
+command to locate that book in LiBerry to use its index.</p>
+</li>
+<li>
+<p>Whereas, when a borrower comes to return a book, the librarian only sees a limited list of book that was loaned out by
+the borrower on the GUI. Hence, the librarian need not type the longer serial number to return that book, and instead, types
+its index shown in the GUI list. Likewise, the same idea is applied to renewing books</p>
+</li>
+<li>
+<p>When reserving books for borrowers, it is possible that the book is found through the GUI, and thus, index is used. Or,
+the borrower brings the physical book forward to reserve it as he/she does not want to borrow it now.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.2. Implementation</a></h4>
+<div class="paragraph">
+<p>This feature is mainly facilitated by the <code>Loan</code> association class between a <code>Book</code> and a <code>Borrower</code>. The object diagram
+just after a book is loaned out can be seen below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoanObjectDiagram.png" alt="LoanObjectDiagram" width="880">
+</div>
+</div>
+<div class="paragraph">
+<p>In this instance, the <code>Borrower</code> with <code>BorrowerId</code> K0789 currently has a <code>Book</code> with <code>SerialNumber</code> B00456 loaned out.
+The <code>Loan</code> associated to this loan, with <code>LoanId</code> L000123, is stored in the <code>LoanRecords</code> class of the model component.</p>
+</div>
+<div class="paragraph">
+<p>Both the <code>Book</code> and <code>Borrower</code> objects also have access to this <code>Loan</code> object.</p>
+</div>
+<div class="paragraph">
+<p>In each <code>Loan</code> object, only the <code>BorrowerId</code> of the <code>Borrower</code> and <code>SerialNumber</code> of the <code>Book</code> is stored to reduce
+circular dependency.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LoanRecords</code> class stores all the <code>Loan</code> objects tracked by LiBerry in a HashMap, where the key is its <code>LoanId</code>.</p>
+</div>
+<div class="paragraph">
+<p>Immutability of each object is supported to ensure correctness of undo and redo functionality.</p>
+</div>
+<div class="sect4">
+<h5 id="loaning"><a class="link" href="#loaning">Loaning</a></h5>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user enters a loan command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoaningActivityDiagram.png" alt="LoaningActivityDiagram" width="650">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The else branch of each branch node should have a guard condition <code>[else]</code> but due to a limitation of PlantUML,
+they are not shown.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When a book is successfully loaned out by a borrower, a new <code>Loan</code> object is created. The <code>LoanId</code> is automatically generated according
+to the number of loans in the <code>LoanRecords</code> object in the model. The <code>startDate</code> is also automatically set to today&#8217;s date.
+The <code>endDate</code> is automatically set according to the loan period set in the user settings. This <code>Loan</code> object is added to
+<code>LoanRecords</code> through the call to <code>Model#addLoan(loan)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The new <code>Borrower</code> instance is created by copying the details of the borrower from the original object, and also with this <code>Loan</code>
+object being added into its <code>currentLoanList</code>. The new borrower object then replaces the old borrower object in the
+<code>BorrowerRecords</code> object in the model. These two steps are done through the method call to <code>Model#servingBorrowerNewLoan(loan)</code>.
+The new <code>Book</code> instance is also created by copying the details of the original book object, and likewise, with this <code>Loan</code> object added into it.
+Similarly, the new book object also replaces the old book object in the <code>Catalog</code> object in the model through the call to
+<code>Model#setBook(bookToBeLoaned, loanedOutBook)</code>. These were done to support immutability of the objects.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="returning"><a class="link" href="#returning">Returning</a></h5>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user enters a return command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReturningActivityDiagram.png" alt="ReturningActivityDiagram" width="820">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The else branch of each branch node should have a guard condition <code>[else]</code> but due to a limitation of PlantUML,
+they are not shown.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When a loaned out book is successfully returned by a borrower, the associated <code>Loan</code> object is moved from the borrower&#8217;s
+<code>currentLoanList</code> to <code>returnedLoanList</code>. Inside the book object, this <code>Loan</code> object is also removed. Inside this loan
+object, the <code>returnDate</code> is added according to today&#8217;s date. The <code>remainingFineAmount</code> of this loan object is also
+calculated based on the fine amount set in the user settings.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, the creation of new objects for replacement are also done to support immutability. They are supported by the
+methods <code>Model#setBook(bookToBeReturned, returnedBook)</code> and <code>Model#servingBorrowerReturnLoan(returningLoan)</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="renewing"><a class="link" href="#renewing">Renewing</a></h5>
+<div class="paragraph">
+<p>When a book is successfully renewed by a borrower, the <code>renewCount</code> of the <code>Loan</code> object is incremented by 1
+and its <code>dueDate</code> is also increased by the renew period set in the user settings.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, the creation of new objects for replacement are also done to support immutability.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="reserving"><a class="link" href="#reserving">Reserving</a></h5>
+<div class="paragraph">
+<p>When a book is successfully reserved by a borrower, the <code>Book</code> object is marked as reserved and is added to the borrower&#8217;s
+<code>reservedBookList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, the creation of new objects for replacement are also done to support immutability.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="paying-fines"><a class="link" href="#paying-fines">Paying fines</a></h5>
+<div class="paragraph">
+<p>When a fine amount is successfully paid by a borrower, the <code>remainingFineAmount</code> and <code>paidFineAmount</code> of the loans in
+the borrower&#8217;s <code>returnedLoanList</code> is updated accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, the creation of new objects for replacement are also done to support immutability.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-file-storage-of-loans"><a class="link" href="#aspect-file-storage-of-loans">Aspect: File storage of loans</a></h5>
+<div class="paragraph">
+<p>Inside the model, for each current loan (loans that are not returned yet), the <code>Book</code>, the <code>Borrower</code> and the <code>LoanRecords</code>
+point to the same the same <code>Loan</code> object. LiBerry&#8217;s storage system is such that <code>Catalog</code> stores the books,
+<code>BorrowerRecords</code> stores the borrowers and <code>LoanRecords</code> stores the loans. Thus, a decision was made to decide how these
+loans are serialized and stored in the user&#8217;s file system.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Save the whole <code>Loan</code> object in each book in the <code>catalog.json</code> and save the the whole of every <code>Loan</code>
+object in each borrower in <code>borrowerrecords.json</code>. The <code>Loan</code> object is also duplicated in <code>loanrecords.json</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. No need to read storage files in a specific order.</p>
+</li>
+<li>
+<p>Cons: Storage memory size issues. Same information is duplicated and stored in all 3 storage files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (selected choice):</strong> Save only the <code>LoanId</code> of each <code>Loan</code> object in each book in the <code>catalog.json</code>
+and save a list of <code>LoanId</code> in each borrower in <code>borrowerrecords.json</code>. The whole <code>Loan</code> object is only saved in
+<code>loanrecords.json</code>. When reading the storage files at the start of the application, <code>loanrecords.json</code> need to be read
+in first, before the borrowers and books can be read in as they would get the loan objects from the <code>LoanRecords</code> based
+on their <code>LoanId</code> s.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Uses less memory as only <code>LoanId</code> is stored for the books and borrowers, instead of the whole serialized loan objects.
+Also, LoanRecords thus serve as a single source of truth.</p>
+</li>
+<li>
+<p>Cons: Must ensure that the reading of stored files are in the correct order, and also correct <code>Loan</code> objects are referenced
+after reading in <code>borrowerrecords.json</code> and <code>catalog.json</code>. Method used to retrieve a <code>Loan</code> object from its <code>LoanId</code> must
+also be fast enough as there can be hundreds of thousands of loans.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-recording-of-loans-in-loanrecords"><a class="link" href="#aspect-data-structure-to-support-recording-of-loans-in-loanrecords">Aspect: Data structure to support recording of loans in LoanRecords</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Use a list data structure, such as an <code>ArrayList</code> to store the loans in the model component.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Easy to obtain insertion order of the loans and sort through the list.</p>
+</li>
+<li>
+<p>Cons: Slow to search for a <code>Loan</code> based on its <code>LoanId</code>, i.e., O(n) time, as the list must be traversed to find the
+correct associated <code>Loan</code> object. These additional time taken adds up when reading the storage files during the starting
+up of the application and can make the application feel laggy and unresponsive at the start.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (selected choice):</strong> Use a <code>HashMap</code> to store the loans, where the key is its <code>LoanId</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Fast to retrieve a <code>Loan</code> object based on its <code>LoanId</code>, i.e., O(1) time.</p>
+</li>
+<li>
+<p>Cons: Insertion order is not preserved. Have to traverse through all the loan objects in the HashMap to check their
+<code>startDate</code> in order to obtain their insertion order.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -670,7 +973,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="paragraph">
 <p><strong>Value proposition</strong>: Many people visit the neighborhood library to borrow books and also donate their books. There is
-always a long queue in this small library and the librarian would have to type quickly to handle the long queue. Liberry
+always a long queue in this small library and the librarian would have to type quickly to handle the long queue. LiBerry
 can manage a library system faster than a typical mouse/GUI driven app.</p>
 </div>
 </div>
@@ -891,7 +1194,15 @@ I submit a book title query</p></td>
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is <code>Liberry</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>The use case diagram below illustrates the main use cases of LiBerry.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UseCases.png" alt="UseCases" width="330">
+</div>
+</div>
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is <code>LiBerry</code> and the <strong>Actor</strong> is the <code>user</code>, who is a librarian, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-book" class="discrete">Use case: Delete book</h3>
 <div class="paragraph">
@@ -903,13 +1214,13 @@ I submit a book title query</p></td>
 <p>User requests to list books</p>
 </li>
 <li>
-<p>Liberry shows a list of books</p>
+<p>LiBerry shows a list of books</p>
 </li>
 <li>
 <p>User requests to delete a specific book in the list</p>
 </li>
 <li>
-<p>Liberry deletes the book</p>
+<p>LiBerry deletes the book</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -924,7 +1235,10 @@ I submit a book title query</p></td>
 <li>
 <p>2a. The list is empty.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case ends</p>
+</div>
+<div class="paragraph">
+<p><br></p>
 </div>
 </li>
 <li>
@@ -932,9 +1246,96 @@ I submit a book title query</p></td>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Liberry shows an error message.</p>
+<p>3a1. LiBerry shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-loan-book" class="discrete">Use case: Loan book</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Borrower comes to user to borrow a book.</p>
+</li>
+<li>
+<p>User enters the borrower&#8217;s ID.</p>
+</li>
+<li>
+<p>LiBerry shows that the borrower is being served.</p>
+</li>
+<li>
+<p>User loans out the book to the borrower.</p>
+</li>
+<li>
+<p>LiBerry shows the book as being successfully loaned out.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. LiBerry cannot find the ID in its system.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. LiBerry requests for a valid and registered ID.</p>
+</li>
+<li>
+<p>2a2. User enters new ID.</p>
+</li>
+<li>
+<p>Steps 2a1-2a2 are repeated until the ID entered is valid.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The book cannot be loaned out.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. LiBerry shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, the user makes a typo in the input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>*a1. User undoes the last command entered.</p>
+</li>
+<li>
+<p>*a2. User re-types the input.</p>
+<div class="paragraph">
+<p>Use case resumes at the step preceding this.</p>
 </div>
 </li>
 </ul>
@@ -956,8 +1357,8 @@ I submit a book title query</p></td>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to manage up to 20000 books and 5000 borrower records without a noticeable sluggishness in performance
-for typical usage.</p>
+<p>Should be able to manage up to 20000 books, 5000 borrower records and 500000 loan records without a noticeable
+sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
@@ -1133,4 +1534,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 10:23:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 05:02:14 UTC</div></div></div></body></html>
