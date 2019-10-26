@@ -109,8 +109,8 @@ Format: <code>help</code></p>
 <h4 id="locating-books-by-title-code-find-code"><a class="link" href="#locating-books-by-title-code-find-code">3.1.2. Locating books by title: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Shows all relevant books found.<br>
-Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] } [NUMBER]</code><br>
-Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] [-rated] [-popular] [-new] } [NUMBER]</code> <strong> - Coming in v2.0</strong></p>
+Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] }</code><br>
+Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] [-rated] [-popular] [-new] }</code> <strong> - Coming in v2.0</strong></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -124,6 +124,9 @@ Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [
 </li>
 <li>
 <p>Books matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>harry</code> will return both <code>Harry Potter</code> and <code>Harry Botter</code></p>
+</li>
+<li>
+<p><code>[NUMBER]</code> will list this <code>NUMBER</code> of books instead</p>
 </li>
 <li>
 <p><code>[t/TITLE]</code> will be used to search through book titles</p>
@@ -161,9 +164,6 @@ Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [
 <li>
 <p><code>[-new]</code> will list the 10 newest books <strong> - Coming in v2.0</strong></p>
 </li>
-<li>
-<p><code>[NUMBER]</code> will list this <code>NUMBER</code> of books instead</p>
-</li>
 </ul>
 </div>
 </div>
@@ -178,8 +178,8 @@ Format: <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [
 Search for the book titled “Animal Farm” by the author “George Orwell”</p>
 </li>
 <li>
-<p><code>find g/mystery g/children -available</code><br>
-Search for children mystery books that are not on loan</p>
+<p><code>find 3 g/mystery g/children -available</code><br>
+Search for children mystery books that are not on loan and show the first 3 entries</p>
 </li>
 </ul>
 </div>
@@ -202,7 +202,7 @@ Format: <code>clear</code></p>
 <h4 id="adding-a-book-code-add-code"><a class="link" href="#adding-a-book-code-add-code">3.1.5. Adding a book: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a new book to library records.<br>
-Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]</code></p>
+Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -395,7 +395,7 @@ Format: <code>done</code></p>
 <h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">3.2.3. Editing a borrower: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edit borrower’s particulars.<br>
-Format: <code>edit {  [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
+Format: <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -435,10 +435,8 @@ Edits the name of the borrower to be <code>Betsy Crower</code></p>
 <div class="paragraph">
 <p>Loan book(s) by their serial number<br>
 Format: <code>loan sn/BOOK_SN</code><br>
-Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> - Coming in v2.0</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> - Coming in v2.0
+Examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -562,8 +560,8 @@ Reserves the book with serial number <code>sn/B02422</code> for the currently se
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Find a book</strong> : <code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] } [NUMBER]</code><br>
-e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find g/mystery g/children -available</code><br>
+<p><strong>Find a book</strong> : <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code><br>
+e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find 3 g/mystery g/children -available</code><br>
 <code>[-rated] [-popular] [-new]</code> <strong> - Coming in v2.0</strong></p>
 </li>
 <li>
@@ -621,8 +619,8 @@ e.g. <code>serve id/K0001</code></p>
 e.g. <code>edit p/91234567 e/jane@austen.com</code></p>
 </li>
 <li>
-<p><strong>Loan book(s)</strong> : <code>loan sn/BOOK_SN&#8230;&#8203;</code><br>
-e.g. <code>loan sn/B00201 sn/B02929 sn/B00203</code></p>
+<p><strong>Loan book</strong> : <code>loan sn/BOOK_SN</code><br>
+e.g. <code>loan sn/B00201</code></p>
 </li>
 <li>
 <p><strong>Renew book(s)</strong> : <code>renew INDEX… [-all]</code></p>
@@ -639,4 +637,4 @@ e.g. <code>loan sn/B00201 sn/B02929 sn/B00203</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-26 07:48:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-26 09:40:01 UTC</div></div></div></body></html>

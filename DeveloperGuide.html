@@ -1407,23 +1407,131 @@ up of the application. Thus, it can make the application feel laggy and unrespon
 <h3 id="book-finding"><a class="link" href="#book-finding">4.7. Book Finding</a></h3>
 <div class="paragraph">
 <p>The command for finding a book in the catalog is as follows:<br>
-<code>find { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] } [NUMBER]</code></p>
+<code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code></p>
 </div>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.7.1. Implementation</a></h4>
 <div class="paragraph">
 <p>ModelManager contains a <code>FilteredList</code> of <code>Books</code> (<code>filteredBooks</code>), which is used to display books on the LiBerry GUI. Book finding works by
 starting converting the command string in to a <code>BookPredicate</code> object, then updating <code>filteredBooks</code> with that predicate.</p>
 </div>
 <div class="paragraph">
-<p>The parsing of the <code>BookPredicate</code> object is done with the help of the <code>ArgumentTokenizer</code> object to generate an
+<p>The parsing of the command string to create the required <code>BookPredicate</code> object is done with the help of the <code>ArgumentTokenizer</code> object.
+<code>ArgumentTokenizer</code> tokenizes the command string to generate an
 <code>ArgumentMultimap</code>, which is internally a HashMap of predicate values paired to prefix keys. The <code>FindCommandParser</code>
 then extracts all the values from the <code>ArgumentMultimap</code> prefix by prefix and building the predicate through functions
-such as <code>setTitle()</code>, <code>setGenres()</code> etc.</p>
+such as <code>setTitle()</code>, <code>setGenres()</code> <code>setLoanStatus</code> etc.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below shows a simplifed execution sequence of a 'find t/Animal Farm a/George' command string.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width=""840">
+</div>
+<div class="title">Figure 17. Sequence Diagram showing the execution of a Find Command input</div>
+</div>
+<div class="paragraph">
+<p>The <code>BookPredicate</code> class stores in its fields the specific values to match. Default values are mostly null, which will indicate that
+there is no need to filter for that field. Below is an example.</p>
+</div>
+<div class="paragraph">
+<div class="title">Object Diagram showing the fields present in an empty (left) and partially filled (right) BookPredicate object</div>
+<p><span class="image"><img src="images/BookPredicateEmptyObjectDiagram.png" alt="BookPredicateEmptyObjectDiagram" height="300"></span>
+<span class="image"><img src="images/BookPredicateFilledObjectDiagram.png" alt="BookPredicateFilledObjectDiagram" height="300"></span></p>
+</div>
+<div class="paragraph">
+<p>The figure above shows what happens when we are trying to filter for books with title 'harry' and 'Potter' that are loaned out,
+showing up to 5 books only. Notice that the rest of the fields in the object are null.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-ensuring-only-1-loan-status-flag"><a class="link" href="#aspect-ensuring-only-1-loan-status-flag">Aspect: Ensuring only 1 Loan Status Flag</a></h5>
+<div class="paragraph">
+<p>In order for LiBerry to display only books that are <strong>loaned</strong>, <strong>available</strong> or <strong>overdue</strong>, flags are used. All flags have
+the prefix <code>-</code>, and the <code>ArgumentTokenizer</code> is able to detect this. However, a user can technically enter more than 1
+of such loan status flags eg. <code>-loaned -available</code>. This is not meaningful, as there can be multiple interpretations of
+this statement. The user could be looking for both types of books (which will show every book), or books that are both
+loaned and available (which will show none). To prevent such meaningless confusion, there is a need for only 1 such
+flag to be accepted in the <code>BookPredicate</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1: Hard code a priority for loan status flags and accept the highest one</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement</p>
+</li>
+<li>
+<p>Cons: Does not make it clear for the user why an unintended display is shown</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (Currently Used): Raise an exception whenever there are more than 1 loan status flags</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Helps user clarify misconception of using more than 1 loan status flag</p>
+</li>
+<li>
+<p>Cons: Slightly more complicated code where the output <code>ArgumentMultimap</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-limiting-the-number-of-books-to-display"><a class="link" href="#aspect-limiting-the-number-of-books-to-display">Aspect: Limiting the Number of Books to Display</a></h5>
+<div class="paragraph">
+<p>As users generally do not want to be flooded with information when using the find command, a display limit <code>[NUMBER]</code> is used. Users
+can ask for a limited number of books to display. However, the <code>FilteredList</code> JavaFx class that is used to implement the list of
+filtered books does not have an API that sets a hard limit on the number of books to show. A work-around has to be made.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1: Create an new class that extends the JavaFx <code>FilteredList</code> class</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require a change in other parts of the code</p>
+</li>
+<li>
+<p>Cons: Hard to implement. Need to know the ins and outs of FilteredList</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (Currently Used): Create a counter variable in <code>BookPredicate</code> that decrements after every passed test</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Not the most cleanest way of implementation</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="register-borrower-feature"><a class="link" href="#register-borrower-feature">4.8. Register borrower feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.8.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.8.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>register</code> borrower feature is facilitated by <code>BorrowerRecords</code>. The BorrowerRecords stores a list of borrowers,
 representing the borrowers registered into the library system. The command to register a borrower into the library
@@ -1434,7 +1542,7 @@ system is as followed:<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-generating-a-unique-borrower-id"><a class="link" href="#aspect-generating-a-unique-borrower-id">Aspect: Generating a unique borrower ID</a></h5>
 <div class="paragraph">
@@ -1737,7 +1845,7 @@ I submit a book title query</p></td>
 <div class="content">
 <img src="images/UseCases.png" alt="UseCases" width="330">
 </div>
-<div class="title">Figure 17. General Use Cases for LiBerry</div>
+<div class="title">Figure 18. General Use Cases for LiBerry</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2122,4 +2230,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-26 07:48:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-26 09:40:01 UTC</div></div></div></body></html>
