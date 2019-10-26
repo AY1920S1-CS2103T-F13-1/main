@@ -73,7 +73,19 @@ LiBerry can manage all your books and borrowers efficiently and meticulously.</p
 </div>
 <div class="sect2">
 <h3 id="purpose-of-developer-guide"><a class="link" href="#purpose-of-developer-guide">1.2. Purpose of Developer Guide</a></h3>
-
+<div class="paragraph">
+<p>This developer guide is targeted towards <strong>potential developers</strong> of the project and it aims to explain:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>design</strong> of the software architecture of the system using a top-down approach</p>
+</li>
+<li>
+<p>The <strong>implementation</strong> and <strong>behaviour</strong> of the main features of the system.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="legend"><a class="link" href="#legend">1.3. Legend</a></h3>
@@ -85,15 +97,40 @@ LiBerry can manage all your books and borrowers efficiently and meticulously.</p
 <h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>To set up LiBerry on your system, please refer to the guide <a href="SettingUp.html">here</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>In this section, we will explain the design and behaviour of the top-level components in the system, which are the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Architecture overview</p>
+</li>
+<li>
+<p>User Interface (UI) Component</p>
+</li>
+<li>
+<p>Logic Component</p>
+</li>
+<li>
+<p>Model Component</p>
+</li>
+<li>
+<p>Storage Component</p>
+</li>
+</ul>
+</div>
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
+<div class="paragraph">
+<p>This sub-section shows the <strong>relationship</strong> between the major components at the highest level, illustrated by the following diagram.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -144,18 +181,18 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The rest of the App consists of four components.</p>
+<p>The rest of the system consists of four components.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the system.</p>
 </li>
 <li>
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the system in-memory.</p>
 </li>
 <li>
 <p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
@@ -201,11 +238,18 @@ The following class plays an important role at the architecture level:</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>The sections below give more details of each component.</p>
+<p>In the diagram above, we can see how the components integrate together to execute a single command.<br>
+&#160;<br>
+The sections below give more details about each component, starting of with the UI component.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
+<div class="paragraph">
+<p>This sub-section shows the structure of the User Interface (UI) and the relationship between each component in the UI.<br>
+&#160;<br>
+The following diagram aims to illustrate how each UI sub-component is linked to one another.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -216,10 +260,32 @@ The following class plays an important role at the architecture level:</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p>In the figure above, we can see the association between the different UI sub-components, as well as the classes that interact with the external <code>Logic</code> and <code>Model</code> components.</p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>BookListPanel</code>, etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up these main parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code></p>
+</li>
+<li>
+<p><code>ResultDisplay</code></p>
+</li>
+<li>
+<p><code>BookListPanel</code></p>
+</li>
+<li>
+<p>Other smaller components</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -239,7 +305,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p>Given below is the Sequence Diagram for interactions within
-the UI component when the user enter an add command.
+the UI component when the user enters an add command.
 The exact command entered is <code>add t/Animal Farm a/George</code>.</p>
 </div>
 <div class="imageblock">
@@ -252,7 +318,10 @@ The exact command entered is <code>add t/Animal Farm a/George</code>.</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens to the <code>UI</code>
+<p>In the figure above, we can see how the UI components invoke the <code>execute</code> method of the <code>Logic</code> class in order to obtain and subsequently display the result of the execution.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens to the <code>UI</code> component
 when a user executes a new command:</p>
 </div>
 <div class="imageblock">
@@ -262,11 +331,18 @@ when a user executes a new command:</p>
 <div class="title">Figure 6. Flow of Events within <code>UI</code></div>
 </div>
 <div class="paragraph">
-<p>&#160;<br></p>
+<p>&#160;<br>
+The activity diagram above aims to illustrate how <code>UI</code> only updates the <code>BookListPanel</code> when the catalog is being updated by a command.<br>
+We will now move on to give more details about the <code>Logic</code> component.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
+<div class="paragraph">
+<p>In this sub-section, we will explain the internal workings of the <code>Logic</code> component, which handles the execution of the different commands.<br>
+&#160;<br>
+The following class diagram aims to show how the 'Command Design Pattern' is used to achieve a high-level form of encapsulation of the <code>Command</code> object.</p>
+</div>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -274,7 +350,8 @@ when a user executes a new command:</p>
 <div class="title">Figure 7. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
-<p>&#160;<br></p>
+<p>&#160;<br>
+In the diagram above, we can see that the <code>LogicManager</code> executes the <code>Command</code> class without knowledge of what each command does. This is achieve through polymorphism where all possible commands extend from the <code>Command</code> class.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -309,7 +386,8 @@ when a user executes a new command:</p>
 <div class="title">Figure 8. Interactions Inside the Logic Component for the <code>add t/Animal Farm a/George</code> Command</div>
 </div>
 <div class="paragraph">
-<p>&#160;<br></p>
+<p>&#160;<br>
+In the diagram above, we can see that the <code>Logic</code> component&#8217;s <code>execute</code> is invoked by the <code>UI</code> component from before. A series of method calls would invoke the <code>addBook</code> method of the <code>Model</code>, moving the chain of calls further downstream.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -319,13 +397,24 @@ when a user executes a new command:</p>
 </td>
 <td class="content">
 The lifeline for <code>AddCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+&#160;<br>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>In short, the <code>Logic</code> component interprets the different commands and execute them accordingly. Most of these commands will have to interact with the <code>Model</code> component, which will will explore in the next sub-section.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
+<div class="paragraph">
+<p>The <code>Model</code> component is mainly composed of the <code>Book</code>, <code>Borrower</code> and <code>Loan</code> classes and shows how they are related to one another.
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the relationship between smaller components. These smaller components are modelled after real world objects.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -336,10 +425,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Model</code>,</p>
+<p>The figure illustrates the composition of the <code>Model</code> component. The <code>Model</code>,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -366,9 +452,23 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+When there are changes in the <code>Model</code> component, the system will update its in-memory via the <code>Storage</code> component, which will be explained in-depth in the next section.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
+<div class="paragraph">
+<p>The <code>Storage</code> component is responsible for updating the memory of the system (in <code>JSON</code> format) whenever there are changes.</p>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+The figure below aims to show the different records storage that is implemented in LiBerry.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -379,6 +479,25 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
+<p>In the figure above, we can see that we are maintaining 4 different storages. These storages aim to keep the memory of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UserPrefs</code></p>
+</li>
+<li>
+<p><code>Catalog</code></p>
+</li>
+<li>
+<p><code>BorrowerRecords</code></p>
+</li>
+<li>
+<p><code>LoanRecords</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
@@ -387,18 +506,38 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 <div class="ulist">
 <ul>
 <li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+<p>can save <code>UserPref</code> objects in <code>JSON</code> format and read it back.</p>
 </li>
 <li>
-<p>can save LiBerry data in json format and read it back.</p>
+<p>can save LiBerry data in <code>JSON</code> format and read it back.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>There are certain classes (eg. Utility classes) that are used by different components. In the following section, we will explain how we allow all components to access these classes.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.
+These classes include (to list a few):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User Settings</p>
+</li>
+<li>
+<p>Exceptions</p>
+</li>
+<li>
+<p>Utility classes like <code>DateUtil</code> and <code>JsonUtil</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We will now move on to the next section, which aims to explain the implementation of some of our main features.</p>
 </div>
 </div>
 </div>
@@ -411,6 +550,9 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </div>
 <div class="sect2">
 <h3 id="add-book-feature"><a class="link" href="#add-book-feature">4.1. Add book feature</a></h3>
+<div class="paragraph">
+<p>This feature allows a user to add a new book to the LiBerry system.</p>
+</div>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">4.1.1. Implementation</a></h4>
 <div class="paragraph">
@@ -1980,4 +2122,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-26 07:45:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-26 07:48:25 UTC</div></div></div></body></html>
