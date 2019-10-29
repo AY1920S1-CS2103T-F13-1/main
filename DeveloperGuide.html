@@ -403,7 +403,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </table>
 </div>
 <div class="paragraph">
-<p>In short, the <code>Logic</code> component interprets the different commands and execute them accordingly. Most of these commands will have to interact with the <code>Model</code> component, which will will explore in the next sub-section.</p>
+<p>In short, the <code>Logic</code> component interprets the different commands and execute them accordingly. Most of these commands will have to interact with the <code>Model</code> component, which we will explore in the next sub-section.</p>
 </div>
 </div>
 <div class="sect2">
@@ -467,7 +467,7 @@ When there are changes in the <code>Model</code> component, the system will upda
 </div>
 <div class="paragraph">
 <p>&#160;<br>
-The figure below aims to show the different records storage that is implemented in LiBerry.</p>
+The figure below aims to show the different records storage that are implemented in LiBerry.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -580,7 +580,7 @@ Additionally, it implements the following operation:</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>Given below is a class diagram of a book after being added to the catalog.</p>
+<p>Given below is a class diagram of a book.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -590,6 +590,25 @@ Additionally, it implements the following operation:</p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Notice how the book can hold either <strong>1 or 0 loans</strong>, depending on whether it is currently loaned out or not.<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Given below is the object diagram of a newly added book.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BookObjectDiagram.png" alt="BookObjectDiagram" width="300">
+</div>
+<div class="title">Figure 13. Object Diagram for <code>Book</code></div>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>We can see that the book holds a <code>Optional&lt;Loan&gt;</code> in order to have either <strong>0 or 1 <code>Loan</code> objects</strong>. This makes it consistent with the class diagram of <code>Book</code> above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -950,7 +969,7 @@ Essentially, it implements the following operations:</p>
 <div class="content">
 <img src="images/LoanSlipGeneration.png" alt="LoanSlipGeneration">
 </div>
-<div class="title">Figure 13. Sequence Diagram for the generation of a loan slip</div>
+<div class="title">Figure 14. Sequence Diagram for the generation of a loan slip</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1183,7 +1202,7 @@ just after a book is loaned out can be seen below.</p>
 <div class="content">
 <img src="images/LoanObjectDiagram.png" alt="LoanObjectDiagram" width="880">
 </div>
-<div class="title">Figure 14. Loan object diagram after a new Loan is created</div>
+<div class="title">Figure 15. Loan object diagram after a new Loan is created</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1214,7 +1233,7 @@ circular dependency.</p>
 <div class="content">
 <img src="images/LoaningActivityDiagram.png" alt="LoaningActivityDiagram" width="650">
 </div>
-<div class="title">Figure 15. Activity diagram when a loan command is entered</div>
+<div class="title">Figure 16. Activity diagram when a loan command is entered</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1256,7 +1275,7 @@ Similarly, the new book object replaces the old book object in the <code>Catalog
 <div class="content">
 <img src="images/ReturningActivityDiagram.png" alt="ReturningActivityDiagram" width="820">
 </div>
-<div class="title">Figure 16. Activity diagram when a book is being returned.</div>
+<div class="title">Figure 17. Activity diagram when a book is being returned.</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1429,7 +1448,7 @@ such as <code>setTitle()</code>, <code>setGenres()</code> <code>setLoanStatus</c
 <div class="content">
 <img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width=""840">
 </div>
-<div class="title">Figure 17. Sequence Diagram showing the execution of a Find Command input</div>
+<div class="title">Figure 18. Sequence Diagram showing the execution of a Find Command input</div>
 </div>
 <div class="paragraph">
 <p>The <code>BookPredicate</code> class stores in its fields the specific values to match. Default values are mostly null, which will indicate that
@@ -1845,7 +1864,7 @@ I submit a book title query</p></td>
 <div class="content">
 <img src="images/UseCases.png" alt="UseCases" width="330">
 </div>
-<div class="title">Figure 18. General Use Cases for LiBerry</div>
+<div class="title">Figure 19. General Use Cases for LiBerry</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2230,4 +2249,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-27 14:32:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 06:45:29 UTC</div></div></div></body></html>

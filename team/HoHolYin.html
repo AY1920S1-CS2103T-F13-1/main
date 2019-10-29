@@ -365,7 +365,7 @@ Additionally, it implements the following operation:</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>Given below is a class diagram of a book after being added to the catalog.</p>
+<p>Given below is a class diagram of a book.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -375,6 +375,25 @@ Additionally, it implements the following operation:</p>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Notice how the book can hold either <strong>1 or 0 loans</strong>, depending on whether it is currently loaned out or not.<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Given below is the object diagram of a newly added book.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BookObjectDiagram.png" alt="BookObjectDiagram" width="300">
+</div>
+<div class="title">Figure 5. Object Diagram for <code>Book</code></div>
+</div>
+<div class="paragraph">
+<p>&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>We can see that the book holds a <code>Optional&lt;Loan&gt;</code> in order to have either <strong>0 or 1 <code>Loan</code> objects</strong>. This makes it consistent with the class diagram of <code>Book</code> above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -491,7 +510,7 @@ Essentially, it implements the following operations:</p>
 <div class="content">
 <img src="../images/LoanSlipGeneration.png" alt="LoanSlipGeneration">
 </div>
-<div class="title">Figure 5. Sequence Diagram for the generation of a loan slip</div>
+<div class="title">Figure 6. Sequence Diagram for the generation of a loan slip</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -588,4 +607,4 @@ Essentially, it implements the following operations:</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-27 14:32:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 06:45:29 UTC</div></div></div></body></html>
