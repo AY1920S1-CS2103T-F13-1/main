@@ -311,21 +311,46 @@ Format: <code>register n/NAME p/PHONE_NUMBER e/EMAIL</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-code-undo-code"><a class="link" href="#undoing-code-undo-code">3.1.8. Undoing: <code>undo</code></a></h4>
+<h4 id="unregistering-a-borrower-code-unregister-code"><a class="link" href="#unregistering-a-borrower-code-unregister-code">3.1.8. Unregistering a borrower: <code>unregister</code></a></h4>
+<div class="paragraph">
+<p>Unregisters a borrower from the library records.
+Format:  <code>unregister id/BORROWER_ID</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the borrower with the specified borrower ID</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>unregister id/K0001</code><br>
+Deletes the borrower with the borrower ID <code>id/K0001</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-code-undo-code"><a class="link" href="#undoing-code-undo-code">3.1.9. Undoing: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undo the previous command/action.<br>
 Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-redo"><a class="link" href="#redoing-redo">3.1.9. Redoing: redo</a></h4>
+<h4 id="redoing-redo"><a class="link" href="#redoing-redo">3.1.10. Redoing: redo</a></h4>
 <div class="paragraph">
 <p>Redo the most recent undo should there be no more commands/actions after the most recent undo<br>
 Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="set-user-settings-code-set-code"><a class="link" href="#set-user-settings-code-set-code">3.1.10. Set User Settings: <code>set</code></a></h4>
+<h4 id="set-user-settings-code-set-code"><a class="link" href="#set-user-settings-code-set-code">3.1.11. Set User Settings: <code>set</code></a></h4>
 <div class="paragraph">
 <p>Sets the user settings for loan period (in days), renew period (in days) and fine increment (in cents).<br>
 Format: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] }</code></p>
@@ -345,14 +370,14 @@ Format: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] }</co
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.11. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.12. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="toggling-night-mode-code-toggleui-code-strong-coming-in-v2-0-strong"><a class="link" href="#toggling-night-mode-code-toggleui-code-strong-coming-in-v2-0-strong">3.1.12. Toggling night mode: <code>toggleui</code> <strong> - Coming in v2.0</strong></a></h4>
+<h4 id="toggling-night-mode-code-toggleui-code-strong-coming-in-v2-0-strong"><a class="link" href="#toggling-night-mode-code-toggleui-code-strong-coming-in-v2-0-strong">3.1.13. Toggling night mode: <code>toggleui</code> <strong> - Coming in v2.0</strong></a></h4>
 <div class="paragraph">
 <p>Toggles between day mode and night mode for the UI<br>
 Format: <code>toggleui</code></p>
@@ -586,6 +611,9 @@ e.g. `add t/Harry Botter and the Baby&#8217;s Potty a/Reali Jolking sn/B02010 g/
 e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
 </li>
 <li>
+<p><strong>Unregister a borrower</strong> : <code>unregister id/BORROWER_ID</code></p>
+</li>
+<li>
 <p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 <li>
@@ -641,4 +669,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 06:45:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 13:37:04 UTC</div></div></div></body></html>
