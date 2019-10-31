@@ -187,10 +187,10 @@ The following table shows the format used to describe each command.</p>
 <p>Items in square brackets are optional e.g. <code>t/TITLE [g/GENRE]</code> can be used as <code>t/Harry Potter g/fiction</code> or as <code>t/Harry Potter</code>.</p>
 </li>
 <li>
-<p>Curly brackets indicate that at least 1 of the optional parameters have to be given e.g. <code>{ [t/TITLE] [a/AUTHOR] }</code> can be used as <code>t/Harry Potter</code></p>
+<p>Curly brackets indicate that at least 1 of the optional parameters have to be given, e.g. <code>{ [t/TITLE] [a/AUTHOR] }</code> can be used as <code>t/Harry Potter</code></p>
 </li>
 <li>
-<p>Items with <code>&#8230;&#8203;</code>​ after them can be used multiple times including zero times e.g. <code>[g/GENRE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>g/fiction</code>, <code>g/fiction g/adventure</code> etc.</p>
+<p>Items with <code>&#8230;&#8203;</code>​ after them can be used multiple times including zero times, e.g. <code>[g/GENRE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>g/fiction</code>, <code>g/fiction g/adventure</code> etc.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>t/TITLE a/AUTHOR</code>, <code>a/AUTHOR t/TITLE</code> is also acceptable.</p>
@@ -203,8 +203,8 @@ The following table shows the format used to describe each command.</p>
 <h4 id="locating-books-by-title-code-find-code"><a class="link" href="#locating-books-by-title-code-find-code">Locating books by title: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Shows all relevant books found.<br>
-Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] }</code><br>
-Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] [-rated] [-popular] [-new] }</code> <strong> - Coming in v2.0</strong></p>
+Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available] }</code><br>
+Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available] [-rated] [-popular] [-new] }</code> <strong> - Coming in v2.0</strong></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -269,14 +269,21 @@ Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/B
 <ul>
 <li>
 <p><code>find t/Animal Farm a/George Orwell</code><br>
-Search for the book titled “Animal Farm” by the author “George Orwell”</p>
+Searches for the book titled “Animal Farm” by the author “George Orwell”.</p>
 </li>
 <li>
 <p><code>find 3 g/mystery g/children -available</code><br>
-Search for children mystery books that are not on loan and show the first 3 entries
+Searches for children mystery books that are not on loan and show the first 3 entries.
 == Command Summary
-Commands applicable to both <strong>Normal</strong> and <strong>Serve</strong> mode:</p>
+This section contains the summary of LiBerry&#8217;s commands.<br></p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Commands applicable to both <strong>Normal</strong> and <strong>Serve</strong> mode:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
@@ -312,22 +319,21 @@ e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 <li>
-<p><strong>Toggle night mode</strong>: <code>toggleui</code></p>
-</li>
-<li>
 <p><strong>Set user settings</strong>: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] }</code></p>
 </li>
 <li>
 <p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
+<p><strong>Toggle night mode</strong>: <code>toggleui</code> <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
 <p><strong>Rate a book</strong> : <code>rate INDEX r/RATING</code> <strong> - Coming in v2.0</strong></p>
 </li>
 </ul>
 </div>
-<hr>
 <div class="paragraph">
-<p>Commands only applicable in <strong>serve mode</strong>:</p>
+<p>Commands applicable to <strong>Serve</strong> mode only:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -347,16 +353,16 @@ e.g. <code>edit p/91234567 e/jane@austen.com</code></p>
 e.g. <code>loan sn/B00201</code></p>
 </li>
 <li>
-<p><strong>Renew book(s)</strong> : <code>renew INDEX [-all]</code></p>
+<p><strong>Return book(s)</strong> : <code>return INDEX</code> or <code>return -all</code></p>
 </li>
 <li>
-<p><strong>Return book(s)</strong> : <code>return INDEX [-all]</code></p>
+<p><strong>Renew book(s)</strong> : <code>renew INDEX</code> or <code>renew -all</code></p>
 </li>
 <li>
 <p><strong>Pay fines</strong> : <code>pay $AMOUNT</code></p>
 </li>
 <li>
-<p><strong>Reserve book</strong> : <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
+<p><strong>Reserve book</strong> : <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code> <strong> - Coming in v2.0</strong></p>
 </li>
 </ul>
 </div>
@@ -502,4 +508,4 @@ filtered books does not have an API that sets a hard limit on the number of book
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 01:10:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 07:02:03 UTC</div></div></div></body></html>
