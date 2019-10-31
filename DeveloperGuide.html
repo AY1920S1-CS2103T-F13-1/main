@@ -30,7 +30,7 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#add-book-feature">4.1. Add book feature</a></li>
-<li><a href="#proposed-undo-redo-feature">4.2. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#undo-redo-feature">4.2. Undo/Redo feature</a></li>
 <li><a href="#generate-loan-slip-feature">4.3. Generate Loan Slip feature</a></li>
 <li><a href="#logging">4.4. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.5. Configuration</a></li>
@@ -719,29 +719,29 @@ number using the number of books or the largest serial number.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.2. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.2.1. Proposed Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCatalog</code>.
-It extends <code>Catalog</code> with an undo/redo command history, stored internally as an <code>commandHistoryList</code> and <code>currentCommandPointer</code>.
+<p>The undo/redo mechanism is facilitated by <code>CommandHistory</code>.
+It contains a undo/redo command history, stored internally as an <code>commandHistoryList</code> and <code>currentCommandPointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedCatalog#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
+<p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
 </li>
 <li>
-<p><code>VersionedCatalog#undo()</code>&#8201;&#8212;&#8201;Restores the previous catalog state using its command history.</p>
+<p><code>CommandHistory#undo()</code>&#8201;&#8212;&#8201;Undoes the most recent reversible command.</p>
 </li>
 <li>
-<p><code>VersionedCatalog#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone catalog state using its command history.</p>
+<p><code>CommandHistory#redo()</code>&#8201;&#8212;&#8201;Redoes the most recent previously undone command.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCatalog()</code>, <code>Model#undoCatalog()</code> and <code>Model#redoCatalog()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCommand()</code>, <code>Model#undoCommand()</code> and <code>Model#redoCommand()</code> respectively.</p>
 </div>
 <div class="paragraph">
 <p>The undo/redo mechanism only works for commands that implements the <code>ReversibleCommand</code> interface.
@@ -758,33 +758,41 @@ The <code>ReversibleCommand</code> interface specifies that the commands these t
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>Given below is an example usage scenario and how the undo/redo mechanism
+behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCatalog</code> will be initialized with an empty <code>commandHistoryList</code>.</p>
+<p>Step 1. The user launches the application for the first time.
+The <code>CommandHistory</code> will be initialized with an empty <code>commandHistoryList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoState0.png" alt="UndoRedoState0" width="300">
 </div>
+<div class="title">Figure 14. Initial state of CommandHistroy</div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th book in the catalog. The <code>delete</code> command calls <code>Model#commitCatalog()</code>, causing the <code>delete 5</code> command to be saved in the <code>catalogHistoryList</code>, and the <code>currentCommandPointer</code> is pointed to the newly inserted command.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th
+book in the catalog. The <code>delete</code> command calls <code>Model#commitCommand()</code>,
+causing the <code>delete 5</code> command to be saved in the <code>commandHistoryList</code>,
+and the <code>currentCommandPointer</code> is pointed to the newly inserted command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoState1.png" alt="UndoRedoState1" width="300">
 </div>
+<div class="title">Figure 15. State of CommandHistory after <code>delete 5</code></div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>add t/Animal Farm &#8230;&#8203;</code> to add a new book.
-The <code>add</code> command also calls <code>Model#commitCatalog()</code>, causing the add
+The <code>add</code> command also calls <code>Model#commitCommand()</code>, causing the add
 command to be saved into the <code>catalogHistoryList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoState2.png" alt="UndoRedoState2" width="300">
 </div>
+<div class="title">Figure 16. State of CommandHistory after <code>add t/Animal Farm</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -793,21 +801,28 @@ command to be saved into the <code>catalogHistoryList</code>.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitCatalog()</code>, so the command will not be saved into the <code>commandHistoryList</code>.
+If a command fails its execution, it will not call <code>Model#commitCommand()</code>,
+so the command will not be saved into the <code>commandHistoryList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the <code>undo</code> command.
-The <code>undo</code> command will call <code>Model#undoCatalog()</code>, which will call <code>ReversibleCommand#getUndoCommand()</code> to get the command to undo
-the add command. This undo command would then be executed, which will shift the <code>currentCommandPointer</code> once to the left,
-pointing it to the previous command,</p>
+<p>Step 4. The user now decides that adding the book was a mistake,
+and decides to undo that action by executing the <code>UndoCommand</code>.
+During the execution of the <code>UndoCommand</code>, <code>Model#undoCommand()</code>
+will be called. This would call <code>CommandHistory#undo()</code>, which
+will retrieve the most recent <code>ReversibleCommand</code> that was executed, which is
+the <code>add</code> command. <code>ReversibleCommand#getUndoCommand()</code> would then be called
+and the <code>Command</code> returned would be executed, undoing the add command.
+This will then shift the <code>currentCommandPointer</code> once to the left, pointing it
+to the previous <code>ReversibleCommand</code> in the <code>commandListHistory</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoState3.png" alt="UndoRedoState3" width="300">
 </div>
+<div class="title">Figure 17. State of CommandHistory after <code>undo</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -816,7 +831,10 @@ pointing it to the previous command,</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentCommandPointer</code> is at index -1, pointing to no command, then there are no previous command to undo. The <code>undo</code> command uses <code>Model#canUndoCatalog()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentCommandPointer</code> is at index -1, pointing to no command,
+then there are no previous command to undo. The <code>undo</code> command uses
+<code>Model#canUndoCommand()</code> to check if this is the case. If so, it will
+return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -828,6 +846,7 @@ If the <code>currentCommandPointer</code> is at index -1, pointing to no command
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
+<div class="title">Figure 18. Sequence diagram for undo command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -836,13 +855,17 @@ If the <code>currentCommandPointer</code> is at index -1, pointing to no command
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>UndoCommand</code> should end at the destroy marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCatalog()</code>, which shifts the <code>currentCommandPointer</code> once to the right, pointing to the previously undone Command, and executes that Command.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCommand()</code>,
+which shifts the <code>currentCommandPointer</code> once to the right, pointing to
+the previously undone Command, and executes the redo command from
+<code>ReversibleCommand#getRedoCommand()</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -852,26 +875,27 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 </td>
 <td class="content">
 If the <code>currentCommandPointer</code> is at index <code>catalogHistoryList.size() - 1</code>,
-pointing to the latest command, then there are no undone command to execute.
-The <code>redo</code> command uses <code>Model#canRedoCatalog()</code> to check if this is the case.
+pointing to the latest command, then there are no undone command to redo.
+The <code>redo</code> command uses <code>Model#canRedoCommand()</code> to check if this is the case.
 If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>find t/Animal Farm</code>.
-Commands that do not modify the catalog, such as <code>find t/Animal Farm</code>,
-will usually not call <code>Model#commitCatalog()</code>,<code>Model#undoCatalog()</code> or
-<code>Model#redoCatalog()</code>. Thus, the <code>catalogHistoryList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>help</code>.
+Commands that do not modify the model, such as <code>help</code>,
+will usually not call <code>Model#commitCommand()</code>,<code>Model#undoCommand()</code> or
+<code>Model#redoCommand()</code>. Thus, the <code>commandHistoryList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoState4.png" alt="UndoRedoState4" width="300">
 </div>
+<div class="title">Figure 19. State of CommandHistory after <code>help</code></div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCatalog()</code>.
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCommand()</code>.
 Since the <code>currentCommandPointer</code> is not pointing at the end of the <code>commandHistoryList</code>,
 all commands after the <code>currentCommandPointer</code> will be purged.
 We designed it this way because it no longer makes sense to redo the
@@ -882,14 +906,16 @@ desktop applications follow.</p>
 <div class="content">
 <img src="images/UndoRedoState5.png" alt="UndoRedoState5" width="300">
 </div>
+<div class="title">Figure 20. State of CommandHistory after <code>clear</code></div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
+<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="300">
 </div>
+<div class="title">Figure 21. Activity diagram for committing Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -926,13 +952,33 @@ desktop applications follow.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Considering our target audience, community libraries, which may be poor. They might
+be not able to afford a large amount of data storage. As a library may contain many
+books, borrowers and loans, storing a state of application for each command can be
+memory intensive. Hence, we chose to implement Alternative 1 so as to reduce the amount
+of memory usage.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use two stacks to store a list of undoable and redoable commands.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the commands for undo and redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only need to maintain one data structure.</p>
+</li>
+<li>
+<p>Cons: Harder for new developers to understand the mechanism for undo and redo.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use two stacks to store a list of undoable and redoable commands.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -944,20 +990,10 @@ desktop applications follow.</p>
 </ul>
 </div>
 </li>
-<li>
-<p><strong>Alternative 2:</strong> Use a list to store the commands for undo and redo.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate stack.</p>
-</li>
-<li>
-<p>Cons: Harder for new developers to understand.</p>
-</li>
 </ul>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>We chose alternative 1 as it is easier to maintain a single data structure.</p>
 </div>
 </div>
 </div>
@@ -965,7 +1001,7 @@ desktop applications follow.</p>
 <div class="sect2">
 <h3 id="generate-loan-slip-feature"><a class="link" href="#generate-loan-slip-feature">4.3. Generate Loan Slip feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">4.3.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.3.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The printing of loan slip feature is facilitated by <code>LoanSlipUtil</code>.
 Essentially, it implements the following operations:</p>
@@ -990,7 +1026,7 @@ Essentially, it implements the following operations:</p>
 <div class="content">
 <img src="images/LoanSlipGeneration.png" alt="LoanSlipGeneration">
 </div>
-<div class="title">Figure 14. Sequence Diagram for the generation of a loan slip</div>
+<div class="title">Figure 22. Sequence Diagram for the generation of a loan slip</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1214,7 +1250,7 @@ the borrower brings the physical book forward to reserve it as he/she does not w
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">4.6.2. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.6.2. Implementation</a></h4>
 <div class="paragraph">
 <p>This feature is mainly facilitated by the <code>Loan</code> association class between a <code>Book</code> and a <code>Borrower</code>. The object diagram
 just after a book is loaned out can be seen below.</p>
@@ -1223,7 +1259,7 @@ just after a book is loaned out can be seen below.</p>
 <div class="content">
 <img src="images/LoanObjectDiagram.png" alt="LoanObjectDiagram" width="880">
 </div>
-<div class="title">Figure 15. Loan object diagram after a new Loan is created</div>
+<div class="title">Figure 23. Loan object diagram after a new Loan is created</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1254,7 +1290,7 @@ circular dependency.</p>
 <div class="content">
 <img src="images/LoaningActivityDiagram.png" alt="LoaningActivityDiagram" width="650">
 </div>
-<div class="title">Figure 16. Activity diagram when a loan command is entered</div>
+<div class="title">Figure 24. Activity diagram when a loan command is entered</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1296,7 +1332,7 @@ Similarly, the new book object replaces the old book object in the <code>Catalog
 <div class="content">
 <img src="images/ReturningActivityDiagram.png" alt="ReturningActivityDiagram" width="820">
 </div>
-<div class="title">Figure 17. Activity diagram when a book is being returned.</div>
+<div class="title">Figure 25. Activity diagram when a book is being returned.</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1450,7 +1486,7 @@ up of the application. Thus, it can make the application feel laggy and unrespon
 <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code></p>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.7.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.7.1. Implementation</a></h4>
 <div class="paragraph">
 <p>ModelManager contains a <code>FilteredList</code> of <code>Books</code> (<code>filteredBooks</code>), which is used to display books on the LiBerry GUI. Book finding works by
 starting converting the command string in to a <code>BookPredicate</code> object, then updating <code>filteredBooks</code> with that predicate.</p>
@@ -1469,7 +1505,7 @@ such as <code>setTitle()</code>, <code>setGenres()</code> <code>setLoanStatus</c
 <div class="content">
 <img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width=""840">
 </div>
-<div class="title">Figure 18. Sequence Diagram showing the execution of a Find Command input</div>
+<div class="title">Figure 26. Sequence Diagram showing the execution of a Find Command input</div>
 </div>
 <div class="paragraph">
 <p>The <code>BookPredicate</code> class stores in its fields the specific values to match. Default values are mostly null, which will indicate that
@@ -1571,7 +1607,7 @@ filtered books does not have an API that sets a hard limit on the number of book
 <div class="sect2">
 <h3 id="register-borrower-feature"><a class="link" href="#register-borrower-feature">4.8. Register borrower feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.8.1. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.8.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>register</code> borrower feature is facilitated by <code>BorrowerRecords</code>. The BorrowerRecords stores a list of borrowers,
 representing the borrowers registered into the library system. The command to register a borrower into the library
@@ -1595,7 +1631,7 @@ system is as followed:<br></p>
 <div class="content">
 <img src="images/BorrowerClassDiagram.png" alt="BorrowerClassDiagram" width="400">
 </div>
-<div class="title">Figure 19. Class Diagram for <code>Borrower</code></div>
+<div class="title">Figure 27. Class Diagram for <code>Borrower</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1607,7 +1643,7 @@ system is as followed:<br></p>
 <div class="content">
 <img src="images/BorrowerObjectDiagram.png" alt="BorrowerObjectDiagram" width="300">
 </div>
-<div class="title">Figure 20. Object Diagram for <code>Borrower</code></div>
+<div class="title">Figure 28. Object Diagram for <code>Borrower</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1915,7 +1951,7 @@ I submit a book title query</p></td>
 <div class="content">
 <img src="images/UseCases.png" alt="UseCases" width="330">
 </div>
-<div class="title">Figure 21. General Use Cases for LiBerry</div>
+<div class="title">Figure 29. General Use Cases for LiBerry</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -2293,4 +2329,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 12:04:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 13:15:35 UTC</div></div></div></body></html>
