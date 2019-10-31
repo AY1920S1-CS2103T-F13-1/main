@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Wang Shiyao - Project Portfolio Page</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">LiBerry</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Wang Shiyao - Project Portfolio Page</h1></div><div id="content"><div class="sect1">
+<h2 id="liberry"><a class="link" href="#liberry">LiBerry</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="overview"><a class="link" href="#overview">Overview</a></h3>
+<div class="paragraph">
+<p>In the spirit of spreading education, literacy and a sense of community to the world (and completing our software engineering project), my team has developed
+Liberry - a desktop software for managing community and private libraries. The target users are mainly librarians looking to set up
+or are already running private or community libraries, especially those in under-developed communities who cannot afford
+commercial versions of such software.</p>
+</div>
+<div class="paragraph">
+<p>LiBerry can execute the basic functions of library management:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Addition and deletion of books in the catalog</p>
+</li>
+<li>
+<p>Registering Borrowers and editing their particulars</p>
+</li>
+<li>
+<p>Loan, return, renew and pay fine functions</p>
+</li>
+<li>
+<p>Searching through books in the catalog by filters</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As part of the requirements of the project, we were given the source code for a common AddressBook
+application and were tasked to morph it to something else that is useful.
+We were also limited to designing software that takes in the majority of user input through a Command Line Interface
+(CLI), though displays information through a Graphical User Interface (GUI).</p>
+</div>
+<div class="paragraph">
+<p>This is what the GUI looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui">
+</div>
+<div class="title">Figure 1. Graphical User Interface (GUI) for <strong>LiBerry</strong></div>
+</div>
+<div class="paragraph">
+<p>My role was to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>configure the basic AddressBook software to accomodate Json-type storage for a catalog, a record of borrowers,
+and a record of loans.</p>
+</li>
+<li>
+<p>design the <strong>Find Command</strong> to execute given a set of parameters - such as searching by title, genre, loan status etc.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of Contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Major enhancement</strong>:<br>
+added <code>find</code> command - giving the ability to <strong>filter the catalog by various parameters</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does:</strong></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Searches books in catalog through filtering by:</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>title</p>
+</li>
+<li>
+<p>author</p>
+</li>
+<li>
+<p>serial number</p>
+</li>
+<li>
+<p>genres</p>
+</li>
+<li>
+<p>loan status (available / loaned / overdue)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>sets the number of books to display in the search results</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Justification:</strong><br>
+This feature is very powerful as it helps the user search through the entire catalog quickly according to the query&#8217;s requirements.
+For example, a user may want to find if a certain book of a certain title is in the catalog, but only remembers the word 'Harry' from the title.
+This command will show all books in the catalog with the word 'Harry' in it. Another possible use case would be if a borrower, say, a parent,
+wanted to check if there were available 'children'
+books. A <code>find 10 g/children -available</code> command will suffice in bringing out the first 10 books that were available for borrowing belonging
+to the genre 'children'.</p>
+</li>
+<li>
+<p><strong>Highlights:</strong><br>
+This enhancement was decently demanding as it required a way to test every book on whether it met the query requirements. To ensure that the command
+works as described, extensive tests were written.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor enhancement</strong>: Made all search parameters (with the exception of book serial number) case insensitive</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>:<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/main/java/seedu/address/logic/parser/FindCommandParser.java">FindCommandParser Class</a>]<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/main/java/seedu/address/model/book/BookPredicate.java">BookPredicate Class</a>]<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/main/java/seedu/address/logic/parser/Flag.java">Flag Class</a>]<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/test/java/seedu/address/model/book/BookPredicateTest.java">BookPredicate Tests</a>]<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/test/java/seedu/address/storage/StorageManagerTest.java">Storage Manager Tests</a>]<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/test/java/seedu/address/logic/commands/FindCommandTest.java">FindCommand Tests</a>]<br>
+[<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/src/test/java/seedu/address/logic/parser/FindCommandParserTest.java">FindCommandParser Tests</a>]<br>
+and other minor contributions</p>
+</div>
+<div class="paragraph">
+<p><strong>Other contributions</strong>:
+* Project management:
+<strong> Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub
+* Enhancements to existing features:
+</strong> Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)
+<strong> Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)
+* Documentation:
+</strong> Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a>
+* Community:
+<strong> PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a>
+</strong> Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)
+<strong> Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)
+</strong> Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I have contributed to in the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="features"><a class="link" href="#features">Features</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section contains a detailed guide to every feature LiBerry supports, including how to use and the
+format of the commands to use the feature.
+The following table shows the format used to describe each command.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>find t/TITLE</code>, <code>BOOK_TITLE</code> is a parameter which can be used as <code>find t/Harry Potter</code>.</p>
+</li>
+<li>
+<p>Items in square brackets are optional e.g. <code>t/TITLE [g/GENRE]</code> can be used as <code>t/Harry Potter g/fiction</code> or as <code>t/Harry Potter</code>.</p>
+</li>
+<li>
+<p>Curly brackets indicate that at least 1 of the optional parameters have to be given e.g. <code>{ [t/TITLE] [a/AUTHOR] }</code> can be used as <code>t/Harry Potter</code></p>
+</li>
+<li>
+<p>Items with <code>&#8230;&#8203;</code>​ after them can be used multiple times including zero times e.g. <code>[g/GENRE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>g/fiction</code>, <code>g/fiction g/adventure</code> etc.</p>
+</li>
+<li>
+<p>Parameters can be in any order e.g. if the command specifies <code>t/TITLE a/AUTHOR</code>, <code>a/AUTHOR t/TITLE</code> is also acceptable.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-books-by-title-code-find-code"><a class="link" href="#locating-books-by-title-code-find-code">Locating books by title: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Shows all relevant books found.<br>
+Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] }</code><br>
+Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue]/[-loaned]/[-available] [-rated] [-popular] [-new] }</code> <strong> - Coming in v2.0</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>harry</code> will match <code>Harry</code></p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Har</code> will not match <code>Harry</code></p>
+</li>
+<li>
+<p>Books matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>harry</code> will return both <code>Harry Potter</code> and <code>Harry Botter</code></p>
+</li>
+<li>
+<p><code>[NUMBER]</code> will list this <code>NUMBER</code> of books instead</p>
+</li>
+<li>
+<p><code>[t/TITLE]</code> will be used to search through book titles</p>
+</li>
+<li>
+<p><code>[a/AUTHOR]</code> will be used to search through or filter by authors</p>
+</li>
+<li>
+<p><code>[g/GENRE]</code> will be used to search through or filter by genre</p>
+</li>
+<li>
+<p><code>[sn/BOOK_SN]</code> will be used to search through book serial numbers</p>
+</li>
+<li>
+<p>Only 1 of the following 3 flags can be used</p>
+</li>
+<li>
+<p><code>[-overdue]</code> will only show overdue books</p>
+</li>
+<li>
+<p><code>[-loaned]</code> will only show loaned books</p>
+</li>
+<li>
+<p><code>[-available]</code> will only show available books</p>
+</li>
+<li>
+<p>Adding one of the following will sort the books such that:</p>
+</li>
+<li>
+<p><code>[-rated]</code> will list the top 10 highly rated books <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><code>[-popular]</code> will list the top 10 most borrowed books <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><code>[-new]</code> will list the 10 newest books <strong> - Coming in v2.0</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find t/Animal Farm a/George Orwell</code><br>
+Search for the book titled “Animal Farm” by the author “George Orwell”</p>
+</li>
+<li>
+<p><code>find 3 g/mystery g/children -available</code><br>
+Search for children mystery books that are not on loan and show the first 3 entries
+== Command Summary
+Commands applicable to both <strong>Normal</strong> and <strong>Serve</strong> mode:</p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Find a book</strong> : <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code><br>
+e.g. <code>find t/Animal Farm a/George Orwell</code>, <code>find 3 g/mystery g/children -available</code><br>
+<code>[-rated] [-popular] [-new]</code> <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><strong>View book info</strong> : <code>info INDEX</code></p>
+</li>
+<li>
+<p><strong>Clear results</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Add a book</strong> : <code>add t/TITLE a/AUTHOR sn/BOOK_SN [g/GENRE]&#8230;&#8203; `<br>
+e.g. `add t/Harry Botter and the Baby&#8217;s Potty a/Reali Jolking sn/B02010 g/children</code></p>
+</li>
+<li>
+<p><strong>Delete a book</strong> : <code>delete INDEX</code> or <code>delete sn/BOOK_SN</code></p>
+</li>
+<li>
+<p><strong>Register a borrower</strong> : <code>register n/NAME p/PHONE_NUMBER e/EMAIL</code><br>
+e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
+</li>
+<li>
+<p><strong>Unregister a borrower</strong> : <code>unregister id/BORROWER_ID</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Toggle night mode</strong>: <code>toggleui</code></p>
+</li>
+<li>
+<p><strong>Set user settings</strong>: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] }</code></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+<li>
+<p><strong>Rate a book</strong> : <code>rate INDEX r/RATING</code> <strong> - Coming in v2.0</strong></p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>Commands only applicable in <strong>serve mode</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Serve mode</strong> : <code>serve id/BORROWER_ID</code><br>
+e.g. <code>serve id/K0001</code></p>
+</li>
+<li>
+<p><strong>Exit serve mode</strong> : <code>done</code></p>
+</li>
+<li>
+<p><strong>Edit a borrower&#8217;s particulars</strong> : <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code><br>
+e.g. <code>edit p/91234567 e/jane@austen.com</code></p>
+</li>
+<li>
+<p><strong>Loan book</strong> : <code>loan sn/BOOK_SN</code><br>
+e.g. <code>loan sn/B00201</code></p>
+</li>
+<li>
+<p><strong>Renew book(s)</strong> : <code>renew INDEX [-all]</code></p>
+</li>
+<li>
+<p><strong>Return book(s)</strong> : <code>return INDEX [-all]</code></p>
+</li>
+<li>
+<p><strong>Pay fines</strong> : <code>pay $AMOUNT</code></p>
+</li>
+<li>
+<p><strong>Reserve book</strong> : <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I have contributed to in the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="book-finding"><a class="link" href="#book-finding">Book Finding</a></h3>
+<div class="paragraph">
+<p>The command for finding a book in the catalog is as follows:<br>
+<code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code></p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>ModelManager contains a <code>FilteredList</code> of <code>Books</code> (<code>filteredBooks</code>), which is used to display books on the LiBerry GUI. Book finding works by
+starting converting the command string in to a <code>BookPredicate</code> object, then updating <code>filteredBooks</code> with that predicate.</p>
+</div>
+<div class="paragraph">
+<p>The parsing of the command string to create the required <code>BookPredicate</code> object is done with the help of the <code>ArgumentTokenizer</code> object.
+<code>ArgumentTokenizer</code> tokenizes the command string to generate an
+<code>ArgumentMultimap</code>, which is internally a HashMap of predicate values paired to prefix keys. The <code>FindCommandParser</code>
+then extracts all the values from the <code>ArgumentMultimap</code> prefix by prefix and building the predicate through functions
+such as <code>setTitle()</code>, <code>setGenres()</code> <code>setLoanStatus</code> etc.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below shows a simplifed execution sequence of a 'find t/Animal Farm a/George' command string.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram" width=""840">
+</div>
+<div class="title">Figure 2. Sequence Diagram showing the execution of a Find Command input</div>
+</div>
+<div class="paragraph">
+<p>The <code>BookPredicate</code> class stores in its fields the specific values to match. Default values are mostly null, which will indicate that
+there is no need to filter for that field. Below is an example.</p>
+</div>
+<div class="paragraph">
+<div class="title">Object Diagram showing the fields present in an empty (left) and partially filled (right) BookPredicate object</div>
+<p><span class="image"><img src="../images/BookPredicateEmptyObjectDiagram.png" alt="BookPredicateEmptyObjectDiagram" height="300"></span>
+<span class="image"><img src="../images/BookPredicateFilledObjectDiagram.png" alt="BookPredicateFilledObjectDiagram" height="300"></span></p>
+</div>
+<div class="paragraph">
+<p>The figure above shows what happens when we are trying to filter for books with title 'harry' and 'Potter' that are loaned out,
+showing up to 5 books only. Notice that the rest of the fields in the object are null.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-ensuring-only-1-loan-status-flag"><a class="link" href="#aspect-ensuring-only-1-loan-status-flag">Aspect: Ensuring only 1 Loan Status Flag</a></h5>
+<div class="paragraph">
+<p>In order for LiBerry to display only books that are <strong>loaned</strong>, <strong>available</strong> or <strong>overdue</strong>, flags are used. All flags have
+the prefix <code>-</code>, and the <code>ArgumentTokenizer</code> is able to detect this. However, a user can technically enter more than 1
+of such loan status flags eg. <code>-loaned -available</code>. This is not meaningful, as there can be multiple interpretations of
+this statement. The user could be looking for both types of books (which will show every book), or books that are both
+loaned and available (which will show none). To prevent such meaningless confusion, there is a need for only 1 such
+flag to be accepted in the <code>BookPredicate</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1: Hard code a priority for loan status flags and accept the highest one</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement</p>
+</li>
+<li>
+<p>Cons: Does not make it clear for the user why an unintended display is shown</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (Currently Used): Raise an exception whenever there are more than 1 loan status flags</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Helps user clarify misconception of using more than 1 loan status flag</p>
+</li>
+<li>
+<p>Cons: Slightly more complicated code where the output <code>ArgumentMultimap</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-limiting-the-number-of-books-to-display"><a class="link" href="#aspect-limiting-the-number-of-books-to-display">Aspect: Limiting the Number of Books to Display</a></h5>
+<div class="paragraph">
+<p>As users generally do not want to be flooded with information when using the find command, a display limit <code>[NUMBER]</code> is used. Users
+can ask for a limited number of books to display. However, the <code>FilteredList</code> JavaFx class that is used to implement the list of
+filtered books does not have an API that sets a hard limit on the number of books to show. A work-around has to be made.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1: Create an new class that extends the JavaFx <code>FilteredList</code> class</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require a change in other parts of the code</p>
+</li>
+<li>
+<p>Cons: Hard to implement. Need to know the ins and outs of FilteredList</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (Currently Used): Create a counter variable in <code>BookPredicate</code> that decrements after every passed test</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Not the most cleanest way of implementation</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 01:10:24 UTC</div></div></div></body></html>
