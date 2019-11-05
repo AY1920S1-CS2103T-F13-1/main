@@ -41,7 +41,7 @@
 <li><a href="#returning-book-s-code-return-code">4.2.5. Returning book(s): <code>return</code></a></li>
 <li><a href="#renewing-book-s-code-renew-code">4.2.6. Renewing book(s): <code>renew</code></a></li>
 <li><a href="#paying-fines-code-pay-code">4.2.7. Paying fines: <code>pay</code></a></li>
-<li><a href="#reserve-a-book-code-reserve-code-strong-coming-in-v2-0-strong">4.2.8. Reserve a book: <code>reserve</code> <strong> - Coming in v2.0</strong></a></li>
+<li><a href="#reserve-a-book-code-reserve-code-coming-in-v2-0">4.2.8. Reserve a book: <code>reserve</code> - Coming in v2.0</a></li>
 </ul>
 </li>
 <li><a href="#saving-the-data">4.3. Saving the Data</a></li>
@@ -541,7 +541,7 @@ Edits the name of the borrower to be <code>Betsy Crower</code>.</p>
 <div class="paragraph">
 <p>Loan book(s) by their serial number.<br>
 Format: <code>loan sn/BOOK_SN</code><br>
-Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> - Coming in v2.0
+Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming in v2.0</strong>
 Examples:</p>
 </div>
 <div class="ulist">
@@ -551,7 +551,7 @@ Examples:</p>
 Loans the book with serial number B00041 to the currently served borrower.</p>
 </li>
 <li>
-<p><code>loan sn/B00201 sn/B02929 sn/B00203</code> - Coming in v2.0<br>
+<p><code>loan sn/B00201 sn/B02929 sn/B00203</code> <strong>- Coming in v2.0</strong><br>
 Loans the books with serial numbers B00201, B02929 and B00203 to the currently served borrower.</p>
 </li>
 </ul>
@@ -574,8 +574,7 @@ Loans the books with serial numbers B00201, B02929 and B00203 to the currently s
 <h4 id="returning-book-s-code-return-code"><a class="link" href="#returning-book-s-code-return-code">4.2.5. Returning book(s): <code>return</code></a></h4>
 <div class="paragraph">
 <p>Return book(s) that were loaned by the borrower.<br>
-Format: <code>return INDEX</code><br>
-Format: <code>return INDEX</code> or <code>return -all</code> <strong> - Coming in v2.0</strong><br>
+Format: <code>return INDEX</code> or <code>return -all</code><br>
 Including <code>-all</code> will return all currently loaned books.</p>
 </div>
 <div class="sidebarblock">
@@ -586,7 +585,7 @@ Including <code>-all</code> will return all currently loaned books.</p>
 <p>Returns the book at the specified <code>INDEX</code> in the borrower panel or all of the currently served borrower&#8217;s loaned out books.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the borrower&#8217;s book list.</p>
+<p>The index refers to the index number shown in the borrower&#8217;s book list on the right.</p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
@@ -606,8 +605,7 @@ Including <code>-all</code> will return all currently loaned books.</p>
 <h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">4.2.6. Renewing book(s): <code>renew</code></a></h4>
 <div class="paragraph">
 <p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br>
-Format: <code>return INDEX</code><br>
-Format: <code>renew INDEX</code> or <code>renew -all</code> <strong> - Coming in v2.0</strong><br></p>
+Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -617,7 +615,7 @@ Format: <code>renew INDEX</code> or <code>renew -all</code> <strong> - Coming in
 <p>Renews the book at the specified <code>INDEX</code> in the borrower panel or all of the currently served borrower&#8217;s loaned out books that can still be renewed.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the borrower&#8217;s book list.</p>
+<p>The index refers to the index number shown in the borrower&#8217;s book list on the right.</p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
@@ -641,7 +639,7 @@ Format: <code>pay $AMOUNT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="reserve-a-book-code-reserve-code-strong-coming-in-v2-0-strong"><a class="link" href="#reserve-a-book-code-reserve-code-strong-coming-in-v2-0-strong">4.2.8. Reserve a book: <code>reserve</code> <strong> - Coming in v2.0</strong></a></h4>
+<h4 id="reserve-a-book-code-reserve-code-coming-in-v2-0"><a class="link" href="#reserve-a-book-code-reserve-code-coming-in-v2-0">4.2.8. Reserve a book: <code>reserve</code> - Coming in v2.0</a></h4>
 <div class="paragraph">
 <p>Reserve a particular book
 Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
@@ -798,4 +796,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 07:46:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 16:29:05 UTC</div></div></div></body></html>
