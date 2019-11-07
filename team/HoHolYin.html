@@ -7,11 +7,13 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="about-the-project"><a class="link" href="#about-the-project">About the Project</a></h2>
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With a common belief to improve literacy in the world, my team decided to create a library management system called
-'LiBerry' that is free and easy to use. 'LiBerry' is designed for small communities with a lack of expertise and
+<p>This portfolio aims to highlight my contributions to our team project, 'LiBerry'.</p>
+</div>
+<div class="paragraph">
+<p>'LiBerry' is a library management system that is designed for small communities with a lack of expertise and
 resources to manage a library.</p>
 </div>
 <div class="paragraph">
@@ -29,12 +31,18 @@ resources to manage a library.</p>
 <p>Register borrowers</p>
 </li>
 <li>
-<p>Mark a book as loaned to a borrower</p>
+<p>Loan and return books to borrowers</p>
 </li>
 <li>
 <p>Calculate loan periods and fines for any overdue loans</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>I was in charge of implementing the book related features.
+Additionally, I am responsible for the code quality and testability of the team&#8217;s code base throughout the entire development phase.
+In this portfolio, I will illustrate my contributions in documenting the user guide and developer guide.
+These documentations serve to aid librarians and developers in understanding the features of the software.</p>
 </div>
 <div class="paragraph">
 <p>This is what the main page of our system looks like:</p>
@@ -45,80 +53,130 @@ resources to manage a library.</p>
 </div>
 <div class="title">Figure 1. Graphical user interface for LiBerry</div>
 </div>
+<div class="paragraph">
+<p>&#160;</p>
+</div>
+<div class="paragraph">
+<p>The figure above illustrates the main page librarians will navigate in while using the software.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="legend"><a class="link" href="#legend">Legend</a></h2>
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Denotes useful tips.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section shows a summary of my coding, documentation, and other helpful contributions to the team project.</em></p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Major enhancement</strong>: The ability to <strong>automatically generate loan slips in pdf</strong> for every loan.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: Allows the librarian to print the generated loan slip for the borrower.</p>
-</li>
-<li>
-<p>Justification: Since our target group is small impoverished communities, it is unlikely they will have internet access to check the status of their loans. Therefore, it will be suitable to provide them with a printed version of the loan.</p>
-</li>
-<li>
-<p>Highlights: This feature is challenging to implement as it will require us to create a new pdf document from scratch. On top of that, this document will have to be suitably styled as a loan slip using information from the loan.</p>
-</li>
-<li>
-<p>Credits: This feature is made possible with the 'iText 7' library. However, it was still required of me to understand the API well and in depth such that I can apply it appropriately to the context of our project.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>This section shows a summary of my contributions in terms of coding, documentation, and other helpful contributions to the team project.</p>
 </div>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="strong-major-enhancement-generating-loan-slip-strong"><a class="link" href="#strong-major-enhancement-generating-loan-slip-strong"><strong>Major enhancement - Generating Loan Slip</strong></a></h3>
+<div class="paragraph">
+<p>The ability to <strong>automatically generate loan slips in Portable Document Format (PDF)</strong> for every loan.</p>
+</div>
+<div class="sect3">
+<h4 id="what-it-does"><a class="link" href="#what-it-does">What it does</a></h4>
+<div class="paragraph">
+<p>This feature generates loan slips so that the librarian can immediately print the loan slip for the borrower.
+The printed loan slip contains all information about the loan, including the books loaned and the due date of the loans.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>Since our target group is small impoverished communities, it is unlikely they will have internet access to check the status of their loans.
+Therefore, it will be suitable to provide them with a printed version of the loan.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="highlights"><a class="link" href="#highlights">Highlights</a></h4>
+<div class="paragraph">
+<p>This feature is challenging to implement as it will require us to create a new pdf document from scratch.
+I was required to understand a great deal about file input and output in Java, which is something out of the scope of the course.
+On top of that, this document will have to be suitably styled as a loan slip populated with information about the loans.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="credits"><a class="link" href="#credits">Credits</a></h4>
+<div class="paragraph">
+<p>This feature is made possible with the 'iText 7' library. However, it was still required of me to understand both the
+Java <code>File</code> class and the API well such that I can use it appropriately in the context of our project.
+&#160;</p>
+</div>
+<div class="paragraph">
+<p>This is how a generated loan slip looks like.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/LoanSlip.png" alt="LoanSlip" width="350">
 </div>
+<div class="title">Figure 2. Generated Loan Slip</div>
 </div>
+<div class="paragraph">
+<p>&#160;
+In Figure 2, we can see all books loaned by borrower 'Bill' recorded and generated in a printable loan slip.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-minor-enhancement-strong-book-related-features"><a class="link" href="#strong-minor-enhancement-strong-book-related-features"><strong>Minor enhancement</strong> - Book-related features</a></h3>
+<div class="paragraph">
+<p>On top of the feature to generate loan slips, I am also primarily involved the implementation of the basic book-related core features.</p>
+</div>
+<div class="sect3">
+<h4 id="implemented-the-ability-to-strong-add-books-strong"><a class="link" href="#implemented-the-ability-to-strong-add-books-strong">Implemented the ability to <strong>add books</strong></a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Implemented the ability to <strong>add books</strong></p>
-</li>
-<li>
-<p>Implemented the ability to <strong>delete books</strong></p>
-</li>
-<li>
-<p>Implemented the ability to <strong>display information</strong> about a book</p>
+<p>This feature assists the librarian in tracking the movement of books with ease using the system.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Code contributed</strong>:</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+</div>
+<div class="sect3">
+<h4 id="implemented-the-ability-to-strong-delete-books-strong"><a class="link" href="#implemented-the-ability-to-strong-delete-books-strong">Implemented the ability to <strong>delete books</strong>.</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>This feature allows the librarian to update the catalog when a book goes missing.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implemented-the-ability-to-strong-display-information-strong-about-a-book"><a class="link" href="#implemented-the-ability-to-strong-display-information-strong-about-a-book">Implemented the ability to <strong>display information</strong> about a book.</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed the release of <code>v1.3</code> on GitHub. In <code>v1.3</code>, we have the following additional features:</p>
+<p>This feature aids the librarian in retrieving more information about a book when a borrower enquires about it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-other-contributions-strong"><a class="link" href="#strong-other-contributions-strong"><strong>Other contributions</strong>:</a></h3>
+<div class="sect3">
+<h4 id="project-management"><a class="link" href="#project-management">Project management:</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed the release of <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/releases/tag/v1.3.1"><code>v1.3</code></a> on GitHub. In <code>v1.3</code>, we have the following additional features:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -141,53 +199,48 @@ resources to manage a library.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="enhancements-to-existing-features"><a class="link" href="#enhancements-to-existing-features">Enhancements to existing features:</a></h4>
+<div class="paragraph">
+<p>These enhancements are done through the following Pull Requests:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/177">[#177]</a>: Created a borrower panel in the Graphical User Interface to list books that the borrower has currently loaned.</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
+<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/147">[#147]</a>: Made the <code>Book</code> Object immutable in preparation for the undo/redo feature.</p>
+</li>
 <li>
-<p>Optimised the generation of a new serial number when a new book is added</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Done through Pull Request <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/118">#118</a>. This enhancement allows the system to efficiently locate and allocate the smallest available serial number to the new book.</p>
+<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/206">[#206]</a>: Increased test coverage for the source code, thereby increasing code quality and testability.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Made the <code>Book</code> Object immutable in preparation for the undo/redo feature in the future</p>
+</div>
+<div class="sect3">
+<h4 id="documentation"><a class="link" href="#documentation">Documentation:</a></h4>
+<div class="paragraph">
+<p>The documentations are updated through the following Pull Requests:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Done through Pull Request <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/147">#147</a>. This modification allows the system to track the different states of the system throughout its usage. This is required in order to implement the undo/redo function.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/148">[#148]</a>: Illustrated the <code>Model</code> component of the system and its behaviour through class and sequence diagrams.</p>
 </li>
 <li>
-<p>Documentation:</p>
+<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/159">[#159]</a>: Documented the feature to generate loan slip and its design considerations.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="community"><a class="link" href="#community">Community:</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote the <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/docs/DeveloperGuide.adoc#Design-Model">documentation</a> for the <code>Model</code> component of the system.</p>
-</li>
-<li>
-<p>Described the <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/blob/master/docs/DeveloperGuide.adoc#generate-loan-slip-feature">'Generate Loan Slip'</a> feature and its design considerations.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/49/files/22e0d669e265d0f2835df4e4a2d0f15a57b05795">Reviewed</a>(with non-trivial comments) a Pull Request from another group</p>
+<p><a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/49/files/22e0d669e265d0f2835df4e4a2d0f15a57b05795">Reviewed</a> (with non-trivial comments) a Pull Request from another group</p>
 </li>
 <li>
 <p>Contributed to forum discussions as a group (Shared a <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/115">tip</a> on how to check code coverage when running tests)</p>
@@ -197,21 +250,20 @@ resources to manage a library.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Tools:</p>
+</div>
+<div class="sect3">
+<h4 id="tools"><a class="link" href="#tools">Tools:</a></h4>
+<div class="paragraph">
+<p>This tool was added through the following Pull Request:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (iText 7) to the project in <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/150">this</a> Pull Request</p>
+<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/150">[#150]</a>: Integrated a third party library (iText 7) to the project.</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
 </div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -224,20 +276,21 @@ resources to manage a library.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section outlines my contributions to the team&#8217;s User Guide. The following are excerpts from the 'LiBerry' User Guide. These excerpts show the additions I made for the 'Add Book' and 'Loan' feature. In the 'Loan' feature, my contributions include only the loan slip portion.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section outlines my contributions to the team&#8217;s User Guide. It demonstrates my ability to write documentation for librarians so that they can learn how to add, delete and loan books using the software.</em></p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="add-book-feature"><a class="link" href="#add-book-feature">Add Book Feature</a></h4>
-<div class="sidebarblock">
-<div class="content">
+<div class="sect2">
+<h3 id="add-and-delete-book"><a class="link" href="#add-and-delete-book">Add and Delete book</a></h3>
 <div class="paragraph">
-<p>Adding a book: <code>add</code></p>
+<p>The ability to add and delete books to and from the system will help librarians track the status of all books with ease.<br>
+&#160;</p>
 </div>
+<div class="sect3">
+<h4 id="adding-a-book-code-add-code"><a class="link" href="#adding-a-book-code-add-code">Adding a book: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a new book to library records.<br>
-Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]</code></p>
+Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -246,7 +299,7 @@ Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A book can have any number of genres (including 0)
+A book can have up to 5 genres (but can have no genres as well).
 </td>
 </tr>
 </table>
@@ -270,26 +323,45 @@ LiBerry will then auto-generate a valid serial number for the new book.
 <div class="ulist">
 <ul>
 <li>
-<p><code>add t/Harry Botter and the Baby&#8217;s Potty a/Raylei Jolking sn/B02010 g/children</code></p>
+<p><code>add t/Harry Botter a/Raylei Jolking sn/B02010 g/children</code><br>
+Adds a children book titled "Harry Botter" by "Raylei Jolking", with the serial number "B02010", to LiBerry.</p>
 </li>
 <li>
-<p><code>add t/Inferno a/Tande g/classic g/epic</code></p>
+<p><code>add t/Inferno a/Tande g/classic g/epic</code>
+Adds a book titled "Inferno" by "Tande", with the genres "classic" and "epic" to LiBerry. The serial number for
+this book will be automatically generated.</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-</div>
 <div class="sect3">
-<h4 id="loan-book-feature"><a class="link" href="#loan-book-feature">Loan Book Feature</a></h4>
+<h4 id="deleting-a-book-code-delete-code"><a class="link" href="#deleting-a-book-code-delete-code">Deleting a book : <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes a book from the library records. Used when book is lost or trashed.
+Format: <code>delete INDEX</code> or <code>delete sn/BOOK_SN</code></p>
+</div>
 <div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
-<p>Loaning book(s): <code>loan</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the book at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed book list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p><code>INDEX</code> will delete the book with the book at this index in the results list</p>
+</li>
+<li>
+<p><code>sn/BOOK_SN</code> will delete the book with this serial number</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Loan book(s) by their serial number<br>
-Format: <code>loan sn/BOOK_SN&#8230;&#8203;</code></p>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -297,24 +369,65 @@ Format: <code>loan sn/BOOK_SN&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loan sn/B00041</code><br>
-Loans the book with serial number B00041</p>
+<p><code>find t/harry</code><br>
+<code>delete 1</code><br>
+Deletes the 1st book in the results of the <code>find</code> command.</p>
 </li>
 <li>
-<p><code>loan sn/B00201 sn/B02929 sn/B00203</code><br>
-Loans the books with serial numbers B00201, B02929 and B00203</p>
+<p><code>delete sn/B00422</code><br>
+Deletes the book with serial number <code>sn/B00422</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Upon loaning a book, a printable loan slip in pdf format will be generated.</p>
+<p>&#160;</p>
 </div>
-<div class="imageblock" style="text-align: center">
+</div>
+</div>
+<div class="sect2">
+<h3 id="loan-book"><a class="link" href="#loan-book">Loan book</a></h3>
+<div class="paragraph">
+<p>The feature to loan books will allow librarians to mark that the book has been loaned to a particular borrower. In this feature, I implemented the ability to auto-generate loan slips, allowing librarians to conveniently print it out for the borrower.<br>
+&#160;</p>
+</div>
+<div class="sect3">
+<h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">Loaning book(s): <code>loan</code></a></h4>
+<div class="paragraph">
+<p>Loan book(s) by their serial number.<br>
+Format: <code>loan sn/BOOK_SN</code><br>
+Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming in v2.0</strong>
+Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loan sn/B00041</code><br>
+Loans the book with serial number B00041 to the currently served borrower.</p>
+</li>
+<li>
+<p><code>loan sn/B00201 sn/B02929 sn/B00203</code> <strong>- Coming in v2.0</strong><br>
+Loans the books with serial numbers B00201, B02929 and B00203 to the currently served borrower.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After loaning all books, upon the <code>DONE</code> command, a printable loan slip in pdf format will be generated. The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="imageblock">
 <div class="content">
 <img src="../images/LoanSlip.png" alt="LoanSlip" width="250">
 </div>
-<div class="title">Figure 2. Printable PDF version of a Loan Slip</div>
+<div class="title">Figure 3. Printable loan slip generated.</div>
 </div>
+<div class="paragraph">
+<p>&#160;</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the figure above, we can see that the loan slip records all the books being borrowed by 'Bill'.</p>
 </div>
 </div>
 </div>
@@ -329,12 +442,12 @@ Loans the books with serial numbers B00201, B02929 and B00203</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section highlights my contributions to the Developer Guide. The following are excerpts from the 'LiBerry' Developer Guide. These excerpts show the additions I have made for the 'Add Book' and 'Generate Loan Slip' feature.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section highlights my contributions to the Developer Guide. The following excerpts from the 'LiBerry' Developer Guide demonstrates my ability to communicate with other developers through my detailed documentation.</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="add-book-feature-2"><a class="link" href="#add-book-feature-2">Add book feature</a></h3>
+<h3 id="add-book-feature"><a class="link" href="#add-book-feature">Add book feature</a></h3>
 <div class="paragraph">
 <p>This feature allows a user to add a new book to the LiBerry system.</p>
 </div>
@@ -359,7 +472,7 @@ Additionally, it implements the following operation:</p>
 <div class="content">
 <img src="../images/AddBookActivityDiagram.png" alt="AddBookActivityDiagram" width="270">
 </div>
-<div class="title">Figure 3. Activity Diagram for adding a book</div>
+<div class="title">Figure 4. Activity Diagram for adding a book</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -371,7 +484,7 @@ Additionally, it implements the following operation:</p>
 <div class="content">
 <img src="../images/BookClassDiagram.png" alt="BookClassDiagram" width="400">
 </div>
-<div class="title">Figure 4. Class Diagram for <code>Book</code></div>
+<div class="title">Figure 5. Class Diagram for <code>Book</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -387,7 +500,7 @@ Additionally, it implements the following operation:</p>
 <div class="content">
 <img src="../images/BookObjectDiagram.png" alt="BookObjectDiagram" width="300">
 </div>
-<div class="title">Figure 5. Object Diagram for <code>Book</code></div>
+<div class="title">Figure 6. Object Diagram for <code>Book</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -452,7 +565,7 @@ number using the number of books or the largest serial number.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a TreeMap to store current serial numbers such that we can efficiently determine the next serial number in running order.</p>
+<p><strong>Alternative 1:</strong> Use a TreeMap to store current serial numbers such that we can efficiently determine the next serial number in running order.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -465,7 +578,7 @@ number using the number of books or the largest serial number.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use brute force to start iterating from "B00001" to obtain the first unused serial number.</p>
+<p><strong>Alternative 2 (Current choice):</strong> Iterate from "B00001" to obtain the first unused serial number.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -478,6 +591,10 @@ number using the number of books or the largest serial number.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We have decided to go with Alternative 2 and keep it simple as there are some edge cases which will lead to the implementation in
+Alternative 1 not behaving as expected. This is also in line with the <strong>KISS</strong> (Keep it Simple, Stupid) principle of programming.</p>
 </div>
 </div>
 </div>
@@ -493,10 +610,10 @@ Essentially, it implements the following operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>LoanSlipUtil#mountLoan()</code>&#8201;&#8212;&#8201;Mounts a loan slip in preparation for generation of loan slip in pdf form.</p>
+<p><code>LoanSlipUtil#mountLoan()</code>&#8201;&#8212;&#8201;Mounts a loan in preparation for it to be generated in a PDF loan slip.</p>
 </li>
 <li>
-<p><code>LoanSlipUtil#unmountLoan()</code>&#8201;&#8212;&#8201;Unmounts a loan slip ,usually after generating a pdf version of it.</p>
+<p><code>LoanSlipUtil#clearSession()</code>&#8201;&#8212;&#8201;Clears the current loan session by unmounting all loans, usually after generating a PDF loan slip.</p>
 </li>
 <li>
 <p><code>LoanSlipUtil#createLoanSlipInDirectory()</code>&#8201;&#8212;&#8201;Creates a pdf version of the mounted loan slip in the loan_slips folder.</p>
@@ -510,7 +627,7 @@ Essentially, it implements the following operations:</p>
 <div class="content">
 <img src="../images/LoanSlipGeneration.png" alt="LoanSlipGeneration">
 </div>
-<div class="title">Figure 6. Sequence Diagram for the generation of a loan slip</div>
+<div class="title">Figure 7. Sequence Diagram for the generation of a loan slip</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -525,7 +642,7 @@ Essentially, it implements the following operations:</p>
 2) The <code>LoanCommand</code> retrieves the <code>Book</code> and the <code>Borrower</code><br>
 3) The <code>LoanCommand</code> creates a new <code>Loan</code><br>
 4) The <code>LoanCommand</code> mounts the new loan in <code>LoanSlipUtil</code><br>
-5) The <code>Storage</code> component creates and save a new <code>LoanSlipDocument</code> in a saved folder<br>
+5) The <code>Storage</code> component creates and save a new PDF <code>LoanSlipDocument</code> in a saved folder<br>
 6) The <code>Logic</code> component opens the newly generated <code>LoanSlipDocument</code> for the librarian to print it immediately<br>
 7) The <code>Logic</code> component unmounts the <code>LoanSlipDocument</code> at the end of the process</p>
 </div>
@@ -567,7 +684,9 @@ Essentially, it implements the following operations:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We have decided to go with Alternative 2. The Facade class provides the system with a <strong>simplified view</strong> of generating a loan slip, making it <strong>easier to use</strong>. It also <strong>decouples</strong> the code, making it easier to modify in the future.</p>
+<p>We have decided to go with Alternative 2. The Facade class provides the system with a <strong>simplified view</strong> of generating a loan slip, making it <strong>easier to use</strong>.
+It also <strong>decouples</strong> the code, making it easier to modify in the future.
+On the contrary, Alternative 1 will introduce a lot of unnecessary dependencies between classes, thereby <strong>increasing coupling</strong> and <strong>reducing maintainability</strong>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -579,7 +698,7 @@ Essentially, it implements the following operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will be easy to extend in the future as we can just mount multiple loans using <code>LoanSlipUtil</code> before generating all loans in a single loan slip.</p>
+<p>Pros: Will be able to mount multiple loans using <code>LoanSlipUtil</code> before generating all loans in a single loan slip.</p>
 </li>
 <li>
 <p>Cons: Will require more code when mounting loans in the Facade class.</p>
@@ -602,9 +721,13 @@ Essentially, it implements the following operations:</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>We have decided to go with Alternative 1 as it allows us to have flexible code that is <strong>easily extendable</strong>. Furthermore,
+it adheres to good programming practices as compared to Alternative 2, which <strong>violates the Single Responsibility Principle</strong>.</p>
+</div>
 <hr>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 12:59:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 09:42:35 UTC</div></div></div></body></html>

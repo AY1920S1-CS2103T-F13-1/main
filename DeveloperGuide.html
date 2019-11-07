@@ -688,7 +688,7 @@ number using the number of books or the largest serial number.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a TreeMap to store current serial numbers such that we can efficiently determine the next serial number in running order.</p>
+<p><strong>Alternative 1:</strong> Use a TreeMap to store current serial numbers such that we can efficiently determine the next serial number in running order.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -701,7 +701,7 @@ number using the number of books or the largest serial number.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use brute force to start iterating from "B00001" to obtain the first unused serial number.</p>
+<p><strong>Alternative 2 (Current choice):</strong> Iterate from "B00001" to obtain the first unused serial number.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -714,6 +714,10 @@ number using the number of books or the largest serial number.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We have decided to go with Alternative 2 and keep it simple as there are some edge cases which will lead to the implementation in
+Alternative 1 not behaving as expected. This is also in line with the <strong>KISS</strong> (Keep it Simple, Stupid) principle of programming.</p>
 </div>
 </div>
 </div>
@@ -769,7 +773,7 @@ The <code>CommandHistory</code> will be initialized with an empty <code>commandH
 <div class="content">
 <img src="images/UndoRedoState0.png" alt="UndoRedoState0" width="300">
 </div>
-<div class="title">Figure 14. Initial state of CommandHistroy</div>
+<div class="title">Figure 14. Initial state of CommandHistory</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>delete 5</code> command to delete the 5th
@@ -1009,10 +1013,10 @@ Essentially, it implements the following operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>LoanSlipUtil#mountLoan()</code>&#8201;&#8212;&#8201;Mounts a loan slip in preparation for generation of loan slip in pdf form.</p>
+<p><code>LoanSlipUtil#mountLoan()</code>&#8201;&#8212;&#8201;Mounts a loan in preparation for it to be generated in a PDF loan slip.</p>
 </li>
 <li>
-<p><code>LoanSlipUtil#unmountLoan()</code>&#8201;&#8212;&#8201;Unmounts a loan slip ,usually after generating a pdf version of it.</p>
+<p><code>LoanSlipUtil#clearSession()</code>&#8201;&#8212;&#8201;Clears the current loan session by unmounting all loans, usually after generating a PDF loan slip.</p>
 </li>
 <li>
 <p><code>LoanSlipUtil#createLoanSlipInDirectory()</code>&#8201;&#8212;&#8201;Creates a pdf version of the mounted loan slip in the loan_slips folder.</p>
@@ -1041,7 +1045,7 @@ Essentially, it implements the following operations:</p>
 2) The <code>LoanCommand</code> retrieves the <code>Book</code> and the <code>Borrower</code><br>
 3) The <code>LoanCommand</code> creates a new <code>Loan</code><br>
 4) The <code>LoanCommand</code> mounts the new loan in <code>LoanSlipUtil</code><br>
-5) The <code>Storage</code> component creates and save a new <code>LoanSlipDocument</code> in a saved folder<br>
+5) The <code>Storage</code> component creates and save a new PDF <code>LoanSlipDocument</code> in a saved folder<br>
 6) The <code>Logic</code> component opens the newly generated <code>LoanSlipDocument</code> for the librarian to print it immediately<br>
 7) The <code>Logic</code> component unmounts the <code>LoanSlipDocument</code> at the end of the process</p>
 </div>
@@ -1083,7 +1087,9 @@ Essentially, it implements the following operations:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We have decided to go with Alternative 2. The Facade class provides the system with a <strong>simplified view</strong> of generating a loan slip, making it <strong>easier to use</strong>. It also <strong>decouples</strong> the code, making it easier to modify in the future.</p>
+<p>We have decided to go with Alternative 2. The Facade class provides the system with a <strong>simplified view</strong> of generating a loan slip, making it <strong>easier to use</strong>.
+It also <strong>decouples</strong> the code, making it easier to modify in the future.
+On the contrary, Alternative 1 will introduce a lot of unnecessary dependencies between classes, thereby <strong>increasing coupling</strong> and <strong>reducing maintainability</strong>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1095,7 +1101,7 @@ Essentially, it implements the following operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will be easy to extend in the future as we can just mount multiple loans using <code>LoanSlipUtil</code> before generating all loans in a single loan slip.</p>
+<p>Pros: Will be able to mount multiple loans using <code>LoanSlipUtil</code> before generating all loans in a single loan slip.</p>
 </li>
 <li>
 <p>Cons: Will require more code when mounting loans in the Facade class.</p>
@@ -1117,6 +1123,10 @@ Essentially, it implements the following operations:</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We have decided to go with Alternative 1 as it allows us to have flexible code that is <strong>easily extendable</strong>. Furthermore,
+it adheres to good programming practices as compared to Alternative 2, which <strong>violates the Single Responsibility Principle</strong>.</p>
 </div>
 </div>
 </div>
@@ -2336,4 +2346,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 12:59:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 09:42:35 UTC</div></div></div></body></html>
