@@ -36,6 +36,10 @@ It is a software optimized for librarians who prefer to work with a Command Line
 </ul>
 </div>
 <div class="paragraph">
+<p>This portfolio serves to demonstrate my proficiency in the various aspects of software engineering such as coding,
+technical writing skills in crafting documentation that fits the target user and also, my project management capabilities.<br></p>
+</div>
+<div class="paragraph">
 <p>My role was to design and implement the code for the loan related features. The following sections further elaborates on these
 enhancements I have made. Also included are the details of the relevant documentation I have written in the user and developer guide to
 assist users and other developers to understand these features.</p>
@@ -46,87 +50,90 @@ assist users and other developers to understand these features.</p>
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of Contributions</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section summarizes the contributions I have made to the team project, including contributions to the code base, documentation and project management.</p>
+<p>This section summarizes the contributions I have made to the team project.</p>
 </div>
-<div class="sect2">
-<h3 id="main-enhancement-loan-related-features"><a class="link" href="#main-enhancement-loan-related-features">Main enhancement - Loan-related features</a></h3>
-<div class="paragraph">
-<p>I have added features related to the loaning and returning of books in our library management app, LiBerry.</p>
-</div>
-<div class="sect3">
-<h4 id="what-it-does"><a class="link" href="#what-it-does">What it does</a></h4>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
+<p>Main enhancement - <strong>Loan-related features</strong><br>
+I have added features related to the loaning and returning of books in our library management software, LiBerry.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:<br></p>
+<div class="ulist">
+<ul>
+<li>
 <p>This set of features allow our users, librarians, to <strong>loan</strong> out books to borrowers, <strong>return</strong> loaned out books, <strong>renew</strong> loaned
-out books, and to record payments of <strong>fines</strong> incurred for overdue books.</p>
-</div>
-<div class="paragraph">
+out books, and to record payments of <strong>fines</strong> incurred for overdue books.<br></p>
+</li>
+<li>
 <p>Every time a book is borrowed, both the starting date and due date of the loan are automatically recorded. For each loaned
 out book, other than the details of the book and the borrower, the starting date, due date, and returning date,
 along with the number of times it has been renewed and the fine incurred after returning are all meticulously tracked.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>The intuitive syntax for the commands related to these features also enables librarians to quickly serve a borrower.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
-<div class="paragraph">
+</li>
+<li>
+<p>Justification<br></p>
+<div class="ulist">
+<ul>
+<li>
 <p>As the main purpose of a library is to allow visitors to borrow books, these features are core to a library and are
 needed for a library to function.</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="highlights"><a class="link" href="#highlights">Highlights</a></h4>
-<div class="paragraph">
+</li>
+<li>
+<p>Highlights<br></p>
+<div class="ulist">
+<ul>
+<li>
 <p>The implementation of these features was challenging as a whole new set of code had to be written to model each loan occurrence
-and to store these information. The book, borrower and the loan object had to be linked efficiently to reduce duplicated information stored.</p>
-</div>
-<div class="paragraph">
+and to store these information. The book, borrower and the loan object had to be linked efficiently to reduce duplicated information stored.<br></p>
+</li>
+<li>
 <p>Moreover, a great deal of defensive programming was applied as there were many bounds to each of these features. For
 example, these features should only work when certain conditions are met, such as when the user is currently serving borrowers
-and the inputs correspond to a book that is not on loan.</p>
-</div>
-<div class="paragraph">
+and the inputs correspond to a book that is not on loan.<br></p>
+</li>
+<li>
 <p>Additionally, I also created utility classes like <code>DateUtil</code> and <code>FineUtil</code> to centralize utility functions that dealt with
 dates and fines respectively.</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="code-contributed"><a class="link" href="#code-contributed">Code contributed</a></h3>
-<div class="paragraph">
-<p>[<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
-<div class="sect3">
-<h4 id="project-management"><a class="link" href="#project-management">Project management</a></h4>
+</li>
+<li>
+<p>Code contributed:<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed the issues covered for each milestone and set up their deadlines. Also added each feature as an issue and
+<p><a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=seeziyang">Functional and test code</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other contributions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed the <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/issues">issues</a> covered for each milestone and set up their deadlines. Also added each feature as an issue and
 assigned them to the appropriate team member.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The issues and milestones can be seen <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/issues">here</a>.</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
-<p>Set up two Github project boards.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The project board used to brainstorm and prioritise user stories can be seen <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/projects/2">here</a>.</p>
-</li>
-<li>
-<p>The project board used to keep track of the features and commands can be seen <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/projects/3">here</a>.</p>
-</li>
-</ul>
-</div>
+<p>Set up two Github <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/projects/">project boards</a>, one used to brainstorm and prioritize user stories,
+and one to keep track of the features and commands..</p>
 </li>
 <li>
 <p>Updated developer guide to include user stories, use cases and non-functional requirements. Done through pull requests:</p>
@@ -151,20 +158,17 @@ assigned them to the appropriate team member.</p>
 <li>
 <p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/97">#97</a> - Updated header, README, contact us, developer photos, role and responsibilities.</p>
 </li>
+</ul>
+</div>
+</li>
 <li>
-<p><a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/100">#100</a> - Fixed user interface image not appearing on the website.</p>
+<p>Managed the release of v1.1 of our project.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Reviewed pull requests by team members, e.g. &#8230;&#8203;&#8230;&#8203;&#8230;&#8203;..</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="enhancements-to-existing-features"><a class="link" href="#enhancements-to-existing-features">Enhancements to existing features</a></h4>
+<p>Enhancements to existing features</p>
 <div class="ulist">
 <ul>
 <li>
@@ -204,63 +208,62 @@ added more borrower-related information such as total outstanding fine.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="documentation"><a class="link" href="#documentation">Documentation</a></h4>
+</li>
+<li>
+<p>Documentation</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Wrote the documentation and guide to the <code>Logic</code> component of our software in the developer guide.</p>
+</li>
 <li>
 <p>Improved and rectified the flow, content, styling, legend and diagrams of the user guide and developer guide
-according to feedback received from tutor and peers.
-Done through pull requests: <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/157">#157</a>, <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/163">#163</a>,
-<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/179">#179</a>, <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/182">#182</a>.</p>
+according to feedback received from tutor and peers.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="community"><a class="link" href="#community">Community</a></h4>
+</li>
+<li>
+<p>Community</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gave in-depth and insightful review of team member&#8217;s pull requests. Examples includes: &#8230;&#8203;&#8230;&#8203;..</p>
+<p>Gave in-depth and insightful <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pulls?q=is%3Apr+reviewed-by%3Aseeziyang+is%3Aclosed">reviews</a> of team members pull requests.</p>
 </li>
 <li>
-<p>Reported bugs in the team project to team members in the group chat.</p>
+<p>Reviewed other team&#8217;s <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pulls?q=is%3Apr+is%3Aopen+reviewed-by%3Aseeziyang">documentation</a>,
+including their user stories, non-functional requirements and use of UML diagrams.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="tools"><a class="link" href="#tools">Tools</a></h4>
+</li>
+<li>
+<p>Tools</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a new Github plugin, Coveralls, to the team repository. Coveralls was immensely helpful in tracking the
+<p>Integrated a new Github plugin, Coveralls, to the project repository. Coveralls was immensely helpful in tracking the
 test coverage of our team&#8217;s code.</p>
 </li>
 <li>
-<p>Set up Netlify for the team repository to easily and quickly preview changes made to the team website and documentation.</p>
+<p>Set up Netlify for the project repository to easily and quickly preview changes made to the project website and documentation.</p>
 </li>
 </ul>
 </div>
+</li>
+</ul>
 </div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -475,16 +478,9 @@ Reserves the book with serial number <code>sn/B02422</code> for the currently se
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</p>
+</div>
 <div class="sect2">
 <h3 id="book-loaning-features"><a class="link" href="#book-loaning-features">Book Loaning Features</a></h3>
 <div class="sect3">
@@ -800,4 +796,4 @@ up of the application. Thus, it can make the application feel laggy and unrespon
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 09:44:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 11:46:10 UTC</div></div></div></body></html>
