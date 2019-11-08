@@ -152,7 +152,7 @@ Denotes additional information.
 <div class="paragraph">
 <p>This sub-section shows the <strong>relationship</strong> between the major components at the highest level, illustrated by the following diagram.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
 </div>
@@ -236,7 +236,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="paragraph">
 <p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
@@ -249,7 +249,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>add t/Animal Farm a/George</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/AddBook.png" alt="AddBook">
 </div>
@@ -271,7 +271,7 @@ The sections below give more details about each component, starting of with the 
 &#160;<br>
 The following diagram aims to illustrate how each UI sub-component is linked to one another.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
@@ -329,7 +329,7 @@ The following diagram aims to illustrate how each UI sub-component is linked to 
 the UI component when the user enters an add command.
 The exact command entered is <code>add t/Animal Farm a/George</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UiAddBookSequenceDiagram.png" alt="UiAddBookSequenceDiagram">
 </div>
@@ -364,7 +364,7 @@ We will now move on to give more details about the <code>Logic</code> component.
 &#160;<br>
 The following class diagram aims to show how the 'Command Design Pattern' is used to achieve a high-level form of encapsulation of the <code>Command</code> object.</p>
 </div>
-<div id="fig-LogicClassDiagram" class="imageblock">
+<div id="fig-LogicClassDiagram" class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
@@ -400,7 +400,7 @@ In the diagram above, we can see that the <code>LogicManager</code> executes the
 <div class="paragraph">
 <p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("add t/Animal Farm a/George")</code> API call.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/AddBookLogicSequenceDiagram.png" alt="AddBookLogicSequenceDiagram">
 </div>
@@ -436,7 +436,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 <div class="paragraph">
 <p>The figure below shows the relationship between smaller components. These smaller components are modelled after real world objects.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
@@ -490,7 +490,7 @@ When there are changes in the <code>Model</code> component, the system will upda
 <p>&#160;<br>
 The figure below aims to show the different records storage that are implemented in LiBerry.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
@@ -851,7 +851,7 @@ return an error to the user rather than attempting to perform the undo.
 <div class="paragraph">
 <p>The following sequence diagram shows how the undo operation works:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
@@ -1031,7 +1031,7 @@ Essentially, it implements the following operations:</p>
 <div class="paragraph">
 <p>Given below is the sequence diagram of the generation of loan slip during the loan of a book.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LoanSlipGeneration.png" alt="LoanSlipGeneration">
 </div>
@@ -1228,7 +1228,7 @@ just after a book is loaned out can be seen below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LoanObjectDiagram.png" alt="LoanObjectDiagram" width="880">
+<img src="images/LoanObjectDiagram.png" alt="LoanObjectDiagram" width="center"">
 </div>
 <div class="title">Figure 23. Loan object diagram after a new Loan is created</div>
 </div>
@@ -1259,7 +1259,7 @@ circular dependency.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LoaningActivityDiagram.png" alt="LoaningActivityDiagram" width="650">
+<img src="images/LoaningActivityDiagram.png" alt="LoaningActivityDiagram" width="center"">
 </div>
 <div class="title">Figure 24. Activity diagram when a loan command is entered</div>
 </div>
@@ -1301,7 +1301,7 @@ Similarly, the new book object replaces the old book object in the <code>Catalog
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ReturningActivityDiagram.png" alt="ReturningActivityDiagram" width="820">
+<img src="images/ReturningActivityDiagram.png" alt="ReturningActivityDiagram" width="center"">
 </div>
 <div class="title">Figure 25. Activity diagram when a book is being returned.</div>
 </div>
@@ -1484,8 +1484,8 @@ starting from the CatalogParser</p>
 there is no need to filter for that field. Below is an example.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/BookPredicateEmptyObjectDiagram.png" alt="BookPredicateEmptyObjectDiagram" height="300"></span>
-<span class="image"><img src="images/BookPredicateFilledObjectDiagram.png" alt="BookPredicateFilledObjectDiagram" height="300"></span></p>
+<p><span class="image"><img src="images/BookPredicateEmptyObjectDiagram.png" alt="BookPredicateEmptyObjectDiagram" width="center"" height="300 align="></span>
+<span class="image"><img src="images/BookPredicateFilledObjectDiagram.png" alt="BookPredicateFilledObjectDiagram" width="center"" height="300 align="></span></p>
 </div>
 <div class="paragraph">
 <div class="title">Object Diagram showing the fields present in an empty (left) and partially filled (right) BookPredicate object</div>
@@ -1972,7 +1972,7 @@ I submit a book title query</p></td>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UseCases.png" alt="UseCases" width="330">
+<img src="images/UseCases.png" alt="UseCases" width="center"">
 </div>
 <div class="title">Figure 29. General Use Cases for LiBerry</div>
 </div>
@@ -2562,4 +2562,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 15:36:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 15:44:13 UTC</div></div></div></body></html>
