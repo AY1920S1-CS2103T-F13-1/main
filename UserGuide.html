@@ -26,22 +26,22 @@
 <li><a href="#unregistering-a-borrower-code-unregister-code">4.1.8. Unregistering a borrower: <code>unregister</code></a></li>
 <li><a href="#undoing-code-undo-code">4.1.9. Undoing: <code>undo</code></a></li>
 <li><a href="#redoing-redo">4.1.10. Redoing: redo</a></li>
-<li><a href="#set-user-settings-code-set-code">4.1.11. Set User Settings: <code>set</code></a></li>
+<li><a href="#setting-user-settings-code-set-code">4.1.11. Setting User Settings: <code>set</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">4.1.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#toggling-dark-mode-code-toggleui-code">4.1.13. Toggling dark mode : <code>toggleui</code></a></li>
-<li><a href="#rate-a-book-code-rate-code-coming-in-v2-0">4.1.14. Rate a book : <code>rate</code> - Coming in v2.0</a></li>
+<li><a href="#entering-serve-mode-code-serve-code">4.1.14. Entering Serve Mode: <code>serve</code></a></li>
+<li><a href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.15. Rating a book : <code>rate</code> - Coming in v2.0</a></li>
 </ul>
 </li>
 <li><a href="#using-serve-mode">4.2. Using Serve Mode</a>
 <ul class="sectlevel3">
-<li><a href="#entering-serve-mode-code-serve-code">4.2.1. Entering Serve Mode: <code>serve</code></a></li>
-<li><a href="#exiting-serve-mode-code-done-code">4.2.2. Exiting Serve Mode: <code>done</code></a></li>
-<li><a href="#editing-a-borrower-code-edit-code">4.2.3. Editing a borrower: <code>edit</code></a></li>
-<li><a href="#loaning-book-s-code-loan-code">4.2.4. Loaning book(s): <code>loan</code></a></li>
-<li><a href="#returning-book-s-code-return-code">4.2.5. Returning book(s): <code>return</code></a></li>
-<li><a href="#renewing-book-s-code-renew-code">4.2.6. Renewing book(s): <code>renew</code></a></li>
-<li><a href="#paying-fines-code-pay-code">4.2.7. Paying fines: <code>pay</code></a></li>
-<li><a href="#reserve-a-book-code-reserve-code-coming-in-v2-0">4.2.8. Reserve a book: <code>reserve</code> - Coming in v2.0</a></li>
+<li><a href="#exiting-serve-mode-code-done-code">4.2.1. Exiting Serve Mode: <code>done</code></a></li>
+<li><a href="#editing-a-borrower-code-edit-code">4.2.2. Editing a borrower: <code>edit</code></a></li>
+<li><a href="#loaning-book-s-code-loan-code">4.2.3. Loaning book(s): <code>loan</code></a></li>
+<li><a href="#returning-book-s-code-return-code">4.2.4. Returning book(s): <code>return</code></a></li>
+<li><a href="#renewing-book-s-code-renew-code">4.2.5. Renewing book(s): <code>renew</code></a></li>
+<li><a href="#paying-fines-code-pay-code">4.2.6. Paying fines: <code>pay</code></a></li>
+<li><a href="#reserving-a-book-code-reserve-code-coming-in-v2-0">4.2.7. Reserving a book: <code>reserve</code> - Coming in v2.0</a></li>
 </ul>
 </li>
 <li><a href="#saving-the-data">4.3. Saving the Data</a></li>
@@ -459,7 +459,7 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="set-user-settings-code-set-code"><a class="link" href="#set-user-settings-code-set-code">4.1.11. Set User Settings: <code>set</code></a></h4>
+<h4 id="setting-user-settings-code-set-code"><a class="link" href="#setting-user-settings-code-set-code">4.1.11. Setting User Settings: <code>set</code></a></h4>
 <div class="paragraph">
 <p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br>
 Format: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] }</code></p>
@@ -495,22 +495,7 @@ Format: <code>toggleui</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="rate-a-book-code-rate-code-coming-in-v2-0"><a class="link" href="#rate-a-book-code-rate-code-coming-in-v2-0">4.1.14. Rate a book : <code>rate</code> - Coming in v2.0</a></h4>
-<div class="paragraph">
-<p>Gives a book a numerical rating.<br>
-Format: <code>rate INDEX r/RATING</code></p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-serve-mode"><a class="link" href="#using-serve-mode">4.2. Using Serve Mode</a></h3>
-<div class="paragraph">
-<p>The Serve Mode is for librarians to serve borrowers. All commands in Serve Mode are done on a specific borrower currently served by the librarian. All commands in Normal Mode can be used in Serve Mode too.</p>
-</div>
-<hr>
-<div class="sect3">
-<h4 id="entering-serve-mode-code-serve-code"><a class="link" href="#entering-serve-mode-code-serve-code">4.2.1. Entering Serve Mode: <code>serve</code></a></h4>
+<h4 id="entering-serve-mode-code-serve-code"><a class="link" href="#entering-serve-mode-code-serve-code">4.1.14. Entering Serve Mode: <code>serve</code></a></h4>
 <div class="paragraph">
 <p>Enters Serve Mode. All commands/actions will be done on this specific borrower. A list of the borrower’s currently loaned books and their serial numbers will be displayed.<br>
 Format: <code>serve id/BORROWER_ID</code></p>
@@ -528,14 +513,29 @@ Enters save mode to serve a borrower with the ID <code>K0001</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-serve-mode-code-done-code"><a class="link" href="#exiting-serve-mode-code-done-code">4.2.2. Exiting Serve Mode: <code>done</code></a></h4>
+<h4 id="rating-a-book-code-rate-code-coming-in-v2-0"><a class="link" href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.15. Rating a book : <code>rate</code> - Coming in v2.0</a></h4>
+<div class="paragraph">
+<p>Gives a book a numerical rating.<br>
+Format: <code>rate INDEX r/RATING</code></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-serve-mode"><a class="link" href="#using-serve-mode">4.2. Using Serve Mode</a></h3>
+<div class="paragraph">
+<p>The Serve Mode is for librarians to serve borrowers. All commands in Serve Mode are done on a specific borrower currently served by the librarian. All commands in Normal Mode can be used in Serve Mode too.</p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="exiting-serve-mode-code-done-code"><a class="link" href="#exiting-serve-mode-code-done-code">4.2.1. Exiting Serve Mode: <code>done</code></a></h4>
 <div class="paragraph">
 <p>Exits Serve Mode.<br>
 Format: <code>done</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">4.2.3. Editing a borrower: <code>edit</code></a></h4>
+<h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">4.2.2. Editing a borrower: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edit borrower’s particulars.<br>
 Format: <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
@@ -574,7 +574,7 @@ Edits the name of the borrower to be <code>Betsy Crower</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">4.2.4. Loaning book(s): <code>loan</code></a></h4>
+<h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">4.2.3. Loaning book(s): <code>loan</code></a></h4>
 <div class="paragraph">
 <p>Loan book(s) by their serial number.<br>
 Format: <code>loan sn/BOOK_SN</code><br>
@@ -614,7 +614,7 @@ Loans the books with serial numbers B00201, B02929 and B00203 to the currently s
 </div>
 </div>
 <div class="sect3">
-<h4 id="returning-book-s-code-return-code"><a class="link" href="#returning-book-s-code-return-code">4.2.5. Returning book(s): <code>return</code></a></h4>
+<h4 id="returning-book-s-code-return-code"><a class="link" href="#returning-book-s-code-return-code">4.2.4. Returning book(s): <code>return</code></a></h4>
 <div class="paragraph">
 <p>Return book(s) that were loaned by the borrower.<br>
 Format: <code>return INDEX</code> or <code>return -all</code><br>
@@ -645,7 +645,7 @@ Including <code>-all</code> will return all currently loaned books.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">4.2.6. Renewing book(s): <code>renew</code></a></h4>
+<h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">4.2.5. Renewing book(s): <code>renew</code></a></h4>
 <div class="paragraph">
 <p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br>
 Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
@@ -675,14 +675,14 @@ Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">4.2.7. Paying fines: <code>pay</code></a></h4>
+<h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">4.2.6. Paying fines: <code>pay</code></a></h4>
 <div class="paragraph">
 <p>Reduces the outstanding amount of borrower&#8217;s fines by AMOUNT (in dollars).<br>
 Format: <code>pay $AMOUNT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="reserve-a-book-code-reserve-code-coming-in-v2-0"><a class="link" href="#reserve-a-book-code-reserve-code-coming-in-v2-0">4.2.8. Reserve a book: <code>reserve</code> - Coming in v2.0</a></h4>
+<h4 id="reserving-a-book-code-reserve-code-coming-in-v2-0"><a class="link" href="#reserving-a-book-code-reserve-code-coming-in-v2-0">4.2.7. Reserving a book: <code>reserve</code> - Coming in v2.0</a></h4>
 <div class="paragraph">
 <p>Reserve a particular book
 Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
@@ -800,6 +800,10 @@ e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
 <p><strong>Toggle UI theme</strong>: <code>toggleui</code></p>
 </li>
 <li>
+<p><strong>Enter Serve mode</strong> : <code>serve id/BORROWER_ID</code><br>
+e.g. <code>serve id/K0001</code></p>
+</li>
+<li>
 <p><strong>Rate a book</strong> : <code>rate INDEX r/RATING</code> <strong> - Coming in v2.0</strong></p>
 </li>
 </ul>
@@ -809,10 +813,6 @@ e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><strong>Serve mode</strong> : <code>serve id/BORROWER_ID</code><br>
-e.g. <code>serve id/K0001</code></p>
-</li>
 <li>
 <p><strong>Exit serve mode</strong> : <code>done</code></p>
 </li>
@@ -839,4 +839,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 17:22:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 09:31:03 UTC</div></div></div></body></html>
