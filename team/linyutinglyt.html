@@ -218,8 +218,10 @@ It requires careful implementation and consideration for many different cases.</
 <div class="sect3">
 <h4 id="registering-a-new-borrower-code-register-code"><a class="link" href="#registering-a-new-borrower-code-register-code">Registering a new borrower: <code>register</code></a></h4>
 <div class="paragraph">
-<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated and displayed. Borrowers are expected to know his ID in order for loans to be processed.<br>
-Format: <code>register n/NAME p/PHONE_NUMBER e/EMAIL</code></p>
+<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated and displayed. Borrowers are expected to know his ID in order for loans to be processed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>register n/NAME p/PHONE_NUMBER e/EMAIL</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -236,8 +238,10 @@ Registers a new borrower called "matt", with phone number "83938249" and email "
 <div class="sect3">
 <h4 id="unregistering-a-borrower-code-unregister-code"><a class="link" href="#unregistering-a-borrower-code-unregister-code">Unregistering a borrower: <code>unregister</code></a></h4>
 <div class="paragraph">
-<p>Unregisters and removes a borrower with the given borrower ID from the library records.<br>
-Format:  <code>unregister id/BORROWER_ID</code></p>
+<p>Unregisters and removes a borrower with the given borrower ID from the library records.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:  <code>unregister id/BORROWER_ID</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -251,24 +255,65 @@ Deletes the borrower with the borrower ID <code>id/K0001</code></p>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="entering-serve-mode-code-serve-code"><a class="link" href="#entering-serve-mode-code-serve-code">Entering Serve Mode: <code>serve</code></a></h4>
+<div class="paragraph">
+<p>Enters Serve Mode. All commands/actions will be done on this specific borrower. A list of the borrower’s currently loaned books and their serial numbers will be displayed.<br>
+Borrower ID is used as the borrower will produce their library card which contains their ID to the librarian to be served.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>serve id/BORROWER_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>serve id/K0001</code><br>
+Enters save mode to serve a borrower with the ID <code>K0001</code></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
 <div class="sect2">
 <h3 id="using-serve-mode"><a class="link" href="#using-serve-mode">Using Serve Mode</a></h3>
 <div class="paragraph">
 <p>The Serve Mode is for librarians to serve borrowers. All commands in Serve Mode are done on a specific borrower currently served by the librarian. All commands in Normal Mode can be used in Serve Mode too.</p>
 </div>
-<hr>
 <div class="sect3">
 <h4 id="exiting-serve-mode-code-done-code"><a class="link" href="#exiting-serve-mode-code-done-code">Exiting Serve Mode: <code>done</code></a></h4>
 <div class="paragraph">
-<p>Exits Serve Mode.<br>
-Format: <code>done</code></p>
+<p>Exits Serve Mode.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>done</code></p>
+</div>
+<div class="paragraph">
+<p>After loaning all books, upon the <code>DONE</code> command, a printable loan slip in pdf format will be generated. The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="../images/LoanSlip.png" alt="LoanSlip" width="250">
+</div>
+<div class="title">Figure 2. Printable loan slip generated.</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the figure above, we can see that the loan slip records all the books being borrowed by 'Bill'.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">Editing a borrower: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edit borrower’s particulars.<br>
-Format: <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
+<p>Edit borrower’s particulars.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -346,7 +391,7 @@ system is as followed:<br></p>
 <div class="content">
 <img src="../images/BorrowerClassDiagram.png" alt="BorrowerClassDiagram" width="400">
 </div>
-<div class="title">Figure 2. Class Diagram for <code>Borrower</code></div>
+<div class="title">Figure 3. Class Diagram for <code>Borrower</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -358,7 +403,7 @@ system is as followed:<br></p>
 <div class="content">
 <img src="../images/BorrowerObjectDiagram.png" alt="BorrowerObjectDiagram" width="300">
 </div>
-<div class="title">Figure 3. Object Diagram for <code>Borrower</code></div>
+<div class="title">Figure 4. Object Diagram for <code>Borrower</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -542,4 +587,4 @@ Use case ends.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:13:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:31:47 UTC</div></div></div></body></html>

@@ -11,37 +11,20 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>LiBerry is a desktop library management application for librarians to manage their books, borrowers and loans.
-It is a software optimized for librarians who prefer to work with a Command Line Interface (CLI), whereby commands are typed into the software.<br></p>
+It is a software optimized for librarians who prefer to work with a Command Line Interface (CLI), whereby interactions
+with the software are done through text commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Main features of LiBerry:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Add and remove books</p>
-</li>
-<li>
-<p>Comprehensive search system to look for books</p>
-</li>
-<li>
-<p>Register new borrowers</p>
-</li>
-<li>
-<p>Manage loaning and returning of books</p>
-</li>
-<li>
-<p>Track overdue fines payment</p>
-</li>
-</ul>
+<p>The main features of LiBerry includes managing and searching for books, registering new borrowers,
+borrowing books and recording fines.</p>
 </div>
 <div class="paragraph">
 <p>This portfolio serves to demonstrate my proficiency in the various aspects of software engineering such as coding,
-technical writing skills in crafting documentation that fits the target user and also, my project management capabilities.<br></p>
+project management and technical writing skills in crafting documentation that fits the target user.<br></p>
 </div>
 <div class="paragraph">
-<p>My role was to design and implement the code for the loan related features. The following sections further elaborates on these
-enhancements I have made. Also included are the details of the relevant documentation I have written in the user and developer guide to
+<p>My role was to design and implement the code for the loan feature, which will be further elaborated in the following sections.
+Also included are the details of the relevant documentation I have written in the user and developer guide to
 assist users and other developers to understand these features.</p>
 </div>
 </div>
@@ -52,79 +35,51 @@ assist users and other developers to understand these features.</p>
 <div class="paragraph">
 <p>This section summarizes the contributions I have made to the team project.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Main enhancement - <strong>Loan-related features</strong><br>
-I have added features related to the loaning and returning of books in our library management software, LiBerry.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does:<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>This set of features allow our users, librarians, to <strong>loan</strong> out books to borrowers, <strong>return</strong> loaned out books, <strong>renew</strong> loaned
-out books, and to record payments of <strong>fines</strong> incurred for overdue books.<br></p>
-</li>
-<li>
-<p>Every time a book is borrowed, both the starting date and due date of the loan are automatically recorded. For each loaned
-out book, other than the details of the book and the borrower, the starting date, due date, and returning date,
-along with the number of times it has been renewed and the fine incurred after returning are all meticulously tracked.</p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="main-enhancement-borrowing-feature-br"><a class="link" href="#main-enhancement-borrowing-feature-br">Main enhancement - Borrowing feature<br></a></h3>
+<div class="paragraph">
+<p>I implemented the commands and functionality related to the loaning and returning of books.</p>
 </div>
-</li>
-<li>
-<p>Justification<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>As the main purpose of a library is to allow visitors to borrow books, these features are core to a library and are
-needed for a library to function.</p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="what-it-does"><a class="link" href="#what-it-does">What it does</a></h4>
+<div class="paragraph">
+<p>This set of features allow our users, librarians, to <code>loan</code> books to borrowers, <code>return</code> loaned out books, <code>renew</code> loaned
+out books such that their due dates are extended, and to <code>pay</code> fines incurred for overdue books.<br></p>
 </div>
-</li>
-<li>
-<p>Highlights<br></p>
-<div class="ulist">
-<ul>
-<li>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>As the main purpose of a library is to allow visitors to borrow books, this feature set is core to a library and is
+needed for a library to function. The tracking of loaned out and returned books is key to managing a library. Allowing
+librarians to renew loaned out books can help them better serve borrowers who would want to read the books for a longer
+period of time. The fine system for overdue books also tie in nicely with many libraries' policy of charging fines
+to deter late returns.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="highlights"><a class="link" href="#highlights">Highlights</a></h4>
+<div class="paragraph">
 <p>The implementation of these features was challenging as a whole new set of code had to be written to model each loan occurrence
-and to store these information. The book, borrower and the loan object had to be linked efficiently to reduce duplicated information stored.<br></p>
-</li>
-<li>
-<p>Moreover, a great deal of defensive programming was applied as there were many bounds to each of these features. For
+and to store these information. The book, borrower and the loan object had to be linked efficiently to reduce duplicated information stored.
+Moreover, a great deal of defensive programming was applied as there were many bounds to each of these features. For
 example, these features should only work when certain conditions are met, such as when the user is currently serving borrowers
-and the inputs correspond to a book that is not on loan.<br></p>
-</li>
-<li>
-<p>Additionally, I also created utility classes like <code>DateUtil</code> and <code>FineUtil</code> to centralize utility functions that dealt with
+and the inputs correspond to a book that is not on loan.
+Additionally, I also created utility classes like <code>DateUtil</code> and <code>FineUtil</code> to centralize utility functions that dealt with
 dates and fines respectively.</p>
-</li>
-</ul>
 </div>
-</li>
-</ul>
 </div>
-</li>
-<li>
-<p>Code contributed:<br></p>
-<div class="ulist">
-<ul>
-<li>
+</div>
+<div class="sect2">
+<h3 id="code-contributed"><a class="link" href="#code-contributed">Code contributed</a></h3>
+<div class="paragraph">
 <p><a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=seeziyang">Functional and test code</a></p>
-</li>
-</ul>
 </div>
-</li>
-<li>
-<p>Other contributions:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project management</p>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
+<div class="sect3">
+<h4 id="project-management"><a class="link" href="#project-management">Project management</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -132,11 +87,11 @@ dates and fines respectively.</p>
 assigned them to the appropriate team member.</p>
 </li>
 <li>
-<p>Set up two Github <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/projects/">project boards</a>, one used to brainstorm and prioritize user stories,
-and one to keep track of the features and commands..</p>
+<p>Set up two Github <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/projects/">project boards</a>, one to brainstorm and prioritize user stories,
+and another to keep track of the features and commands.</p>
 </li>
 <li>
-<p>Updated developer guide to include user stories, use cases and non-functional requirements. Done through pull requests:</p>
+<p>Updated the developer guide to include user stories, use cases and non-functional requirements. Done through pull requests:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -166,9 +121,9 @@ and one to keep track of the features and commands..</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Enhancements to existing features</p>
+</div>
+<div class="sect3">
+<h4 id="enhancements-to-existing-features"><a class="link" href="#enhancements-to-existing-features">Enhancements to existing features</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -208,9 +163,9 @@ added more borrower-related information such as total outstanding fine.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Documentation</p>
+</div>
+<div class="sect3">
+<h4 id="documentation"><a class="link" href="#documentation">Documentation</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -222,9 +177,9 @@ according to feedback received from tutor and peers.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Community</p>
+</div>
+<div class="sect3">
+<h4 id="community"><a class="link" href="#community">Community</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -236,9 +191,9 @@ including their user stories, non-functional requirements and use of UML diagram
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Tools</p>
+</div>
+<div class="sect3">
+<h4 id="tools"><a class="link" href="#tools">Tools</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -250,11 +205,7 @@ test coverage of our team&#8217;s code.</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
 </div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -264,75 +215,38 @@ test coverage of our team&#8217;s code.</p>
 <div class="paragraph">
 <p>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Dive into LiBerry with our simple set-up guide for a quick tour of our user interface and features!</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
-</li>
-<li>
-<p>Download the latest <code>LiBerry.jar</code> <a href="{repoURL}/releases">here</a>.</p>
-</li>
-<li>
-<p>Copy the file to the folder you want to use as the home folder for your LiBerry.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/Ui.png" alt="Ui">
-</div>
-<div class="title">Figure 1. LiBerry&#8217;s User Interface</div>
-</div>
-</li>
-<li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Here are some commands you can try out:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><strong>Add a new book</strong> to LiBerry by using <code>add t/Animal Farm a/George Orwell</code></p>
-</li>
-<li>
-<p><strong>Register a new borrower</strong> to LiBerry by using <code>register n/John Smith p/97875454 e/jsmith@gmail.com</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">[Features]</a> for details of each command.</p>
-</li>
-<li>
-<p>A list of books will be displayed at the left column but not a list of borrowers as a list of borrowers
-will not be very useful. Serving a borrower require the borrower&#8217;s <code>borrowerId</code> instead browsing
-the app until the borrower&#8217;s name/id is found.</p>
-</li>
-</ol>
-</div>
-<hr>
 <div class="sect3">
 <h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">Loaning book(s): <code>loan</code></a></h4>
 <div class="paragraph">
-<p>Loan book(s) by their serial number.<br>
-Format: <code>loan sn/BOOK_SN</code><br>
-Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming in v2.0</strong>
-Examples:</p>
+<p>Loan book(s) to the currently served borrower.<br>
+Serial number of the book is used as the borrower would bring the physical copy of the book they want to borrow
+to the librarian. Thus, librarians need not search for the index of the book in the displayed book list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>loan sn/BOOK_SN</code><br>
+Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming in v2.0</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loan sn/B00041</code><br>
-Loans the book with serial number B00041 to the currently served borrower.</p>
+<p><code>loan sn/B00006</code><br>
+Loans the book with serial number B00006 to the currently served borrower.<br>
+<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-loan-pic.png" alt="ug loan pic" width="850">
+</div>
+<div class="title">Figure 1. User interface after book is loaned out.</div>
+</div>
+<div class="paragraph">
+<p>After this command is entered, the command result display will provide a short summary of which book is loaned
+out and tho who it is loaned to. As seen from the screenshot, the book will also be added to the list of currently loaned out books in the borrower&#8217;s
+panel on the right. Inside the main list on the left, an on loan box would also indicate
+this book as being loaned out.</p>
+</div>
 </li>
 <li>
 <p><code>loan sn/B00201 sn/B02929 sn/B00203</code> <strong>- Coming in v2.0</strong><br>
@@ -340,51 +254,46 @@ Loans the books with serial numbers B00201, B02929 and B00203 to the currently s
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>After loaning all books, upon the <code>DONE</code> command, a printable loan slip in pdf format will be generated. The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="../images/LoanSlip.png" alt="LoanSlip" width="250">
-</div>
-<div class="title">Figure 2. Printable loan slip generated.</div>
-</div>
-<div class="paragraph">
-<p>&#160;</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>In the figure above, we can see that the loan slip records all the books being borrowed by 'Bill'.</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="returning-book-s-code-return-code"><a class="link" href="#returning-book-s-code-return-code">Returning book(s): <code>return</code></a></h4>
 <div class="paragraph">
 <p>Return book(s) that were loaned by the borrower.<br>
-Format: <code>return INDEX</code> or <code>return -all</code><br>
-Including <code>-all</code> will return all currently loaned books.</p>
+Fine incurred for late returns will automatically be calculated and added to
+the borrower&#8217;s total outstanding fines.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>return INDEX</code> or <code>return -all</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Returns the book at the specified <code>INDEX</code> in the borrower panel or all of the currently served borrower&#8217;s loaned out books.</p>
+<p>Returns the book at the specified <code>INDEX</code> in the <strong>borrower panel</strong> or <code>-all</code> of the currently served borrower&#8217;s loaned out books.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the borrower&#8217;s book list on the right.</p>
+<p><code>INDEX</code> indicates the book at this index number shown in the borrower&#8217;s book list on the right side of the UI.
+The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and must appear in the borrower panel.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p><code>-all</code> indicates all the books currently loaned out by the borrower.<br>
+&#160;</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-return.png" alt="ug return" width="850">
+</div>
+<div class="title">Figure 2. Screenshot to illustrate return commands that can be entered.</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>INDEX</code> indicates the book at this index in the borrower&#8217;s book list.</p>
-</li>
-<li>
-<p><code>-all</code> indicates all the books currently loaned out by the borrower.</p>
+<p>Referring to the above screenshot as an example, entering <code>return 1</code> would successfully return the book "Stefe Jobz".
+However, entering <code>return 3</code> would be invalid as there&#8217;s no book at index 3 in the borrower panel. Entering <code>return -all</code>
+would return all of Bobby&#8217;s loaned out books, which are "Stefe Jobz" and "Behaves".</p>
 </li>
 </ul>
 </div>
@@ -394,27 +303,27 @@ Including <code>-all</code> will return all currently loaned books.</p>
 <div class="sect3">
 <h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">Renewing book(s): <code>renew</code></a></h4>
 <div class="paragraph">
-<p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br>
-Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
+<p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Renews the book at the specified <code>INDEX</code> in the borrower panel or all of the currently served borrower&#8217;s loaned out books that can still be renewed.</p>
+<p>Renews the book at the specified <code>INDEX</code> in the <strong>borrower panel</strong> or all of the currently served borrower&#8217;s loaned out books that can still be renewed.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the borrower&#8217;s book list on the right.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p><code>INDEX</code> indicates the book at this index in the borrower&#8217;s book list.</p>
+<p><code>INDEX</code> indicates the book at this index number shown in the borrower&#8217;s book list on the right side of the UI.
+The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and must appear in the borrower panel.</p>
 </li>
 <li>
 <p><code>-all</code> indicates all the books currently loaned out by the borrower that still can be renewed.</p>
+</li>
+<li>
+<p>Books that have reached the maximum renew count or are overdue cannot be renewed.</p>
 </li>
 </ul>
 </div>
@@ -424,15 +333,58 @@ Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
 <div class="sect3">
 <h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">Paying fines: <code>pay</code></a></h4>
 <div class="paragraph">
-<p>Reduces the outstanding amount of borrower&#8217;s fines by AMOUNT (in dollars).<br>
-Format: <code>pay $AMOUNT</code></p>
+<p>Receive AMOUNT (in dollars) from the currently served borrower to pay off his/her outstanding fines.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>pay $AMOUNT</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>AMOUNT</code> can only have up to 2 decimal places.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pay $12.80</code><br>
+Receive $12.80 to pay off borrower&#8217;s total outstanding fine.<br>
+<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-pay.png" alt="ug pay" width="500">
+</div>
+<div class="title">Figure 3. The command result display after paying fines.</div>
+</div>
+<div class="paragraph">
+<p>As seen from the screenshot above, after a fine amount is paid, a short summary can be seen. The remaining outstanding fine
+will be shown. If the borrower pays an amount greater than his/her total outstanding fine, the amount of change to
+be given back to the borrower is also shown.</p>
+</div>
+</li>
+<li>
+<p><code>pay $5</code><br>
+Receive $5 to pay off borrower&#8217;s total outstanding fine.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="reserving-a-book-code-reserve-code-coming-in-v2-0"><a class="link" href="#reserving-a-book-code-reserve-code-coming-in-v2-0">Reserving a book: <code>reserve</code> - Coming in v2.0</a></h4>
 <div class="paragraph">
-<p>Reserve a particular book
-Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
+<p>Reserve a particular book for the borrower.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -442,16 +394,11 @@ Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
 <p>Reserves the book at the specified <code>INDEX</code> or the book with the specified serial number <code>BOOK_SN</code> for the currently served borrower.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p><code>INDEX</code> indicates the book at this index number shown in the displayed book list.
+The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and must appear in the displayed book list.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p><code>INDEX</code> indicates the book at this index in the search results list</p>
-</li>
-<li>
-<p><code>sn/BOOK_SN</code> indicates the particular book with this serial number</p>
+<p><code>sn/BOOK_SN</code> indicates the particular book with this serial number.</p>
 </li>
 </ul>
 </div>
@@ -464,7 +411,7 @@ Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
 <ul>
 <li>
 <p><code>reserve 2</code><br>
-Reserves the 2nd book in the results of the <code>find</code> command for the currently served borrower.</p>
+Reserves the 2nd book shown in the displayed book list for the currently served borrower.</p>
 </li>
 <li>
 <p><code>reserve sn/B02422</code><br>
@@ -575,7 +522,7 @@ just after a book is loaned out can be seen below.</p>
 <div class="content">
 <img src="../images/LoanObjectDiagram.png" alt="LoanObjectDiagram" width="880">
 </div>
-<div class="title">Figure 3. Loan object diagram after a new Loan is created</div>
+<div class="title">Figure 4. Loan object diagram after a new Loan is created</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -606,7 +553,7 @@ circular dependency.</p>
 <div class="content">
 <img src="../images/LoaningActivityDiagram.png" alt="LoaningActivityDiagram" width="650">
 </div>
-<div class="title">Figure 4. Activity diagram when a loan command is entered</div>
+<div class="title">Figure 5. Activity diagram when a loan command is entered</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -648,7 +595,7 @@ Similarly, the new book object replaces the old book object in the <code>Catalog
 <div class="content">
 <img src="../images/ReturningActivityDiagram.png" alt="ReturningActivityDiagram" width="820">
 </div>
-<div class="title">Figure 5. Activity diagram when a book is being returned.</div>
+<div class="title">Figure 6. Activity diagram when a book is being returned.</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -796,4 +743,4 @@ up of the application. Thus, it can make the application feel laggy and unrespon
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:13:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:31:47 UTC</div></div></div></body></html>

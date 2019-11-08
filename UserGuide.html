@@ -27,10 +27,10 @@
 <li><a href="#undoing-code-undo-code">4.1.9. Undoing: <code>undo</code></a></li>
 <li><a href="#redoing-redo">4.1.10. Redoing: redo</a></li>
 <li><a href="#setting-user-settings-code-set-code">4.1.11. Setting User Settings: <code>set</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">4.1.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#toggling-dark-mode-code-toggleui-code">4.1.13. Toggling dark mode : <code>toggleui</code></a></li>
-<li><a href="#entering-serve-mode-code-serve-code">4.1.14. Entering Serve Mode: <code>serve</code></a></li>
-<li><a href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.15. Rating a book : <code>rate</code> - Coming in v2.0</a></li>
+<li><a href="#toggling-dark-mode-code-toggleui-code">4.1.12. Toggling dark mode : <code>toggleui</code></a></li>
+<li><a href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.13. Rating a book : <code>rate</code> - Coming in v2.0</a></li>
+<li><a href="#exiting-the-program-code-exit-code">4.1.14. Exiting the program : <code>exit</code></a></li>
+<li><a href="#entering-serve-mode-code-serve-code">4.1.15. Entering Serve Mode: <code>serve</code></a></li>
 </ul>
 </li>
 <li><a href="#using-serve-mode">4.2. Using Serve Mode</a>
@@ -109,9 +109,31 @@ Denotes useful tips.
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui">
+<img src="images/annotated-ui.png" alt="annotated ui">
 </div>
-<div class="title">Figure 1. LiBerry&#8217;s User Interface</div>
+<div class="title">Figure 1. Components of LiBerry&#8217;s User Interface (UI)</div>
+</div>
+</li>
+<li>
+<p>The UI of LiBerry consists of 5 main components.<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>command box</strong> where you input commands to interact with the software.</p>
+</li>
+<li>
+<p>The <strong>command result display</strong> which provides feedback for your inputs.</p>
+</li>
+<li>
+<p>The <strong>displayed book list</strong> which displays all the books in LiBerry&#8217;s catalog and also search results.</p>
+</li>
+<li>
+<p>The <strong>borrower panel</strong> which displays information about a borrower and his/her borrowed books when LiBerry is in Serve mode.</p>
+</li>
+<li>
+<p>The <strong>mode indicator</strong> which indicates if LiBerry is in Normal mode or Serve mode.</p>
+</li>
+</ol>
 </div>
 </li>
 <li>
@@ -133,11 +155,6 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p>Refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for details of each command.</p>
-</li>
-<li>
-<p>A list of books will be displayed at the left column but not a list of borrowers as a list of borrowers
-will not be very useful. Serving a borrower require the borrower&#8217;s <code>borrowerId</code> instead browsing
-the app until the borrower&#8217;s name/id is found.</p>
 </li>
 </ol>
 </div>
@@ -185,15 +202,19 @@ The following table shows the format used to describe each command.</p>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
-<p>Opens the help window, which includes a list of possible commands.<br>
-Format: <code>help</code></p>
+<p>Opens the help window, which includes a list of possible commands.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="locating-books-by-title-code-find-code"><a class="link" href="#locating-books-by-title-code-find-code">4.1.2. Locating books by title: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Shows all relevant books found.<br>
-Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available] }</code><br>
+<p>Shows all relevant books found.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available] }</code><br>
 Format: <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN] [-overdue] [-loaned] [-available] [-rated] [-popular] [-new] }</code> <strong> - Coming in v2.0</strong></p>
 </div>
 <div class="sidebarblock">
@@ -303,22 +324,28 @@ Searches for children mystery books that are not on loan and show the first 3 en
 <div class="sect3">
 <h4 id="viewing-a-book-code-info-code"><a class="link" href="#viewing-a-book-code-info-code">4.1.3. Viewing a book: <code>info</code></a></h4>
 <div class="paragraph">
-<p>Views more information about a book in the displayed list.<br>
-Format: <code>info INDEX</code></p>
+<p>Views more information about a book in the displayed list.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>info INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.1.4. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears the most recent search and displays all books.<br>
-Format: <code>clear</code></p>
+<p>Clears the most recent search from the displayed book list and displays all books.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="adding-a-book-code-add-code"><a class="link" href="#adding-a-book-code-add-code">4.1.5. Adding a book: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a new book to library records.<br>
-Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]&#8230;&#8203;</code></p>
+<p>Adds a new book to library records.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -365,8 +392,10 @@ this book will be automatically generated.</p>
 <div class="sect3">
 <h4 id="deleting-a-book-code-delete-code"><a class="link" href="#deleting-a-book-code-delete-code">4.1.6. Deleting a book : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes a book from the library records. Used when book is lost or trashed.
-Format: <code>delete INDEX</code> or <code>delete sn/BOOK_SN</code></p>
+<p>Deletes a book from the library records. Used when book is lost or trashed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code> or <code>delete sn/BOOK_SN</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -411,8 +440,10 @@ Deletes the book with serial number <code>sn/B00422</code>.</p>
 <div class="sect3">
 <h4 id="registering-a-new-borrower-code-register-code"><a class="link" href="#registering-a-new-borrower-code-register-code">4.1.7. Registering a new borrower: <code>register</code></a></h4>
 <div class="paragraph">
-<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated and displayed. Borrowers are expected to know his ID in order for loans to be processed.<br>
-Format: <code>register n/NAME p/PHONE_NUMBER e/EMAIL</code></p>
+<p>Registers a new borrower to the library records. A unique ID associated with the borrower will automatically be generated and displayed. Borrowers are expected to know his ID in order for loans to be processed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>register n/NAME p/PHONE_NUMBER e/EMAIL</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -429,8 +460,10 @@ Registers a new borrower called "matt", with phone number "83938249" and email "
 <div class="sect3">
 <h4 id="unregistering-a-borrower-code-unregister-code"><a class="link" href="#unregistering-a-borrower-code-unregister-code">4.1.8. Unregistering a borrower: <code>unregister</code></a></h4>
 <div class="paragraph">
-<p>Unregisters and removes a borrower with the given borrower ID from the library records.<br>
-Format:  <code>unregister id/BORROWER_ID</code></p>
+<p>Unregisters and removes a borrower with the given borrower ID from the library records.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:  <code>unregister id/BORROWER_ID</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -461,8 +494,10 @@ Format: <code>redo</code></p>
 <div class="sect3">
 <h4 id="setting-user-settings-code-set-code"><a class="link" href="#setting-user-settings-code-set-code">4.1.11. Setting User Settings: <code>set</code></a></h4>
 <div class="paragraph">
-<p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br>
-Format: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] }</code></p>
+<p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] }</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -481,24 +516,40 @@ Sets the renew period to 10 days, fine increment to 5 cents per day, loan period
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.1.12. Exiting the program : <code>exit</code></a></h4>
+<h4 id="toggling-dark-mode-code-toggleui-code"><a class="link" href="#toggling-dark-mode-code-toggleui-code">4.1.12. Toggling dark mode : <code>toggleui</code></a></h4>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Toggles between light mode and dark mode for the UI.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>toggleui</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="toggling-dark-mode-code-toggleui-code"><a class="link" href="#toggling-dark-mode-code-toggleui-code">4.1.13. Toggling dark mode : <code>toggleui</code></a></h4>
+<h4 id="rating-a-book-code-rate-code-coming-in-v2-0"><a class="link" href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.13. Rating a book : <code>rate</code> - Coming in v2.0</a></h4>
 <div class="paragraph">
-<p>Toggles between light mode and dark mode for the UI.<br>
-Format: <code>toggleui</code></p>
+<p>Gives a book a numerical rating.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>rate INDEX r/RATING</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="entering-serve-mode-code-serve-code"><a class="link" href="#entering-serve-mode-code-serve-code">4.1.14. Entering Serve Mode: <code>serve</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.1.14. Exiting the program : <code>exit</code></a></h4>
+<div class="paragraph">
+<p>Exits the program.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="entering-serve-mode-code-serve-code"><a class="link" href="#entering-serve-mode-code-serve-code">4.1.15. Entering Serve Mode: <code>serve</code></a></h4>
 <div class="paragraph">
 <p>Enters Serve Mode. All commands/actions will be done on this specific borrower. A list of the borrower’s currently loaned books and their serial numbers will be displayed.<br>
-Format: <code>serve id/BORROWER_ID</code></p>
+Borrower ID is used as the borrower will produce their library card which contains their ID to the librarian to be served.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>serve id/BORROWER_ID</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -511,13 +562,6 @@ Enters save mode to serve a borrower with the ID <code>K0001</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="rating-a-book-code-rate-code-coming-in-v2-0"><a class="link" href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.15. Rating a book : <code>rate</code> - Coming in v2.0</a></h4>
-<div class="paragraph">
-<p>Gives a book a numerical rating.<br>
-Format: <code>rate INDEX r/RATING</code></p>
-</div>
 <hr>
 </div>
 </div>
@@ -526,19 +570,38 @@ Format: <code>rate INDEX r/RATING</code></p>
 <div class="paragraph">
 <p>The Serve Mode is for librarians to serve borrowers. All commands in Serve Mode are done on a specific borrower currently served by the librarian. All commands in Normal Mode can be used in Serve Mode too.</p>
 </div>
-<hr>
 <div class="sect3">
 <h4 id="exiting-serve-mode-code-done-code"><a class="link" href="#exiting-serve-mode-code-done-code">4.2.1. Exiting Serve Mode: <code>done</code></a></h4>
 <div class="paragraph">
-<p>Exits Serve Mode.<br>
-Format: <code>done</code></p>
+<p>Exits Serve Mode.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>done</code></p>
+</div>
+<div class="paragraph">
+<p>After loaning all books, upon the <code>DONE</code> command, a printable loan slip in pdf format will be generated. The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/LoanSlip.png" alt="LoanSlip" width="250">
+</div>
+<div class="title">Figure 2. Printable loan slip generated.</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the figure above, we can see that the loan slip records all the books being borrowed by 'Bill'.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="editing-a-borrower-code-edit-code"><a class="link" href="#editing-a-borrower-code-edit-code">4.2.2. Editing a borrower: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edit borrower’s particulars.<br>
-Format: <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
+<p>Edit borrower’s particulars.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit { [n/NAME] [p/PHONE_NUMBER] [e/email] }</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -576,16 +639,35 @@ Edits the name of the borrower to be <code>Betsy Crower</code>.</p>
 <div class="sect3">
 <h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">4.2.3. Loaning book(s): <code>loan</code></a></h4>
 <div class="paragraph">
-<p>Loan book(s) by their serial number.<br>
-Format: <code>loan sn/BOOK_SN</code><br>
-Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming in v2.0</strong>
-Examples:</p>
+<p>Loan book(s) to the currently served borrower.<br>
+Serial number of the book is used as the borrower would bring the physical copy of the book they want to borrow
+to the librarian. Thus, librarians need not search for the index of the book in the displayed book list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>loan sn/BOOK_SN</code><br>
+Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming in v2.0</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loan sn/B00041</code><br>
-Loans the book with serial number B00041 to the currently served borrower.</p>
+<p><code>loan sn/B00006</code><br>
+Loans the book with serial number B00006 to the currently served borrower.<br>
+<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ug-loan-pic.png" alt="ug loan pic" width="850">
+</div>
+<div class="title">Figure 3. User interface after book is loaned out.</div>
+</div>
+<div class="paragraph">
+<p>After this command is entered, the command result display will provide a short summary of which book is loaned
+out and tho who it is loaned to. As seen from the screenshot, the book will also be added to the list of currently loaned out books in the borrower&#8217;s
+panel on the right. Inside the main list on the left, an on loan box would also indicate
+this book as being loaned out.</p>
+</div>
 </li>
 <li>
 <p><code>loan sn/B00201 sn/B02929 sn/B00203</code> <strong>- Coming in v2.0</strong><br>
@@ -593,51 +675,46 @@ Loans the books with serial numbers B00201, B02929 and B00203 to the currently s
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>After loaning all books, upon the <code>DONE</code> command, a printable loan slip in pdf format will be generated. The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="images/LoanSlip.png" alt="LoanSlip" width="250">
-</div>
-<div class="title">Figure 2. Printable loan slip generated.</div>
-</div>
-<div class="paragraph">
-<p>&#160;</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>In the figure above, we can see that the loan slip records all the books being borrowed by 'Bill'.</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="returning-book-s-code-return-code"><a class="link" href="#returning-book-s-code-return-code">4.2.4. Returning book(s): <code>return</code></a></h4>
 <div class="paragraph">
 <p>Return book(s) that were loaned by the borrower.<br>
-Format: <code>return INDEX</code> or <code>return -all</code><br>
-Including <code>-all</code> will return all currently loaned books.</p>
+Fine incurred for late returns will automatically be calculated and added to
+the borrower&#8217;s total outstanding fines.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>return INDEX</code> or <code>return -all</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Returns the book at the specified <code>INDEX</code> in the borrower panel or all of the currently served borrower&#8217;s loaned out books.</p>
+<p>Returns the book at the specified <code>INDEX</code> in the <strong>borrower panel</strong> or <code>-all</code> of the currently served borrower&#8217;s loaned out books.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the borrower&#8217;s book list on the right.</p>
+<p><code>INDEX</code> indicates the book at this index number shown in the borrower&#8217;s book list on the right side of the UI.
+The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and must appear in the borrower panel.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p><code>-all</code> indicates all the books currently loaned out by the borrower.<br>
+&#160;</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ug-return.png" alt="ug return" width="850">
+</div>
+<div class="title">Figure 4. Screenshot to illustrate return commands that can be entered.</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>INDEX</code> indicates the book at this index in the borrower&#8217;s book list.</p>
-</li>
-<li>
-<p><code>-all</code> indicates all the books currently loaned out by the borrower.</p>
+<p>Referring to the above screenshot as an example, entering <code>return 1</code> would successfully return the book "Stefe Jobz".
+However, entering <code>return 3</code> would be invalid as there&#8217;s no book at index 3 in the borrower panel. Entering <code>return -all</code>
+would return all of Bobby&#8217;s loaned out books, which are "Stefe Jobz" and "Behaves".</p>
 </li>
 </ul>
 </div>
@@ -647,27 +724,27 @@ Including <code>-all</code> will return all currently loaned books.</p>
 <div class="sect3">
 <h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">4.2.5. Renewing book(s): <code>renew</code></a></h4>
 <div class="paragraph">
-<p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br>
-Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
+<p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Renews the book at the specified <code>INDEX</code> in the borrower panel or all of the currently served borrower&#8217;s loaned out books that can still be renewed.</p>
+<p>Renews the book at the specified <code>INDEX</code> in the <strong>borrower panel</strong> or all of the currently served borrower&#8217;s loaned out books that can still be renewed.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the borrower&#8217;s book list on the right.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p><code>INDEX</code> indicates the book at this index in the borrower&#8217;s book list.</p>
+<p><code>INDEX</code> indicates the book at this index number shown in the borrower&#8217;s book list on the right side of the UI.
+The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and must appear in the borrower panel.</p>
 </li>
 <li>
 <p><code>-all</code> indicates all the books currently loaned out by the borrower that still can be renewed.</p>
+</li>
+<li>
+<p>Books that have reached the maximum renew count or are overdue cannot be renewed.</p>
 </li>
 </ul>
 </div>
@@ -677,15 +754,58 @@ Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
 <div class="sect3">
 <h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">4.2.6. Paying fines: <code>pay</code></a></h4>
 <div class="paragraph">
-<p>Reduces the outstanding amount of borrower&#8217;s fines by AMOUNT (in dollars).<br>
-Format: <code>pay $AMOUNT</code></p>
+<p>Receive AMOUNT (in dollars) from the currently served borrower to pay off his/her outstanding fines.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>pay $AMOUNT</code></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>AMOUNT</code> can only have up to 2 decimal places.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pay $12.80</code><br>
+Receive $12.80 to pay off borrower&#8217;s total outstanding fine.<br>
+<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ug-pay.png" alt="ug pay" width="500">
+</div>
+<div class="title">Figure 5. The command result display after paying fines.</div>
+</div>
+<div class="paragraph">
+<p>As seen from the screenshot above, after a fine amount is paid, a short summary can be seen. The remaining outstanding fine
+will be shown. If the borrower pays an amount greater than his/her total outstanding fine, the amount of change to
+be given back to the borrower is also shown.</p>
+</div>
+</li>
+<li>
+<p><code>pay $5</code><br>
+Receive $5 to pay off borrower&#8217;s total outstanding fine.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="reserving-a-book-code-reserve-code-coming-in-v2-0"><a class="link" href="#reserving-a-book-code-reserve-code-coming-in-v2-0">4.2.7. Reserving a book: <code>reserve</code> - Coming in v2.0</a></h4>
 <div class="paragraph">
-<p>Reserve a particular book
-Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
+<p>Reserve a particular book for the borrower.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -695,16 +815,11 @@ Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
 <p>Reserves the book at the specified <code>INDEX</code> or the book with the specified serial number <code>BOOK_SN</code> for the currently served borrower.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p><code>INDEX</code> indicates the book at this index number shown in the displayed book list.
+The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and must appear in the displayed book list.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p><code>INDEX</code> indicates the book at this index in the search results list</p>
-</li>
-<li>
-<p><code>sn/BOOK_SN</code> indicates the particular book with this serial number</p>
+<p><code>sn/BOOK_SN</code> indicates the particular book with this serial number.</p>
 </li>
 </ul>
 </div>
@@ -717,7 +832,7 @@ Format: <code>reserve INDEX</code> or <code>reserve sn/BOOK_SN</code></p>
 <ul>
 <li>
 <p><code>reserve 2</code><br>
-Reserves the 2nd book in the results of the <code>find</code> command for the currently served borrower.</p>
+Reserves the 2nd book shown in the displayed book list for the currently served borrower.</p>
 </li>
 <li>
 <p><code>reserve sn/B02422</code><br>
@@ -731,7 +846,8 @@ Reserves the book with serial number <code>sn/B02422</code> for the currently se
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.3. Saving the Data</a></h3>
 <div class="paragraph">
-<p>LiBerry data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
+<p>LiBerry data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.<br>
+Data saved should not be manually edited to prevent files from being corrupted.</p>
 </div>
 </div>
 </div>
@@ -794,17 +910,17 @@ e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
 <p><strong>Set user settings</strong>: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] }</code></p>
 </li>
 <li>
-<p><strong>Exit</strong> : <code>exit</code></p>
+<p><strong>Toggle UI theme</strong>: <code>toggleui</code></p>
 </li>
 <li>
-<p><strong>Toggle UI theme</strong>: <code>toggleui</code></p>
+<p><strong>Rate a book</strong> : <code>rate INDEX r/RATING</code> <strong> - Coming in v2.0</strong></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
 <p><strong>Enter Serve mode</strong> : <code>serve id/BORROWER_ID</code><br>
 e.g. <code>serve id/K0001</code></p>
-</li>
-<li>
-<p><strong>Rate a book</strong> : <code>rate INDEX r/RATING</code> <strong> - Coming in v2.0</strong></p>
 </li>
 </ul>
 </div>
@@ -839,4 +955,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:13:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 14:31:47 UTC</div></div></div></body></html>
