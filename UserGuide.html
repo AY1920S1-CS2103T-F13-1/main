@@ -18,7 +18,7 @@
 <ul class="sectlevel3">
 <li><a href="#viewing-help-code-help-code">4.1.1. Viewing help : <code>help</code></a></li>
 <li><a href="#locating-books-by-title-code-find-code">4.1.2. Locating books by title: <code>find</code></a></li>
-<li><a href="#viewing-a-book-code-info-code">4.1.3. Viewing a book: <code>info</code></a></li>
+<li><a href="#viewing-a-book-s-information-code-info-code">4.1.3. Viewing a book&#8217;s information: <code>info</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">4.1.4. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#adding-a-book-code-add-code">4.1.5. Adding a book: <code>add</code></a></li>
 <li><a href="#deleting-a-book-code-delete-code">4.1.6. Deleting a book : <code>delete</code></a></li>
@@ -322,12 +322,52 @@ Searches for children mystery books that are not on loan and show the first 3 en
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-book-code-info-code"><a class="link" href="#viewing-a-book-code-info-code">4.1.3. Viewing a book: <code>info</code></a></h4>
+<h4 id="viewing-a-book-s-information-code-info-code"><a class="link" href="#viewing-a-book-s-information-code-info-code">4.1.3. Viewing a book&#8217;s information: <code>info</code></a></h4>
 <div class="paragraph">
-<p>Views more information about a book in the displayed list.<br></p>
+<p>Views more information about a book in the displayed list.<br>
+The information displayed includes:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Title of book</p>
+</li>
+<li>
+<p>Genres of book, if any</p>
+</li>
+<li>
+<p>Serial number of book</p>
+</li>
+<li>
+<p>Author of book</p>
+</li>
+<li>
+<p>Loan status of book</p>
+</li>
+<li>
+<p>Loan history of book<br>
+&#160;</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Format: <code>info INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>The figure below shows how an info window might look like.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/infowindow.png" alt="infowindow" width="500">
+</div>
+<div class="title">Figure 2. Info window of a selected book</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the window above, we can see that information related to the book 'Man&#8217;s Search for Munning' is displayed in a viewable window.</p>
 </div>
 </div>
 <div class="sect3">
@@ -346,6 +386,29 @@ Searches for children mystery books that are not on loan and show the first 3 en
 </div>
 <div class="paragraph">
 <p>Format: <code>add t/TITLE a/AUTHOR [sn/BOOK_SN] [g/GENRE]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a book with the title <code>TITLE</code>, written by <code>AUTHOR</code>, classified by the genres <code>GENRE</code> and tagged with the serial number <code>BOOK_SN</code>.</p>
+</li>
+<li>
+<p><code>TITLE</code> should be at most 50 characters long.</p>
+</li>
+<li>
+<p><code>AUTHOR</code> should be at most 50 characters long.</p>
+</li>
+<li>
+<p><code>GENRE</code>, if provided, should be at most 20 characters long.</p>
+</li>
+<li>
+<p><code>BOOK_SN</code>, if provided, must be a valid serial number that starts with the prefix 'B' followed by 5 digits. They should be unique.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -405,16 +468,16 @@ this book will be automatically generated.</p>
 <p>Deletes the book at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p><code>INDEX</code> refers to the index number shown in the displayed book list.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p><code>INDEX</code> will delete the book with the book at this index in the results list</p>
+<p><code>delete INDEX</code> will delete the book with the book at <code>INDEX</code> position in the results list.</p>
 </li>
 <li>
-<p><code>sn/BOOK_SN</code> will delete the book with this serial number</p>
+<p><code>delete sn/BOOK_SN</code> will delete the book with this serial number.</p>
 </li>
 </ul>
 </div>
@@ -579,7 +642,9 @@ Enters save mode to serve a borrower with the ID <code>K0001</code></p>
 <p>Format: <code>done</code></p>
 </div>
 <div class="paragraph">
-<p>After loaning all books, upon the <code>DONE</code> command, a printable loan slip in pdf format will be generated. The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.</p>
+<p>After loaning all books, upon the <code>done</code> command, a printable loan slip in pdf format will be generated.
+The loan slip will be opened in your computer&#8217;s pdf viewer and also saved in the <code>loan_slips</code> folder.
+The figure below shows an example of how a loan slip might look like.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -587,12 +652,12 @@ Enters save mode to serve a borrower with the ID <code>K0001</code></p>
 <div class="content">
 <img src="images/LoanSlip.png" alt="LoanSlip" width="250">
 </div>
-<div class="title">Figure 2. Printable loan slip generated.</div>
+<div class="title">Figure 3. Printable loan slip generated.</div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>In the figure above, we can see that the loan slip records all the books being borrowed by 'Bill'.</p>
+<p>In the figure above, we can see that the loan slip records all the books borrowed by 'Bill'.</p>
 </div>
 </div>
 <div class="sect3">
@@ -660,7 +725,7 @@ You loan out the book with serial number B00006 to the currently served borrower
 <div class="content">
 <img src="images/ug-loan-pic.png" alt="ug loan pic" width="850">
 </div>
-<div class="title">Figure 3. The user interface after the book is loaned out.</div>
+<div class="title">Figure 4. The user interface after the book is loaned out.</div>
 </div>
 <div class="paragraph">
 <p>After this command is entered, the command results display will provide you with a summary of which book is loaned
@@ -707,7 +772,7 @@ The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and mus
 <div class="content">
 <img src="images/ug-return.png" alt="ug return" width="850">
 </div>
-<div class="title">Figure 4. Screenshot to illustrate return commands that can be entered.</div>
+<div class="title">Figure 5. Screenshot to illustrate return commands that can be entered.</div>
 </div>
 <div class="ulist">
 <ul>
@@ -775,7 +840,7 @@ You receive $12.80 from the borrower to pay off his/her fine.<br>
 <div class="content">
 <img src="images/ug-pay.png" alt="ug pay" width="470">
 </div>
-<div class="title">Figure 5. The command results display after paying fines.</div>
+<div class="title">Figure 6. The command results display after paying fines.</div>
 </div>
 <div class="paragraph">
 <p>As seen from the screenshot above, after a fine amount is paid, a summary can be seen. You will see any outstanding fine the
@@ -946,4 +1011,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:37:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 12:53:21 UTC</div></div></div></body></html>

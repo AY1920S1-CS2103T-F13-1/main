@@ -574,7 +574,7 @@ These classes include (to list a few):</p>
 <p>This feature allows a user to add a new book to the LiBerry system.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">4.1.1. Implementation</a></h4>
+<h4 id="details-of-implementation"><a class="link" href="#details-of-implementation">4.1.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The add book function is facilitated by <code>Catalog</code>.
 The <code>Catalog</code> stores a list of books, representing the books in the library.
@@ -592,15 +592,28 @@ Additionally, it implements the following operation:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/AddBookActivityDiagram.png" alt="AddBookActivityDiagram" width="270">
+<img src="images/AddBookActivityDiagram.png" alt="AddBookActivityDiagram" width="400">
 </div>
 <div class="title">Figure 11. Activity Diagram for adding a book</div>
 </div>
-<div class="paragraph">
-<p>&#160;<br></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The else branch of each branch node should have a guard condition <code>[else]</code> but due to a limitation of PlantUML,
+they are not shown.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Given below is a class diagram of a book.</p>
+<p>&#160;<br>
+We can clearly see how the system decides to generate a valid serial number base on whether the user input contains a valid serial number or not.<br>
+&#160;<br>
+After the book is added to the system, we can now represent it with a class diagram shown below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -613,10 +626,8 @@ Additionally, it implements the following operation:</p>
 </div>
 <div class="paragraph">
 <p>Notice how the book can hold either <strong>1 or 0 loans</strong>, depending on whether it is currently loaned out or not.<br>
-&#160;<br></p>
-</div>
-<div class="paragraph">
-<p>Given below is the object diagram of a newly added book.</p>
+&#160;<br>
+The current state of this newly-added book is further illustrated by the object diagram below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -628,7 +639,9 @@ Additionally, it implements the following operation:</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>We can see that the book holds a <code>Optional&lt;Loan&gt;</code> in order to have either <strong>0 or 1 <code>Loan</code> objects</strong>. This makes it consistent with the class diagram of <code>Book</code> above.</p>
+<p>We can see that the book holds a <code>Optional&lt;Loan&gt;</code> in order to have either <strong>0 or 1 <code>Loan</code> objects</strong>.
+This makes it consistent with the class diagram of <code>Book</code> above.
+We can also observe that the <code>LoanHistory</code> object of the <code>Book</code> is empty since the book is new and is not loaned out before.</p>
 </div>
 </div>
 <div class="sect3">
@@ -666,9 +679,9 @@ Additionally, it implements the following operation:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We have decided to go with Alternative 2. In contrast to the original AddressBook3, there is much more retrieval of
+<p><strong>We have decided to go with Alternative 2.</strong> In contrast to the original AddressBook3, there is much more retrieval of
 book objects in within the Book and Loan feature. Therefore, the benefits of quick retrieval of book information from the catalog will
-outweigh the additional memory costs to maintain the HashMap.</p>
+outweigh the additional memory costs incurred to maintain the HashMap.</p>
 </div>
 </div>
 <div class="sect4">
@@ -699,7 +712,7 @@ number using the number of books or the largest serial number.</p>
 <p>Pros: Will be efficient in generating the next valid serial number.</p>
 </li>
 <li>
-<p>Cons: Will incur additional memory to maintain the TreeMap.</p>
+<p>Cons: Will incur additional memory to maintain the TreeMap. Might also result in unexpected behaviour in some edge cases.</p>
 </li>
 </ul>
 </div>
@@ -720,8 +733,8 @@ number using the number of books or the largest serial number.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We have decided to go with Alternative 2 and keep it simple as there are some edge cases which will lead to the implementation in
-Alternative 1 not behaving as expected. This is also in line with the <strong>KISS</strong> (Keep it Simple, Stupid) principle of programming.</p>
+<p><strong>We have decided to go with Alternative 2</strong> and keep it simple. This is because there are some edge cases which will lead to the implementation in
+Alternative 1 not behaving as expected. Furthermore, Alternative 2 is also in line with the <strong>KISS</strong> (Keep it Simple, Stupid) principle of programming.</p>
 </div>
 </div>
 </div>
@@ -729,7 +742,7 @@ Alternative 1 not behaving as expected. This is also in line with the <strong>KI
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
+<h4 id="details-of-implementation-2"><a class="link" href="#details-of-implementation-2">4.2.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>CommandHistory</code>.
 It contains a undo/redo command history, stored internally as an <code>commandHistoryList</code> and <code>currentCommandPointer</code>.
@@ -1009,10 +1022,10 @@ of memory usage.</p>
 <div class="sect2">
 <h3 id="generate-loan-slip-feature"><a class="link" href="#generate-loan-slip-feature">4.3. Generate Loan Slip feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.3.1. Proposed Implementation</a></h4>
+<h4 id="details-of-implementation-3"><a class="link" href="#details-of-implementation-3">4.3.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The printing of loan slip feature is facilitated by <code>LoanSlipUtil</code>.
-Essentially, it implements the following operations:</p>
+Essentially, <code>LoanSlipUtil</code> implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1023,7 +1036,7 @@ Essentially, it implements the following operations:</p>
 <p><code>LoanSlipUtil#clearSession()</code>&#8201;&#8212;&#8201;Clears the current loan session by unmounting all loans, usually after generating a PDF loan slip.</p>
 </li>
 <li>
-<p><code>LoanSlipUtil#createLoanSlipInDirectory()</code>&#8201;&#8212;&#8201;Creates a pdf version of the mounted loan slip in the loan_slips folder.</p>
+<p><code>LoanSlipUtil#createLoanSlipInDirectory()</code>&#8201;&#8212;&#8201;Creates a pdf version of the mounted loans as a single loan slip, saved in the loan_slips folder.</p>
 </li>
 </ul>
 </div>
@@ -1040,18 +1053,31 @@ Essentially, it implements the following operations:</p>
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
-<p>The following describes the sequence of events displayed in the figure above.</p>
+<p>The sequence diagram above is described by the following sequence of events:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
-<p>1) The <code>LoanCommand</code> is executed<br>
-2) The <code>LoanCommand</code> retrieves the <code>Book</code> and the <code>Borrower</code><br>
-3) The <code>LoanCommand</code> creates a new <code>Loan</code><br>
-4) The <code>LoanCommand</code> mounts the new loan in <code>LoanSlipUtil</code><br>
-5) The <code>Storage</code> component creates and save a new PDF <code>LoanSlipDocument</code> in a saved folder<br>
-6) The <code>Logic</code> component opens the newly generated <code>LoanSlipDocument</code> for the librarian to print it immediately<br>
-7) The <code>Logic</code> component unmounts the <code>LoanSlipDocument</code> at the end of the process</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>LoanCommand</code> is executed</p>
+</li>
+<li>
+<p><code>LoanCommand</code> retrieves the <code>Book</code> and the <code>Borrower</code> to create a new <code>Loan</code></p>
+</li>
+<li>
+<p><code>LoanCommand</code> mounts the new loan in <code>LoanSlipUtil</code></p>
+</li>
+<li>
+<p><code>Storage</code> component creates and save a new PDF <code>LoanSlipDocument</code> in a saved folder</p>
+</li>
+<li>
+<p><code>Logic</code> component opens the newly generated <code>LoanSlipDocument</code> for the librarian to print it immediately</p>
+</li>
+<li>
+<p><code>Logic</code> component clears the session in <code>LoanSlipUtil</code> at the end of the process</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1091,7 +1117,7 @@ Essentially, it implements the following operations:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We have decided to go with Alternative 2. The Facade class provides the system with a <strong>simplified view</strong> of generating a loan slip, making it <strong>easier to use</strong>.
+<p><strong>We have decided to go with Alternative 2.</strong> The Facade class provides the system with a <strong>simplified view</strong> of generating a loan slip, making it <strong>easier to use</strong>.
 It also <strong>decouples</strong> the code, making it easier to modify in the future.
 On the contrary, Alternative 1 will introduce a lot of unnecessary dependencies between classes, thereby <strong>increasing coupling</strong> and <strong>reducing maintainability</strong>.</p>
 </div>
@@ -1129,7 +1155,7 @@ On the contrary, Alternative 1 will introduce a lot of unnecessary dependencies 
 </ul>
 </div>
 <div class="paragraph">
-<p>We have decided to go with Alternative 1 as it allows us to have flexible code that is <strong>easily extendable</strong>. Furthermore,
+<p><strong>We have decided to go with Alternative 1</strong> as it allows us to have flexible code that is <strong>easily extendable</strong>. Furthermore,
 it adheres to good programming practices as compared to Alternative 2, which <strong>violates the Single Responsibility Principle</strong>.</p>
 </div>
 </div>
@@ -1138,7 +1164,7 @@ it adheres to good programming practices as compared to Alternative 2, which <st
 <div class="sect2">
 <h3 id="book-loaning-feature"><a class="link" href="#book-loaning-feature">4.4. Book loaning feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.4.1. Implementation</a></h4>
+<h4 id="details-of-implementation-4"><a class="link" href="#details-of-implementation-4">4.4.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The functionalities and commands associated with the book loaning feature are <code>loan</code>, <code>return</code>, <code>pay</code> and <code>renew</code>.
 This feature set is mainly facilitated by the <code>Loan</code> association class between a <code>Book</code> and a <code>Borrower</code>.</p>
@@ -1351,7 +1377,7 @@ to obtain the insertion order of a <code>Loan</code> object.</p>
 <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code></p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.5.1. Implementation</a></h4>
+<h4 id="details-of-implementation-5"><a class="link" href="#details-of-implementation-5">4.5.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>ModelManager contains a <code>FilteredList</code> of <code>Books</code> (<code>filteredBooks</code>), which is used to display books on the LiBerry GUI. Book finding works by
 starting converting the command string in to a <code>BookPredicate</code> object, then updating <code>filteredBooks</code> with that predicate.</p>
@@ -1479,7 +1505,7 @@ filtered books does not have an API that sets a hard limit on the number of book
 <div class="sect2">
 <h3 id="register-borrower-feature"><a class="link" href="#register-borrower-feature">4.6. Register borrower feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">4.6.1. Implementation</a></h4>
+<h4 id="details-of-implementation-6"><a class="link" href="#details-of-implementation-6">4.6.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>register</code> borrower feature is facilitated by <code>BorrowerRecords</code>. The BorrowerRecords stores a list of borrowers,
 representing the borrowers registered into the library system. The command to register a borrower into the library
@@ -2771,4 +2797,4 @@ Change given: $0.90" appears on the command results display. The borrower panel 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:37:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 12:53:21 UTC</div></div></div></body></html>
