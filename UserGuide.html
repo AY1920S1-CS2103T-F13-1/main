@@ -107,7 +107,7 @@ Denotes useful tips.
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/annotated-ui.png" alt="annotated ui">
 </div>
@@ -122,7 +122,7 @@ Denotes useful tips.
 <p>The <strong>command box</strong> where you input commands to interact with the software.</p>
 </li>
 <li>
-<p>The <strong>command result display</strong> which provides feedback for your inputs.</p>
+<p>The <strong>command results display</strong> which provides feedback for your inputs.</p>
 </li>
 <li>
 <p>The <strong>displayed book list</strong> which displays all the books in LiBerry&#8217;s catalog and also search results.</p>
@@ -640,8 +640,8 @@ Edits the name of the borrower to be <code>Betsy Crower</code>.</p>
 <h4 id="loaning-book-s-code-loan-code"><a class="link" href="#loaning-book-s-code-loan-code">4.2.3. Loaning book(s): <code>loan</code></a></h4>
 <div class="paragraph">
 <p>Loan book(s) to the currently served borrower.<br>
-Serial number of the book is used as the borrower would bring the physical copy of the book they want to borrow
-to the librarian. Thus, librarians need not search for the index of the book in the displayed book list.</p>
+The serial number of the book is used as the borrower would bring the physical copy of the book they want to borrow
+to you. Thus, you do not have to search for the index of the book in the displayed book list.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>loan sn/BOOK_SN</code><br>
@@ -654,24 +654,24 @@ Format: <code>loan sn/BOOK_SN [sn/BOOK_SN]&#8230;&#8203;</code> <strong>- Coming
 <ul>
 <li>
 <p><code>loan sn/B00006</code><br>
-Loans the book with serial number B00006 to the currently served borrower.<br>
+You loan out the book with serial number B00006 to the currently served borrower.<br>
 <br></p>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ug-loan-pic.png" alt="ug loan pic" width="850">
 </div>
-<div class="title">Figure 3. User interface after book is loaned out.</div>
+<div class="title">Figure 3. The user interface after the book is loaned out.</div>
 </div>
 <div class="paragraph">
-<p>After this command is entered, the command result display will provide a short summary of which book is loaned
+<p>After this command is entered, the command results display will provide you with a summary of which book is loaned
 out and tho who it is loaned to. As seen from the screenshot, the book will also be added to the list of currently loaned out books in the borrower&#8217;s
-panel on the right. Inside the main list on the left, an on loan box would also indicate
+panel on the right. Inside the main list on the left, an on-loan box would also indicate
 this book as being loaned out.</p>
 </div>
 </li>
 <li>
 <p><code>loan sn/B00201 sn/B02929 sn/B00203</code> <strong>- Coming in v2.0</strong><br>
-Loans the books with serial numbers B00201, B02929 and B00203 to the currently served borrower.</p>
+You loan out the books with serial numbers B00201, B02929 and B00203 to the currently served borrower.</p>
 </li>
 </ul>
 </div>
@@ -703,7 +703,7 @@ The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and mus
 </li>
 </ul>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ug-return.png" alt="ug return" width="850">
 </div>
@@ -724,7 +724,7 @@ would return all of Bobby&#8217;s loaned out books, which are "Stefe Jobz" and "
 <div class="sect3">
 <h4 id="renewing-book-s-code-renew-code"><a class="link" href="#renewing-book-s-code-renew-code">4.2.5. Renewing book(s): <code>renew</code></a></h4>
 <div class="paragraph">
-<p>Renew book(s) from the list of currently loaned books, i.e., extend their due dates.<br></p>
+<p>Renew book(s) that are still loaned by the borrower, i.e., extend their due dates.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>renew INDEX</code> or <code>renew -all</code><br></p>
@@ -744,7 +744,10 @@ The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and mus
 <p><code>-all</code> indicates all the books currently loaned out by the borrower that still can be renewed.</p>
 </li>
 <li>
-<p>Books that have reached the maximum renew count or are overdue cannot be renewed.</p>
+<p>You cannot renew overdue books or books that have reached the maximum renew count.</p>
+</li>
+<li>
+<p>If you just loaned out or renewed a book, you cannot renew that same book in the same Serve mode session.</p>
 </li>
 </ul>
 </div>
@@ -754,22 +757,10 @@ The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and mus
 <div class="sect3">
 <h4 id="paying-fines-code-pay-code"><a class="link" href="#paying-fines-code-pay-code">4.2.6. Paying fines: <code>pay</code></a></h4>
 <div class="paragraph">
-<p>Receive AMOUNT (in dollars) from the currently served borrower to pay off his/her outstanding fines.<br></p>
+<p>Receive AMOUNT (in dollars and up to 2 decimal places) from the currently served borrower to pay off his/her outstanding fines.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>pay $AMOUNT</code></p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<code>AMOUNT</code> can only have up to 2 decimal places.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -778,23 +769,23 @@ The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and mus
 <ul>
 <li>
 <p><code>pay $12.80</code><br>
-Receive $12.80 to pay off borrower&#8217;s total outstanding fine.<br>
+You receive $12.80 from the borrower to pay off his/her fine.<br>
 <br></p>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/ug-pay.png" alt="ug pay" width="500">
+<img src="images/ug-pay.png" alt="ug pay" width="470">
 </div>
-<div class="title">Figure 5. The command result display after paying fines.</div>
+<div class="title">Figure 5. The command results display after paying fines.</div>
 </div>
 <div class="paragraph">
-<p>As seen from the screenshot above, after a fine amount is paid, a short summary can be seen. The remaining outstanding fine
-will be shown. If the borrower pays an amount greater than his/her total outstanding fine, the amount of change to
-be given back to the borrower is also shown.</p>
+<p>As seen from the screenshot above, after a fine amount is paid, a summary can be seen. You will see any outstanding fine the
+borrower still has. If the borrower pays an amount greater than his/her total outstanding fine, you can refer to the change given line
+to see how much change you should return to the borrower.</p>
 </div>
 </li>
 <li>
 <p><code>pay $5</code><br>
-Receive $5 to pay off borrower&#8217;s total outstanding fine.</p>
+You receive $5 from the borrower to pay off his/her fine.</p>
 </li>
 </ul>
 </div>
@@ -955,4 +946,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 04:31:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:37:35 UTC</div></div></div></body></html>
