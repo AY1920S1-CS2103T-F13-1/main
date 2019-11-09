@@ -8,7 +8,9 @@
 <h3 id="purpose"><a class="link" href="#purpose">Purpose</a></h3>
 <div class="paragraph">
 <p>This portfolio is written to document my role as the <strong>User Interface</strong> (UI)
-designer and my contributions to our project, <strong>LiBerry</strong>.</p>
+designer and my contributions to our project, <strong>LiBerry</strong>. The following sections
+describe our project and the enhancements that I added in detail, together
+with relevant documentation from the user guide and developer guide.</p>
 </div>
 </div>
 <div class="sect2">
@@ -20,6 +22,16 @@ require any internet connection to function and is optimized for librarians
 who prefer to work with a <strong>Command Line Interface</strong> (CLI). The <strong>Graphical User
 Interface</strong> (GUI) of <strong>LiBerry</strong> is created with <strong>JavaFX</strong> while the entire software
 is written in <strong>Java</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui">
+</div>
+<div class="title">Figure 1. Screenshot of LiBerry user interface</div>
+</div>
+<div class="paragraph">
+<p>The figure above shows the graphical user interface of our application,
+LiBerry.</p>
 </div>
 </div>
 <div class="sect2">
@@ -65,7 +77,33 @@ effectively.</p>
 </div>
 <div class="sect2">
 <h3 id="key-symbols"><a class="link" href="#key-symbols">Key symbols</a></h3>
-
+<div class="paragraph">
+<p>The following symbols and formatting are used in this document:</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Denotes useful tips.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Denotes important details to take note of.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -74,44 +112,74 @@ effectively.</p>
 <div class="sectionbody">
 <hr>
 <div class="paragraph">
-<p>This section describes the contributions that I have made to <strong>LiBerry</strong>.
-Here is the link to the code that I contributed to the project:</p>
+<p>This section describes the contributions that I have made to <strong>LiBerry</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Code contributed: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=Cronyxx">RepoSense Report</a></p>
+<p>Here is the link to the code that I contributed to the project:
+Code contributed: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=Cronyxx">RepoSense Report</a></p>
 </div>
 <div class="sect2">
-<h3 id="major-enhancement-undo-redo-feature"><a class="link" href="#major-enhancement-undo-redo-feature">Major enhancement: Undo/Redo feature</a></h3>
+<h3 id="major-enhancement-undo-redo-feature"><a class="link" href="#major-enhancement-undo-redo-feature">Major enhancement - Undo/Redo feature:</a></h3>
 <div class="sect3">
 <h4 id="description"><a class="link" href="#description">Description:</a></h4>
 <div class="paragraph">
-<p>Allows the user to undo all previous commands one at a time.
-Preceding undo commands can be reversed by using the redo command.</p>
+<p>This feature enables users to undo all previous commands one at a time.
+Undone commands can be reversed one at a time by using the redo command.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification:</a></h4>
 <div class="paragraph">
-<p>This feature improves the product significantly because a user can
-make mistakes in commands and the app should provide a convenient way
-to rectify them.</p>
+<p>This feature makes the application much more user friendly. This is because
+this feature provides a convenient method for users to rectify any
+immediate mistakes that was made.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="highlights"><a class="link" href="#highlights">Highlights:</a></h4>
 <div class="paragraph">
-<p>This enhancement affects existing commands and commands to be added in
-future. It required an in-depth analysis of design alternatives.
-The implementation too was challenging as it required changes to
-existing commands.</p>
+<p>This enhancement was implemented in a way that minimises the memory usage
+required. In addition, this enhancement is extensible and can be applied to
+future commands with little overheads. This required an in-depth analysis
+of design alternatives and the consideration of the target audience of our
+application.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="secondary-enhancement-set-user-settings-feature"><a class="link" href="#secondary-enhancement-set-user-settings-feature">Secondary enhancement - Set User Settings feature:</a></h3>
+<div class="sect3">
+<h4 id="description-2"><a class="link" href="#description-2">Description:</a></h4>
+<div class="paragraph">
+<p>This feature enables users to set customisable settings to our application.
+Some of the settings includes loan period, which is the number of days a
+book can be loaned out, and renew period, which is the number of the days
+a loan can be extended. These user settings are then stored locally so that
+users do not have to set them every time they open the application.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification:</a></h4>
+<div class="paragraph">
+<p>As every library have different loan policies, this feature allows libraries
+to customise their own loan policies which is essential for the operation of
+the library. This feature also allows users to set different policies for
+different type of books which makes the application more flexible.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="highlights-2"><a class="link" href="#highlights-2">Highlights:</a></h4>
+<div class="paragraph">
+<p>The most challenging part of this enhancement is making it persistent as
+it requires some knowledge of teh storage system.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="minor-enhancement"><a class="link" href="#minor-enhancement">Minor enhancement:</a></h3>
 <div class="paragraph">
-<p>Added a history command that allows the user to navigate to
-previous commands using up/down keys.</p>
+<p>Added a help command that opens up a window to show the users a summary of
+commands available.</p>
 </div>
 </div>
 <div class="sect2">
@@ -123,7 +191,7 @@ previous commands using up/down keys.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed release <code>v1.2.1</code> on GitHub.</p>
 </li>
 </ul>
 </div>
@@ -133,10 +201,13 @@ previous commands using up/down keys.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Created and Updated our application icon (Pull request:
+<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/99">#99</a>).</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Updated User Interface to fit our application
+(Pull requests: <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/114">#114</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/149">#149</a>).</p>
 </li>
 </ul>
 </div>
@@ -146,7 +217,8 @@ previous commands using up/down keys.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated UI component of the Developer Guide (Pull request:
+<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/158">#158</a>).</p>
 </li>
 </ul>
 </div>
@@ -156,37 +228,21 @@ previous commands using up/down keys.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>Reviewed teammates' pull requests (with non-trivial review comments)
+(Pull requests: <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/98">#98</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F13-1/main/pull/125">#125</a>).</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+<p>Contributed to forum discussions as a group by sharing a tip on checking code coverage when running tests
+(<a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/115">Link to post</a>).</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Added suggestions for other teams taking the module (<a href="https://github.com/AY1920S1-CS2103T-T09-3/main/issues/150">Example</a>).</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -200,10 +256,202 @@ previous commands using up/down keys.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide.
+They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing help : <code>help</code></a></h4>
+<div class="paragraph">
+<p>Opens up a help window, which shows a summary of the list
+possible commands that you can execute.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HelpWindow.png" alt="HelpWindow">
+</div>
+<div class="title">Figure 2. Screenshot of Help Window</div>
+</div>
+<div class="paragraph">
+<p>The figure above shows a screenshot of the help window.
+The left side of the window shows the command while the
+right side of the window gives a description of the command
+and a usage example.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-mistakes-code-undo-code"><a class="link" href="#undoing-mistakes-code-undo-code">Undoing mistakes: <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Undoes the previous command/action.
+This command only works for commands that modifies the
+catalog, loan records, borrower records or user settings.</p>
+</div>
+<div class="paragraph">
+<p>Undoable Commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
+<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+After every <code>serve</code>, <code>done</code> or <code>pay</code> command, all previous
+state would be cleared. This means that you would not be able
+to undo to the state before the <code>serve</code>, <code>done</code> or <code>pay</code> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Check the commands you made and ensure that they are correct
+before entering a <code>serve</code>, <code>done</code> or <code>pay</code> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-undone-commands-redo"><a class="link" href="#redoing-undone-commands-redo">Redoing undone commands : redo</a></h4>
+<div class="paragraph">
+<p>Redoes the most recent command that was undone. This
+command only works if there are undone commands.<br></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Once a new undoable command is entered, you
+may not redo previously undone commands.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-user-settings-code-set-code"><a class="link" href="#setting-user-settings-code-set-code">Setting User Settings: <code>set</code></a></h4>
+<div class="paragraph">
+<p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: `set [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] `</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Updates the user settings with the specified <code>LOAN_PERIOD</code>,
+<code>RENEW_PERIOD</code>, <code>FINE_INCREMENT</code> and <code>MAX_RENEW</code>.</p>
+</li>
+<li>
+<p>All the fields that are specified must be a positive integer.</p>
+</li>
+<li>
+<p>If none of the fields are specified, the current user settings
+would be displayed.</p>
+</li>
+<li>
+<p><code>LOAN_PERIOD</code> refers to the number of days that a book can be
+loaned out for.</p>
+</li>
+<li>
+<p><code>RENEW_PERIOD</code> refers to the number of days that the loan can be
+extended for.</p>
+</li>
+<li>
+<p><code>FINE_INCREMENT</code> refers to the amount of cents charged per day for each
+overdue book.</p>
+</li>
+<li>
+<p><code>MAX_RENEWS</code> refers to the maximum amount renewals that can be made
+per loaned out book.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set</code><br>
+Shows the current user settings.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The figure below show the user interface
+after the <code>set</code> command has been added. The yellow box shows the change to
+the result display as now it shows the current user settings of the application.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewSettingsCommand.png" alt="ViewSettingsCommand" width="850">
+</div>
+<div class="title">Figure 3. User interface after set to used to view current user sittings</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set lp/7 rp/7 fi/5 mr/2</code><br>
+Sets the loan period to 7 days, renew period to 7 days,
+fine increment to 5 cents per day and maximum renews allowed to 2.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeSetCommand.png" alt="BeforeSetCommand" width="850">
+</div>
+<div class="title">Figure 4. User interface before set command is executed.</div>
+</div>
+<div class="paragraph">
+<p>The figure above shows the user interface before the set
+command is executed. The yellow box shows the set command that
+is being entered.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterSetCommand.png" alt="AfterSetCommand" width="850">
+</div>
+<div class="title">Figure 5. User interface after set command is executed.</div>
+</div>
+<div class="paragraph">
+<p>After entering the set command, the user settings would be updated.
+The updated user settings will then be displayed in the result display
+as shown in the yellow box in the figure above.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -215,17 +463,300 @@ previous commands using up/down keys.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide.
+They showcase my ability to write technical documentation and
+the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="details-of-implementation"><a class="link" href="#details-of-implementation">Details of Implementation</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>The undo/redo mechanism is facilitated by <code>CommandHistory</code>.
+It contains a undo/redo command history, stored internally as an <code>commandHistoryList</code> and <code>currentCommandPointer</code>.
+Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
+</li>
+<li>
+<p><code>CommandHistory#undo()</code>&#8201;&#8212;&#8201;Undoes the most recent reversible command.</p>
+</li>
+<li>
+<p><code>CommandHistory#redo()</code>&#8201;&#8212;&#8201;Redoes the most recent previously undone command.</p>
+</li>
+<li>
+<p>`CommandHistory#canUndo()&#8201;&#8212;&#8201;</p>
+</li>
+<li>
+<p>`CommandHistory#canRedo()&#8201;&#8212;&#8201;</p>
+</li>
+<li>
+<p>`CommandHistory#reset()&#8201;&#8212;&#8201;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCommand()</code>, <code>Model#undoCommand()</code> and <code>Model#redoCommand()</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>The undo/redo mechanism only works for commands that implements the <code>ReversibleCommand</code> interface.
+The <code>ReversibleCommand</code> interface specifies that the commands these two operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undo the <code>ReversibleCommand</code>.</p>
+</li>
+<li>
+<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redo the <code>ReversibleCommand</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the undo/redo mechanism
+behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time.
+The <code>CommandHistory</code> will be initialized with an empty <code>commandHistoryList</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoRedoState0.png" alt="UndoRedoState0" width="300">
+</div>
+<div class="title">Figure 6. Initial state of CommandHistory</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th
+book in the catalog. The <code>delete</code> command calls <code>Model#commitCommand()</code>,
+causing the <code>delete 5</code> command to be saved in the <code>commandHistoryList</code>,
+and the <code>currentCommandPointer</code> is pointed to the newly inserted command.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoRedoState1.png" alt="UndoRedoState1" width="300">
+</div>
+<div class="title">Figure 7. State of CommandHistory after <code>delete 5</code></div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>add t/Animal Farm &#8230;&#8203;</code> to add a new book.
+The <code>add</code> command also calls <code>Model#commitCommand()</code>, causing the add
+command to be saved into the <code>catalogHistoryList</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoRedoState2.png" alt="UndoRedoState2" width="300">
+</div>
+<div class="title">Figure 8. State of CommandHistory after <code>add t/Animal Farm</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, it will not call <code>Model#commitCommand()</code>,
+so the command will not be saved into the <code>commandHistoryList</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The user now decides that adding the book was a mistake,
+and decides to undo that action by executing the <code>UndoCommand</code>.
+During the execution of the <code>UndoCommand</code>, <code>Model#undoCommand()</code>
+will be called. This would call <code>CommandHistory#undo()</code>, which
+will retrieve the most recent <code>ReversibleCommand</code> that was executed, which is
+the <code>add</code> command. <code>ReversibleCommand#getUndoCommand()</code> would then be called
+and the <code>Command</code> returned would be executed, undoing the add command.
+This will then shift the <code>currentCommandPointer</code> once to the left, pointing it
+to the previous <code>ReversibleCommand</code> in the <code>commandListHistory</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoRedoState3.png" alt="UndoRedoState3" width="300">
+</div>
+<div class="title">Figure 9. State of CommandHistory after <code>undo</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentCommandPointer</code> is at index -1, pointing to no command,
+then there are no previous command to undo. The <code>undo</code> command uses
+<code>Model#canUndoCommand()</code> to check if this is the case. If so, it will
+return an error to the user rather than attempting to perform the undo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
+</div>
+<div class="title">Figure 10. Sequence diagram for undo command</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>UndoCommand</code> should end at the destroy marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCommand()</code>,
+which shifts the <code>currentCommandPointer</code> once to the right, pointing to
+the previously undone Command, and executes the redo command from
+<code>ReversibleCommand#getRedoCommand()</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentCommandPointer</code> is at index <code>catalogHistoryList.size() - 1</code>,
+pointing to the latest command, then there are no undone command to redo.
+The <code>redo</code> command uses <code>Model#canRedoCommand()</code> to check if this is the case.
+If so, it will return an error to the user rather than attempting to perform the redo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5. The user then decides to execute the command <code>help</code>.
+Commands that do not modify the model, such as <code>help</code>,
+will usually not call <code>Model#commitCommand()</code>,<code>Model#undoCommand()</code> or
+<code>Model#redoCommand()</code>. Thus, the <code>commandHistoryList</code> remains unchanged.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoRedoState4.png" alt="UndoRedoState4" width="300">
+</div>
+<div class="title">Figure 11. State of CommandHistory after <code>help</code></div>
+</div>
+<div class="paragraph">
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCommand()</code>.
+Since the <code>currentCommandPointer</code> is not pointing at the end of the <code>commandHistoryList</code>,
+all commands after the <code>currentCommandPointer</code> will be purged.
+We designed it this way because it no longer makes sense to redo the
+<code>add t/Animal Farm &#8230;&#8203;</code> command. This is the behavior that most modern
+desktop applications follow.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/UndoRedoState5.png" alt="UndoRedoState5" width="300">
+</div>
+<div class="title">Figure 12. State of CommandHistory after <code>clear</code></div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="300">
+</div>
+<div class="title">Figure 13. Activity diagram for committing Command</div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 12:53:21 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Individual command knows how to undo/redo by itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the book being deleted).</p>
+</li>
+<li>
+<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Saves the entire catalog.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Considering our target audience, community libraries, which may be poor. They might
+be not able to afford a large amount of data storage. As a library may contain many
+books, borrowers and loans, storing a state of application for each command can be
+memory intensive. Hence, we chose to implement Alternative 1 so as to reduce the amount
+of memory usage.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the commands for undo and redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only need to maintain one data structure.</p>
+</li>
+<li>
+<p>Cons: Harder for new developers to understand the mechanism for undo and redo.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use two stacks to store a list of undoable and redoable commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for future developers to understand as there are two separate stacks to keep track of the command to undo and redo.</p>
+</li>
+<li>
+<p>Cons: Additional time required to add and pop from the stack.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 as it is easier to maintain a single data structure.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 13:46:43 UTC</div></div></div></body></html>

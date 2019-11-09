@@ -24,8 +24,8 @@
 <li><a href="#deleting-a-book-code-delete-code">4.1.6. Deleting a book : <code>delete</code></a></li>
 <li><a href="#registering-a-new-borrower-code-register-code">4.1.7. Registering a new borrower: <code>register</code></a></li>
 <li><a href="#unregistering-a-borrower-code-unregister-code">4.1.8. Unregistering a borrower: <code>unregister</code></a></li>
-<li><a href="#undoing-code-undo-code">4.1.9. Undoing: <code>undo</code></a></li>
-<li><a href="#redoing-redo">4.1.10. Redoing: redo</a></li>
+<li><a href="#undoing-mistakes-code-undo-code">4.1.9. Undoing mistakes: <code>undo</code></a></li>
+<li><a href="#redoing-undone-commands-redo">4.1.10. Redoing undone commands : redo</a></li>
 <li><a href="#setting-user-settings-code-set-code">4.1.11. Setting User Settings: <code>set</code></a></li>
 <li><a href="#toggling-dark-mode-code-toggleui-code">4.1.12. Toggling dark mode : <code>toggleui</code></a></li>
 <li><a href="#rating-a-book-code-rate-code-coming-in-v2-0">4.1.13. Rating a book : <code>rate</code> - Coming in v2.0</a></li>
@@ -86,6 +86,18 @@ Denotes useful tips.
 </tr>
 </table>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Denotes important details to take note of.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -97,7 +109,7 @@ Denotes useful tips.
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+<p>Ensure you have <code>Java 11</code> or above installed in your Computer.</p>
 </li>
 <li>
 <p>Download the latest <code>LiBerry.jar</code> <a href="https://github.com/AY1920S1-CS2103T-F13-1/main/releases">here</a>.</p>
@@ -202,7 +214,20 @@ The following table shows the format used to describe each command.</p>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
-<p>Opens the help window, which includes a list of possible commands.<br></p>
+<p>Opens up a help window, which shows a summary of the list
+possible commands that you can execute.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HelpWindow.png" alt="HelpWindow">
+</div>
+<div class="title">Figure 2. Screenshot of Help Window</div>
+</div>
+<div class="paragraph">
+<p>The figure above shows a screenshot of the help window.
+The left side of the window shows the command while the
+right side of the window gives a description of the command
+and a usage example.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
@@ -362,7 +387,7 @@ The information displayed includes:<br></p>
 <div class="content">
 <img src="images/infowindow.png" alt="infowindow" width="500">
 </div>
-<div class="title">Figure 2. Info window of a selected book</div>
+<div class="title">Figure 3. Info window of a selected book</div>
 </div>
 </div>
 </div>
@@ -541,17 +566,75 @@ Deletes the borrower with the borrower ID <code>id/K0001</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-code-undo-code"><a class="link" href="#undoing-code-undo-code">4.1.9. Undoing: <code>undo</code></a></h4>
+<h4 id="undoing-mistakes-code-undo-code"><a class="link" href="#undoing-mistakes-code-undo-code">4.1.9. Undoing mistakes: <code>undo</code></a></h4>
 <div class="paragraph">
-<p>Undoes the previous command/action.<br>
-Format: <code>undo</code></p>
+<p>Undoes the previous command/action.
+This command only works for commands that modifies the
+catalog, loan records, borrower records or user settings.</p>
+</div>
+<div class="paragraph">
+<p>Undoable Commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
+<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+After every <code>serve</code>, <code>done</code> or <code>pay</code> command, all previous
+state would be cleared. This means that you would not be able
+to undo to the state before the <code>serve</code>, <code>done</code> or <code>pay</code> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Check the commands you made and ensure that they are correct
+before entering a <code>serve</code>, <code>done</code> or <code>pay</code> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-redo"><a class="link" href="#redoing-redo">4.1.10. Redoing: redo</a></h4>
+<h4 id="redoing-undone-commands-redo"><a class="link" href="#redoing-undone-commands-redo">4.1.10. Redoing undone commands : redo</a></h4>
 <div class="paragraph">
-<p>Redoes the most recent undo should there be no more commands/actions after the most recent undo.<br>
-Format: <code>redo</code></p>
+<p>Redoes the most recent command that was undone. This
+command only works if there are undone commands.<br></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Once a new undoable command is entered, you
+may not redo previously undone commands.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -560,7 +643,42 @@ Format: <code>redo</code></p>
 <p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] }</code></p>
+<p>Format: `set [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] `</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Updates the user settings with the specified <code>LOAN_PERIOD</code>,
+<code>RENEW_PERIOD</code>, <code>FINE_INCREMENT</code> and <code>MAX_RENEW</code>.</p>
+</li>
+<li>
+<p>All the fields that are specified must be a positive integer.</p>
+</li>
+<li>
+<p>If none of the fields are specified, the current user settings
+would be displayed.</p>
+</li>
+<li>
+<p><code>LOAN_PERIOD</code> refers to the number of days that a book can be
+loaned out for.</p>
+</li>
+<li>
+<p><code>RENEW_PERIOD</code> refers to the number of days that the loan can be
+extended for.</p>
+</li>
+<li>
+<p><code>FINE_INCREMENT</code> refers to the amount of cents charged per day for each
+overdue book.</p>
+</li>
+<li>
+<p><code>MAX_RENEWS</code> refers to the maximum amount renewals that can be made
+per loaned out book.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -568,14 +686,52 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>set lp/30 rp/10</code><br>
-Sets the loan period to 30 days and renew period to 10 days.</p>
-</li>
-<li>
-<p><code>set rp/10 fi/5 lp/10 mr/2</code><br>
-Sets the renew period to 10 days, fine increment to 5 cents per day, loan period to 10 days and maximum renews allowed to 2.</p>
+<p><code>set</code><br>
+Shows the current user settings.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The figure below show the user interface
+after the <code>set</code> command has been added. The yellow box shows the change to
+the result display as now it shows the current user settings of the application.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewSettingsCommand.png" alt="ViewSettingsCommand" width="850">
+</div>
+<div class="title">Figure 4. User interface after set to used to view current user sittings</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set lp/7 rp/7 fi/5 mr/2</code><br>
+Sets the loan period to 7 days, renew period to 7 days,
+fine increment to 5 cents per day and maximum renews allowed to 2.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeSetCommand.png" alt="BeforeSetCommand" width="850">
+</div>
+<div class="title">Figure 5. User interface before set command is executed.</div>
+</div>
+<div class="paragraph">
+<p>The figure above shows the user interface before the set
+command is executed. The yellow box shows the set command that
+is being entered.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterSetCommand.png" alt="AfterSetCommand" width="850">
+</div>
+<div class="title">Figure 6. User interface after set command is executed.</div>
+</div>
+<div class="paragraph">
+<p>After entering the set command, the user settings would be updated.
+The updated user settings will then be displayed in the result display
+as shown in the yellow box in the figure above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -652,7 +808,7 @@ The figure below shows an example of how a loan slip might look like.</p>
 <div class="content">
 <img src="images/LoanSlip.png" alt="LoanSlip" width="250">
 </div>
-<div class="title">Figure 3. Printable loan slip generated.</div>
+<div class="title">Figure 7. Printable loan slip generated.</div>
 </div>
 </div>
 </div>
@@ -725,7 +881,7 @@ You loan out the book with serial number B00006 to the currently served borrower
 <div class="content">
 <img src="images/ug-loan-pic.png" alt="ug loan pic" width="850">
 </div>
-<div class="title">Figure 4. The user interface after the book is loaned out.</div>
+<div class="title">Figure 8. The user interface after the book is loaned out.</div>
 </div>
 <div class="paragraph">
 <p>After this command is entered, the command results display will provide you with a summary of which book is loaned
@@ -772,7 +928,7 @@ The index <strong>must be a positive integer</strong> such as 1, 2 or 3, and mus
 <div class="content">
 <img src="images/ug-return.png" alt="ug return" width="850">
 </div>
-<div class="title">Figure 5. Screenshot to illustrate return commands that can be entered.</div>
+<div class="title">Figure 9. Screenshot to illustrate return commands that can be entered.</div>
 </div>
 <div class="ulist">
 <ul>
@@ -840,7 +996,7 @@ You receive $12.80 from the borrower to pay off his/her fine.<br>
 <div class="content">
 <img src="images/ug-pay.png" alt="ug pay" width="470">
 </div>
-<div class="title">Figure 6. The command results display after paying fines.</div>
+<div class="title">Figure 10. The command results display after paying fines.</div>
 </div>
 <div class="paragraph">
 <p>As seen from the screenshot above, after a fine amount is paid, a summary can be seen. You will see any outstanding fine the
@@ -963,7 +1119,7 @@ e.g. <code>register n/matt p/83938249 e/matt@damon.com</code></p>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 <li>
-<p><strong>Set user settings</strong>: <code>set { [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] }</code></p>
+<p><strong>Set user settings</strong>: <code>set [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS]</code></p>
 </li>
 <li>
 <p><strong>Toggle UI theme</strong>: <code>toggleui</code></p>
@@ -1011,4 +1167,4 @@ e.g. <code>loan sn/B00201</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 12:53:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 13:46:43 UTC</div></div></div></body></html>
