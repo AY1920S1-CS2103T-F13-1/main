@@ -264,28 +264,6 @@ They showcase my ability to write documentation targeting end-users.</em></p></t
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing help : <code>help</code></a></h4>
-<div class="paragraph">
-<p>Opens up a help window, which shows a summary of the list
-possible commands that you can execute.<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/HelpWindow.png" alt="HelpWindow">
-</div>
-<div class="title">Figure 2. Screenshot of Help Window</div>
-</div>
-<div class="paragraph">
-<p>The figure above shows a screenshot of the help window.
-The left side of the window shows the command while the
-right side of the window gives a description of the command
-and a usage example.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>help</code></p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="setting-user-settings-code-set-code"><a class="link" href="#setting-user-settings-code-set-code">Setting User Settings: <code>set</code></a></h4>
 <div class="paragraph">
 <p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br></p>
@@ -346,9 +324,9 @@ the result display as now it shows the current user settings of the application.
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ViewSettingsCommand.png" alt="ViewSettingsCommand" width="850">
+<img src="../images/ViewSettingsCommand.png" alt="ViewSettingsCommand" width="700">
 </div>
-<div class="title">Figure 3. User interface after set to used to view current user sittings</div>
+<div class="title">Figure 2. User interface after set to used to view current user sittings</div>
 </div>
 <div class="ulist">
 <ul>
@@ -361,9 +339,9 @@ fine increment to 5 cents per day and maximum renews allowed to 2.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/BeforeSetCommand.png" alt="BeforeSetCommand" width="850">
+<img src="../images/BeforeSetCommand.png" alt="BeforeSetCommand" width="700">
 </div>
-<div class="title">Figure 4. User interface before set command is executed.</div>
+<div class="title">Figure 3. User interface before set command is executed.</div>
 </div>
 <div class="paragraph">
 <p>The figure above shows the user interface before the set
@@ -372,9 +350,9 @@ is being entered.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AfterSetCommand.png" alt="AfterSetCommand" width="850">
+<img src="../images/AfterSetCommand.png" alt="AfterSetCommand" width="700">
 </div>
-<div class="title">Figure 5. User interface after set command is executed.</div>
+<div class="title">Figure 4. User interface after set command is executed.</div>
 </div>
 <div class="paragraph">
 <p>After entering the set command, the user settings would be updated.
@@ -494,7 +472,7 @@ shown in the figure below.</p>
 <div class="content">
 <img src="../images/UndoRedoState0.png" alt="UndoRedoState0" width="250">
 </div>
-<div class="title">Figure 6. Initial state of CommandHistory</div>
+<div class="title">Figure 5. Initial state of CommandHistory</div>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>delete 5</code> command to delete the 5th
@@ -507,7 +485,7 @@ as shown in the figure below.</p>
 <div class="content">
 <img src="../images/UndoRedoState1.png" alt="UndoRedoState1" width="250">
 </div>
-<div class="title">Figure 7. State of CommandHistory after <code>delete 5</code></div>
+<div class="title">Figure 6. State of CommandHistory after <code>delete 5</code></div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>add t/Animal Farm &#8230;&#8203;</code> to add a new book.
@@ -519,7 +497,7 @@ below.</p>
 <div class="content">
 <img src="../images/UndoRedoState2.png" alt="UndoRedoState2" width="250">
 </div>
-<div class="title">Figure 8. State of CommandHistory after <code>add t/Animal Farm</code></div>
+<div class="title">Figure 7. State of CommandHistory after <code>add t/Animal Farm</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -550,7 +528,7 @@ the figure below.</p>
 <div class="content">
 <img src="../images/UndoRedoState3.png" alt="UndoRedoState3" width="250">
 </div>
-<div class="title">Figure 9. State of CommandHistory after <code>undo</code></div>
+<div class="title">Figure 8. State of CommandHistory after <code>undo</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -574,7 +552,7 @@ return an error to the user rather than attempting to perform the undo.
 <div class="content">
 <img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence diagram for undo command</div>
+<div class="title">Figure 9. Sequence diagram for undo command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -622,7 +600,7 @@ shown in the figure below.</p>
 <div class="content">
 <img src="../images/UndoRedoState4.png" alt="UndoRedoState4" width="250">
 </div>
-<div class="title">Figure 11. State of CommandHistory after <code>help</code></div>
+<div class="title">Figure 10. State of CommandHistory after <code>help</code></div>
 </div>
 <div class="paragraph">
 <p>Step 6. The user executes <code>set lp/7</code>, which calls <code>Model#commitCommand()</code>.
@@ -636,7 +614,7 @@ desktop applications follow.</p>
 <div class="content">
 <img src="../images/UndoRedoState5.png" alt="UndoRedoState5" width="250">
 </div>
-<div class="title">Figure 12. State of CommandHistory after <code>set lp/7</code></div>
+<div class="title">Figure 11. State of CommandHistory after <code>set lp/7</code></div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
@@ -645,7 +623,7 @@ desktop applications follow.</p>
 <div class="content">
 <img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="250">
 </div>
-<div class="title">Figure 13. Activity diagram for committing Command</div>
+<div class="title">Figure 12. Activity diagram for committing Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -730,4 +708,4 @@ faster compared to alternative 2.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:19:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:41:02 UTC</div></div></div></body></html>
