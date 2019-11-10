@@ -2777,7 +2777,36 @@ Expected: An error asking for only 1 flag is shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-book"><a class="link" href="#deleting-a-book">8.6.3. Deleting a book</a></h4>
+<h4 id="add-a-book"><a class="link" href="#add-a-book">8.6.3. Add a book</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a new book to the catalog.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid and mandatory parameters are provided.</p>
+</li>
+<li>
+<p>Test case: <code>add t/Harry Botter a/Raylei Jolking sn/B02010 g/children</code><br>
+Expected: Adds a children book titled "Harry Botter" by "Raylei Jolking", with the serial number "B02010", to LiBerry.</p>
+</li>
+<li>
+<p>Test case: <code>add t/Harry Botter</code><br>
+Expected: No book is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add</code>, <code>add a/Harry</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-book"><a class="link" href="#deleting-a-book">8.6.4. Deleting a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2796,7 +2825,7 @@ Expected: First book is deleted from the list. Details of the deleted book shown
 Expected: No book is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -2806,7 +2835,56 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="loaning-a-book"><a class="link" href="#loaning-a-book">8.6.4. Loaning a book</a></h4>
+<h4 id="retrieving-information-about-a-book"><a class="link" href="#retrieving-information-about-a-book">8.6.5. Retrieving information about a book</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Retrieving a book&#8217;s information while there are books are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Books are displayed in the list on the UI.</p>
+</li>
+<li>
+<p>Test case: <code>info 1</code><br>
+Expected: Information about first book is displayed in a new window.</p>
+</li>
+<li>
+<p>Test case: <code>info 0</code><br>
+Expected: No information is displayed. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect info commands to try: <code>info</code>, <code>info x</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="saving-data"><a class="link" href="#saving-data">8.6.6. Saving data</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="loaning-a-book"><a class="link" href="#loaning-a-book">8.6.7. Loaning a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2868,7 +2946,7 @@ Expeected: Book is not loaned out. An error stating the correct format of a seri
 </div>
 </div>
 <div class="sect3">
-<h4 id="returning-a-book"><a class="link" href="#returning-a-book">8.6.5. Returning a book</a></h4>
+<h4 id="returning-a-book"><a class="link" href="#returning-a-book">8.6.8. Returning a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2915,7 +2993,7 @@ Expected: No book is returned. An error stating not in Serve mode is shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="renewing-a-book"><a class="link" href="#renewing-a-book">8.6.6. Renewing a book</a></h4>
+<h4 id="renewing-a-book"><a class="link" href="#renewing-a-book">8.6.9. Renewing a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2965,7 +3043,7 @@ Expected: No book is renewed. An error stating not in Serve mode is shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="paying-fines-2"><a class="link" href="#paying-fines-2">8.6.7. Paying fines</a></h4>
+<h4 id="paying-fines-2"><a class="link" href="#paying-fines-2">8.6.10. Paying fines</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3035,7 +3113,7 @@ Change given: $0.90" appears on the command results display. The borrower panel 
 </div>
 </div>
 <div class="sect3">
-<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.6.8. Toggling UI theme</a></h4>
+<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.6.11. Toggling UI theme</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3057,7 +3135,7 @@ Expected: The main GUI switches back to light mode, including those of all other
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.6.9. Removing or corrupting data</a></h4>
+<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.6.12. Removing or corrupting data</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3112,4 +3190,4 @@ Expected: The main GUI switches back to light mode, including those of all other
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:52:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:08:48 UTC</div></div></div></body></html>
