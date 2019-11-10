@@ -3188,6 +3188,139 @@ Expected: The main GUI switches back to light mode, including those of all other
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="serving-a-borrower"><a class="link" href="#serving-a-borrower">8.6.13. Serving a borrower</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Serving a registered borrower while not in Serve mode.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry is in not Serve mode, Borrower ID is valid</p>
+</li>
+<li>
+<p>Test case: <code>serve id/VALID_BORROWER_ID</code><br>
+Expected: LiBerry enters Serve Mode. Borrower panel is shown.</p>
+</li>
+<li>
+<p>Using the original sample data when you first load up LiBerry without any changes made, you can enter the following test case: <code>serve id/K0001</code>.</p>
+</li>
+<li>
+<p>Other incorrect loan commands to try: <code>serve</code>, <code>serve abc</code>,<code>serve id/INVALID_BORROWER_ID</code>,
+<code>serve id/BORROWER_ID_THAT_DOES_NOT_EXIST</code><br>
+Expected: Borrower is not served. Error details shown in the command results display.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Serving a borrower while already in Serve mode.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry is in Serve mode, command format is correct and Borrower ID is valid.</p>
+</li>
+<li>
+<p>Test case: <code>serve id/VALID_BORROWER_ID</code><br>
+Expected: Borrower is not served. An error prompting to exit Serve mode is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using serve command with an invalid borrower ID. An invalid borrower ID is one which does not have 4 digits following a
+capital 'K' character.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Command format is correct.</p>
+</li>
+<li>
+<p>Test Case: <code>serve id/INVALID_BORROWER_ID</code><br>
+Expected: Borrower is not served. An error stating the correct format of a borrower ID is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:13:01 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="unregistering-a-borrower"><a class="link" href="#unregistering-a-borrower">8.6.14. Unregistering a borrower</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unregistering a registered borrower while not in Serve mode.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry is in not Serve mode, Borrower ID is valid, borrower to be unregistered has no loans.</p>
+</li>
+<li>
+<p>Test case: <code>unregister id/VALID_BORROWER_ID</code><br>
+Expected: Borrower with <code>VALID_BORROWER_ID</code> will be unregistered.</p>
+</li>
+<li>
+<p>Using the original sample data when you first load up LiBerry without any changes made, you can enter the following test case:
+<code>unregister id/K0069</code>.</p>
+</li>
+<li>
+<p>Other incorrect loan commands to try: <code>unregister</code>, <code>unregister abc</code>,<code>unregister id/INVALID_BORROWER_ID</code>,
+<code>unregister id/BORROWER_ID_THAT_DOES_NOT_EXIST</code><br>
+Expected: Borrower is not served. Error details shown in the command results display.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Unregistering the currently serving borrower.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry is in Serve mode, command format is correct, Borrower ID is valid and borrower to be unregistered
+is currently being served.</p>
+</li>
+<li>
+<p>Test case: <code>serve id/BORROWER_ID_CURRENTLY_SERVING</code><br>
+Expected: Borrower is not served. An error stating that borrower currently served cannot be unregistered.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Unregistering a borrower with loaned books.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Command format is correct, borrower to be unregistered is not currently being served, borrower ID
+is valid and borrower has loans.</p>
+</li>
+<li>
+<p>Test Case: `unregister id/BORROWER_ID_WITH_LOANS
+Expected: Borrower is not served. An error stating that borrower currently has loans and cannot be unregistered.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using serve command with an invalid borrower ID. An invalid borrower ID is one which does not have 4 digits following a
+capital 'K' character.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Command format is correct.</p>
+</li>
+<li>
+<p>Test Case: <code>unregister id/INVALID_BORROWER_ID</code><br>
+Expected: Borrower is not served. An error stating the correct format of a borrower ID is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:28:46 UTC</div></div></div></body></html>
