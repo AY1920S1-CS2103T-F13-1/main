@@ -2860,7 +2860,7 @@ Expected: An error asking for only 1 flag is shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-a-book"><a class="link" href="#add-a-book">8.6.3. Add a book</a></h4>
+<h4 id="adding-a-book"><a class="link" href="#adding-a-book">8.6.3. Adding a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2947,27 +2947,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="saving-data"><a class="link" href="#saving-data">8.6.6. Saving data</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="loaning-a-book"><a class="link" href="#loaning-a-book">8.6.7. Loaning a book</a></h4>
+<h4 id="loaning-a-book"><a class="link" href="#loaning-a-book">8.6.6. Loaning a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3029,7 +3009,7 @@ Expected: Book is not loaned out. An error stating the correct format of a seria
 </div>
 </div>
 <div class="sect3">
-<h4 id="returning-a-book"><a class="link" href="#returning-a-book">8.6.8. Returning a book</a></h4>
+<h4 id="returning-a-book"><a class="link" href="#returning-a-book">8.6.7. Returning a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3076,7 +3056,7 @@ Expected: No book is returned. An error stating not in Serve mode is shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="renewing-a-book"><a class="link" href="#renewing-a-book">8.6.9. Renewing a book</a></h4>
+<h4 id="renewing-a-book"><a class="link" href="#renewing-a-book">8.6.8. Renewing a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3126,7 +3106,7 @@ Expected: No book is renewed. An error stating not in Serve mode is shown.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="paying-fines-2"><a class="link" href="#paying-fines-2">8.6.10. Paying fines</a></h4>
+<h4 id="paying-fines-2"><a class="link" href="#paying-fines-2">8.6.9. Paying fines</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3196,7 +3176,7 @@ Change given: $0.90" appears on the command results display. The borrower panel 
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-user-settings"><a class="link" href="#setting-user-settings">8.6.11. Setting user settings</a></h4>
+<h4 id="setting-user-settings"><a class="link" href="#setting-user-settings">8.6.10. Setting user settings</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3245,7 +3225,7 @@ Expected: Current user settings remain the same. Error details shown in the comm
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command"><a class="link" href="#undoing-previous-command">8.6.12. Undoing previous command</a></h4>
+<h4 id="undoing-previous-command"><a class="link" href="#undoing-previous-command">8.6.11. Undoing previous command</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3357,83 +3337,7 @@ will be displayed in the result display.</p>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.7.1. Toggling UI theme</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Converting between light and dark mode</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>testcase: <code>toggleui</code><br>
-Expected: The main GUI switches from light mode to dark mode, including those of all other sub-windows</p>
-</li>
-<li>
-<p>Testcase: <code>toggleui</code> (again)<br>
-Expected: The main GUI switches back to light mode, including those of all other sub-windows</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.7.2. Removing or corrupting data</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Removing data</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: LiBerry has previously saved data. If starting up for the first time, delete a few books or return a few loans to modifty the sample data.</p>
-</li>
-<li>
-<p>Enter the '/data' directory, which is in the same directory as the Jar file.</p>
-</li>
-<li>
-<p>Delete any 1, 2 or all of the 3 stored data files (catalog.json, borrowerrecords.json and loanrecords.json).</p>
-</li>
-<li>
-<p>Launch the LiBerry App.</p>
-</li>
-<li>
-<p>Expected: The app should start with sample data once again.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Corrupting data</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: LiBerry has previously saved data. If starting up for the first time, delete a few books or return a few loans to modify the sample data.</p>
-</li>
-<li>
-<p>Enter the '/data' directory, which is in the same directory as the Jar file.</p>
-</li>
-<li>
-<p>Type gibberish into any 1, 2 or all of the 3 stored data files (catalog.json, borrowerrecords.json and loanrecords.json) at any point.</p>
-</li>
-<li>
-<p>Save the modified data files.</p>
-</li>
-<li>
-<p>Launch the LiBerry App.</p>
-</li>
-<li>
-<p>Expected: The app should start with sample data once again.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="serving-a-borrower"><a class="link" href="#serving-a-borrower">8.7.3. Serving a borrower</a></h4>
+<h4 id="serving-a-borrower"><a class="link" href="#serving-a-borrower">8.7.1. Serving a borrower</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3491,7 +3395,7 @@ Expected: Borrower is not served. An error stating the correct format of a borro
 </div>
 </div>
 <div class="sect3">
-<h4 id="unregistering-a-borrower"><a class="link" href="#unregistering-a-borrower">8.7.4. Unregistering a borrower</a></h4>
+<h4 id="unregistering-a-borrower"><a class="link" href="#unregistering-a-borrower">8.7.2. Unregistering a borrower</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3565,6 +3469,82 @@ Expected: Borrower is not served. An error stating the correct format of a borro
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.7.3. Toggling UI theme</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Converting between light and dark mode</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>testcase: <code>toggleui</code><br>
+Expected: The main GUI switches from light mode to dark mode, including those of all other sub-windows</p>
+</li>
+<li>
+<p>Testcase: <code>toggleui</code> (again)<br>
+Expected: The main GUI switches back to light mode, including those of all other sub-windows</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:00:04 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.7.4. Removing or corrupting data</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removing data</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry has previously saved data. If starting up for the first time, delete a few books or return a few loans to modify the sample data.</p>
+</li>
+<li>
+<p>Enter the '/data' directory, which is in the same directory as the Jar file.</p>
+</li>
+<li>
+<p>Delete any 1, 2 or all of the 3 stored data files (catalog.json, borrowerrecords.json and loanrecords.json).</p>
+</li>
+<li>
+<p>Launch the LiBerry App.</p>
+</li>
+<li>
+<p>Expected: The app should start with sample data once again.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Corrupting data</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry has previously saved data. If starting up for the first time, delete a few books or return a few loans to modify the sample data.</p>
+</li>
+<li>
+<p>Enter the '/data' directory, which is in the same directory as the Jar file.</p>
+</li>
+<li>
+<p>Type gibberish into any 1, 2 or all of the 3 stored data files (catalog.json, borrowerrecords.json and loanrecords.json) at any point.</p>
+</li>
+<li>
+<p>Save the modified data files.</p>
+</li>
+<li>
+<p>Launch the LiBerry App.</p>
+</li>
+<li>
+<p>Expected: The app should start with sample data once again.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:15:27 UTC</div></div></div></body></html>
