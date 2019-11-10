@@ -33,7 +33,7 @@
 <li><a href="#undo-redo-feature">4.2. Undo/Redo feature</a></li>
 <li><a href="#generate-loan-slip-feature">4.3. Generate Loan Slip feature</a></li>
 <li><a href="#book-loaning-feature">4.4. Book loaning feature</a></li>
-<li><a href="#book-finding">4.5. Book Finding</a></li>
+<li><a href="#book-finding-feature">4.5. Book finding feature</a></li>
 <li><a href="#register-borrower-feature">4.6. Register borrower feature</a></li>
 <li><a href="#logging">4.7. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
@@ -540,7 +540,7 @@ The figure below aims to show the different records storage that are implemented
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.
+<p>Classes used by multiple components are in the <code>seedu.address.commons</code> package.
 These classes include (to list a few):</p>
 </div>
 <div class="ulist">
@@ -1365,7 +1365,7 @@ to obtain the insertion order of a <code>Loan</code> object.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="book-finding"><a class="link" href="#book-finding">4.5. Book Finding</a></h3>
+<h3 id="book-finding-feature"><a class="link" href="#book-finding-feature">4.5. Book finding feature</a></h3>
 <div class="paragraph">
 <p>The command for finding a book in the catalog is as follows:<br>
 <code>find [NUMBER] { [t/TITLE] [a/AUTHOR] [g/GENRE]&#8230;&#8203; [sn/BOOK_SN]] [-overdue] [-loaned] [-available] }</code></p>
@@ -1399,16 +1399,11 @@ there is no need to filter for that field. Below is an example.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/BookPredicateEmptyObjectDiagram.png" alt="BookPredicateEmptyObjectDiagram" height="300">
+<img src="images/BookPredicateObjectDiagram.png" alt="BookPredicateObjectDiagram" height="300">
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/BookPredicateFilledObjectDiagram.png" alt="BookPredicateFilledObjectDiagram" height="300">
-</div>
+<div class="title">Figure 27. Object Diagram showing the fields present in an empty (left) and partially filled (right) BookPredicate object</div>
 </div>
 <div class="paragraph">
-<div class="title">Object Diagram showing the fields present in an empty (left) and partially filled (right) BookPredicate object</div>
 <p>The figure above shows what happens when we are trying to filter for books with title 'harry' and 'Potter' that are loaned out,
 showing up to 5 books only. Notice that the rest of the fields in the object are null.</p>
 </div>
@@ -1428,14 +1423,14 @@ flag to be accepted in the <code>BookPredicate</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1: Hard code a priority for loan status flags and accept the highest one</strong></p>
+<p><strong>Alternative 1: Hard code a priority for loan status flags and accept the highest one when generating <code>BookPredicate</code></strong>*</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement</p>
+<p><strong>Pros</strong>: Easy to implement, since Flags are implemented as <code>Enums</code>.</p>
 </li>
 <li>
-<p>Cons: Does not make it clear for the user why an unintended display is shown</p>
+<p><strong>Cons</strong>: Can be confusing to the reader as it is not clear why an unintended display is shown / why a certain priority exists.</p>
 </li>
 </ul>
 </div>
@@ -1445,15 +1440,19 @@ flag to be accepted in the <code>BookPredicate</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Helps user clarify misconception of using more than 1 loan status flag</p>
+<p><strong>Pros</strong>: Helps user clarify misconception of using more than 1 loan status flag</p>
 </li>
 <li>
-<p>Cons: Slightly more complicated code where the output <code>ArgumentMultimap</code></p>
+<p><strong>Cons</strong>: Slightly more complicated code where the flags obtained from <code>ArgumentMultimap</code> has to be counted, checked and selected.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2</strong> was chosen in the end as it conformed with the norms of directly informing the user of his
+mistake through the use of exceptions and error messages.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1466,14 +1465,15 @@ filtered books does not have an API that sets a hard limit on the number of book
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1: Create an new class that extends the JavaFx <code>FilteredList</code> class</strong></p>
+<p><strong>Alternative 1: Create an new class that extends the JavaFx <code>FilteredList</code> class</strong> that has a function that caps the
+number of items in the inner <code>ObservableList</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not require a change in other parts of the code</p>
+<p><strong>Pros</strong>: Does not require a change in other parts of the code. Interface is simple and elegant.</p>
 </li>
 <li>
-<p>Cons: Hard to implement. Need to know the ins and outs of FilteredList</p>
+<p><strong>Cons</strong>: Hard to implement. Need to know the ins and outs of <code>FilteredList</code> and <code>ObservableList</code>.</p>
 </li>
 </ul>
 </div>
@@ -1483,15 +1483,40 @@ filtered books does not have an API that sets a hard limit on the number of book
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p><strong>Pros</strong>: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Not the most cleanest way of implementation</p>
+<p><strong>Cons</strong>: Not the cleanest and most developer friendly way of implementation.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2</strong> was chosen instead as the extension of <code>FilteredList</code> would take too much time for the implementation of such a simple feature.
+The cons of this choice will be compensated for in source code documentation to explain to developers how it works.
+=== Toggle GUI theme feature
+==== Details of implementation
+The <code>toggleui</code> command will cause switching of the LiBerry GUI between 'light' and 'dark' modes. The basic underlying mechanism
+is to access the stylesheets of the <code>MainWindow</code> node, delete the previous stylesheet giving the current GUI theme, and adding
+the stylesheet for the new GUI theme.</p>
+</div>
+<div class="paragraph">
+<p>However, since some parts of the GUI are dynamically styled (such as the 'serve/normal mode' label on the top right, and
+the 'loan box' detailing loan details to the right of each book card, as shown below), such a simple css file switch is unable to fully change all GUI elements effectively.
+These dynamically styled elements will remain in 'light' mode colors while the rest of the app changes to 'dark' mode, causing an ugly
+contrast.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/dynamicGuiElements.png" alt="dynamicGuiElements" height="400">
+</div>
+<div class="title">Figure 28. Dynamically styled GUI elements boxed in blue.</div>
+</div>
+<div class="paragraph">
+<p>The way that this was managed was through re-populating the panels every time the <code>toggleui</code> command is called. This forced the recreation of the
+book cards with the correct stylesheet right from their instantiation, which will cause them to display the correct loan box.</p>
 </div>
 </div>
 </div>
@@ -1511,10 +1536,14 @@ system is as followed:<br></p>
 <div class="paragraph">
 <p>Given below is an activity diagram of a borrower being registered into the Borrower Records of the library.</p>
 </div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/RegisterBorrowerActivityDiagram.png" alt="RegisterBorrowerActivityDiagram" width="270">
+</div>
+<div class="title">Figure 29. Activity Diagram for registering a borrower</div>
+</div>
 <div class="paragraph">
-<div class="title">Activity Diagram for registering a borrower</div>
-<p><span class="image"><img src="images/RegisterBorrowerActivityDiagram.png" alt="RegisterBorrowerActivityDiagram" width="270"></span>
-&#160;<br></p>
+<p>&#160;<br></p>
 </div>
 <div class="paragraph">
 <p>Given below is a class diagram of a book.</p>
@@ -1523,7 +1552,7 @@ system is as followed:<br></p>
 <div class="content">
 <img src="images/BorrowerClassDiagram.png" alt="BorrowerClassDiagram" width="400">
 </div>
-<div class="title">Figure 27. Class Diagram for <code>Borrower</code></div>
+<div class="title">Figure 30. Class Diagram for <code>Borrower</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1535,7 +1564,7 @@ system is as followed:<br></p>
 <div class="content">
 <img src="images/BorrowerObjectDiagram.png" alt="BorrowerObjectDiagram" width="300">
 </div>
-<div class="title">Figure 28. Object Diagram for <code>Borrower</code></div>
+<div class="title">Figure 31. Object Diagram for <code>Borrower</code></div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
@@ -1894,13 +1923,109 @@ I submit a book title query</p></td>
 <div class="content">
 <img src="images/UseCases.png" alt="UseCases" width="330">
 </div>
-<div class="title">Figure 29. General Use Cases for LiBerry</div>
+<div class="title">Figure 32. General Use Cases for LiBerry</div>
 </div>
 <div class="paragraph">
 <p>&#160;<br></p>
 </div>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is <code>LiBerry</code> and the <strong>Actor</strong> is the <code>user</code>, who is a librarian, unless specified otherwise)</p>
+</div>
+<h4 id="use-case-help-borrower-find-books-of-a-particular-title-author" class="discrete">Use case: Help borrower find books of a particular title/author</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Borrower comes to user requesting for a book of a particular title/from a particular author.</p>
+</li>
+<li>
+<p>User enters that book&#8217;s title/author name.</p>
+</li>
+<li>
+<p>LiBerry searches through all books with an author matching what is entered.</p>
+</li>
+<li>
+<p>LiBerry displays books found.</p>
+</li>
+<li>
+<p>User informs borrower whether book exists, including how many copies</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Borrower forgets the exact spelling of the title/author he is looking for.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. User enters partial spelling of the title/author.</p>
+</li>
+<li>
+<p>Use case returns to step 3.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. User wishes to display only the first N number of books.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. User specifies the maximum number of books to display on top of his search conditions.</p>
+</li>
+<li>
+<p>Use case returns to step 3. However, LiBerry displays only the first N number of books in step 4.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-generate-the-list-of-available-loaned-out-overdue-books" class="discrete">Use case: Generate the list of available/loaned out/overdue books</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to show all available/loaned out/overdue books.</p>
+</li>
+<li>
+<p>LiBerry searches through catalog to create a list of available/loaned out/overdue books.</p>
+</li>
+<li>
+<p>LiBerry displays the list of all available/loaned out/overdue books.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User wishes to display only the first N number of books.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. User specifies the maximum number of books to display on top of his search conditions.</p>
+</li>
+<li>
+<p>Use case returns to step 2. However, LiBerry displays only the first N number of books in step 4.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <h4 id="use-case-add-a-book" class="discrete">Use case: Add a book</h4>
 <div class="paragraph">
@@ -1913,14 +2038,17 @@ I submit a book title query</p></td>
 </li>
 <li>
 <p>LiBerry shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p><strong>Extensions</strong></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>1a. The arguments provided are invalid.</p>
 <div class="ulist none">
@@ -1935,9 +2063,6 @@ I submit a book title query</p></td>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
 </div>
 <div class="ulist none">
 <ul class="none">
@@ -1985,8 +2110,10 @@ I submit a book title query</p></td>
 <p>User requests to delete a specific book in the list</p>
 </li>
 <li>
-<p>LiBerry deletes the book
-Use case ends.</p>
+<p>LiBerry deletes the book</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 </li>
 </ol>
 </div>
@@ -1999,6 +2126,9 @@ Use case ends.</p>
 <p>2a. The list is empty.</p>
 <div class="paragraph">
 <p>Use case ends</p>
+</div>
+<div class="paragraph">
+<p><br></p>
 </div>
 </li>
 <li>
@@ -2088,8 +2218,8 @@ Use case ends.</p>
 <div class="paragraph">
 <p><strong>Extension</strong></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>1a. The arguments provided are invalid.</p>
 <div class="ulist none">
@@ -2138,8 +2268,8 @@ Use case ends.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>1a. App is in serve mode</p>
 <div class="ulist none">
@@ -2158,8 +2288,10 @@ Use case ends.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. LiBerry shows an error message.
-Use case ends.</p>
+<p>1b1. LiBerry shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 </li>
 </ul>
 </div>
@@ -2186,8 +2318,8 @@ Use case ends.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>2a. App is in serve mode</p>
 <div class="ulist none">
@@ -2356,8 +2488,8 @@ Use case ends.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>4a. The book cannot be renewed.</p>
 <div class="ulist none">
@@ -2402,8 +2534,8 @@ Use case ends.</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>4a. The borrower has no outstanding fines.</p>
 <div class="ulist none">
@@ -2418,6 +2550,26 @@ Use case ends.</p>
 </div>
 </li>
 </ul>
+</div>
+<h4 id="use-case-changing-gui-to-dark-mode" class="discrete">Use case: Changing GUI to dark mode</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sun sets and room gets dark</p>
+</li>
+<li>
+<p>User enters command to change GUi</p>
+</li>
+<li>
+<p>LiBerry changes GUI to dark mode</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -2456,7 +2608,7 @@ able to accomplish most of the tasks faster using commands than using the mouse.
 <div class="sect2">
 <h3 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">8.6. Instructions for Manual Testing</a></h3>
 <div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
+<p>Given below are instructions to test the app manually. Each of the tests are supposed to be done with sample data (The data that is preloaded when LiBerry first starts up).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2471,7 +2623,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect3">
-<h4 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">8.6.1. Launch and Shutdown</a></h4>
+<h4 id="launching-and-shutting-down"><a class="link" href="#launching-and-shutting-down">8.6.1. Launching and Shutting down</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2504,12 +2656,128 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect3">
+<h4 id="finding-a-book"><a class="link" href="#finding-a-book">8.6.2. Finding a book</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding books by Title</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find t/harry</code><br>
+Expected: 2 books with titles matching the word 'harry' should appear.</p>
+</li>
+<li>
+<p>Test case: <code>find t/the</code><br>
+Expected: 3 books, all of which have the word 'the' in them, should appear.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Finding books by Author</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find a/J K</code><br>
+Expected: 2 books from 'J K Rowling' should appear.</p>
+</li>
+<li>
+<p>Test case: <code>find a/J</code><br>
+Expected: 3 books from authors with names containing the letter 'J' should appear.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Finding books by Serial Number</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find sn/B00001</code><br>
+Expected: 1 book with serial number B00001 should appear.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Find books by Genre</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find g/fiction</code><br>
+Expected: 4 books with the genre 'FICTION' should appear.</p>
+</li>
+<li>
+<p>Test case: `find g/fiction g/action'<br>
+Expected: The book 'Harry Botter and the Full Blood Prince' should appear.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Find books by loan status</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find -available</code><br>
+Expected: All available books should appear.</p>
+</li>
+<li>
+<p>Test case: <code>find -loaned</code><br>
+Expected: All loaned books, including overdue ones, should appear.</p>
+</li>
+<li>
+<p>Test case: <code>find -overdue</code><br>
+Expected: All overdue books should appear.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Limiting number of books on display</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find 3</code><br>
+Expected: Only 3 books out of 9 should appear.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Resetting the display of books</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>clear</code><br>
+Expected: All books should appear by serial number order.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Mixing and match different find conditions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find 4 t/a -loaned</code><br>
+Expected: Only 4 loaned books should appear, and all should contain the letter 'a' in their title.</p>
+</li>
+<li>
+<p>Test case: <code>find -loaned -overdue</code><br>
+Expected: An error asking for only 1 flag is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-book"><a class="link" href="#deleting-a-book">8.6.2. Deleting a book</a></h4>
+<h4 id="deleting-a-book"><a class="link" href="#deleting-a-book">8.6.3. Deleting a book</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2535,29 +2803,6 @@ Expected: Similar to previous.</p>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="saving-data"><a class="link" href="#saving-data">8.6.3. Saving data</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect3">
@@ -2758,7 +3003,7 @@ Expected: Same as previous test case (<code>pay $2</code>).</p>
 </li>
 <li>
 <p>Other incorrect pay commands to try: <code>pay</code>, <code>pay xyz</code>, <code>pay 1</code><br>
-Expected: Fin amount in borrower panel remains the same. Error details shown in the command result display.</p>
+Expected: Fine amount in borrower panel remains the same. Error details shown in the command result display.</p>
 </li>
 </ol>
 </div>
@@ -2789,6 +3034,82 @@ Change given: $0.90" appears on the command results display. The borrower panel 
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.6.8. Toggling UI theme</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Converting between light and dark mode</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>testcase: <code>toggleui</code><br>
+Expected: The main GUI switches from light mode to dark mode, including those of all other sub-windows</p>
+</li>
+<li>
+<p>Testcase: <code>toggleui</code> (again)<br>
+Expected: The main GUI switches back to light mode, including those of all other sub-windows</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:00:21 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.6.9. Removing or corrupting data</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removing data</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry has previously saved data. If starting up for the first time, delete a few books or return a few loans to modifty the sample data.</p>
+</li>
+<li>
+<p>Enter the '/data' directory, which is in the same directory as the Jar file.</p>
+</li>
+<li>
+<p>Delete any 1, 2 or all of the 3 stored data files (catalog.json, borrowerrecords.json and loanrecords.json).</p>
+</li>
+<li>
+<p>Launch the LiBerry App.</p>
+</li>
+<li>
+<p>Expected: The app should start with sample data once again.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Corrupting data</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: LiBerry has previously saved data. If starting up for the first time, delete a few books or return a few loans to modify the sample data.</p>
+</li>
+<li>
+<p>Enter the '/data' directory, which is in the same directory as the Jar file.</p>
+</li>
+<li>
+<p>Type gibberish into any 1, 2 or all of the 3 stored data files (catalog.json, borrowerrecords.json and loanrecords.json) at any point.</p>
+</li>
+<li>
+<p>Save the modified data files.</p>
+</li>
+<li>
+<p>Launch the LiBerry App.</p>
+</li>
+<li>
+<p>Expected: The app should start with sample data once again.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:32:46 UTC</div></div></div></body></html>
