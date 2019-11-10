@@ -50,6 +50,7 @@
 <li><a href="#non-functional-requirements">8.4. Non Functional Requirements</a></li>
 <li><a href="#glossary">8.5. Glossary</a></li>
 <li><a href="#instructions-for-manual-testing">8.6. Instructions for Manual Testing</a></li>
+<li><a href="#redoing-undone-command">8.7. Redoing undone command</a></li>
 </ul>
 </li>
 </ul>
@@ -731,8 +732,11 @@ unexpected behaviour from Alternative 1. Furthermore, Alternative 2 is in line w
 <h4 id="details-of-implementation-2"><a class="link" href="#details-of-implementation-2">4.2.1. Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>CommandHistory</code>.
-It contains a undo/redo command history, stored internally as an <code>commandHistoryList</code> and <code>currentCommandPointer</code>.
-Additionally, it implements the following operations:</p>
+It contains a undo/redo command history, stored internally as an
+<code>commandHistoryList</code> and <code>currentCommandPointer</code>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -740,36 +744,67 @@ Additionally, it implements the following operations:</p>
 <p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
 </li>
 <li>
-<p><code>CommandHistory#undo()</code>&#8201;&#8212;&#8201;Undoes the most recent reversible command.</p>
+<p><code>CommandHistory#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns the undo command for the most recent reversible command.</p>
 </li>
 <li>
-<p><code>CommandHistory#redo()</code>&#8201;&#8212;&#8201;Redoes the most recent previously undone command.</p>
-</li>
-<li>
-<p>`CommandHistory#canUndo()&#8201;&#8212;&#8201;</p>
-</li>
-<li>
-<p>`CommandHistory#canRedo()&#8201;&#8212;&#8201;</p>
-</li>
-<li>
-<p>`CommandHistory#reset()&#8201;&#8212;&#8201;</p>
+<p><code>CommandHistory#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns the redo command for the most recent undone command.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCommand()</code>, <code>Model#undoCommand()</code> and <code>Model#redoCommand()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCommand()</code>,
+<code>Model#getUndoCommand()</code> and <code>Model#getRedoCommand()</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>The undo/redo mechanism only works for commands that implements the <code>ReversibleCommand</code> interface.
-The <code>ReversibleCommand</code> interface specifies that the commands these two operations:</p>
+<p>The undo/redo mechanism only works for commands that implements
+the <code>ReversibleCommand</code> interface. Currently, this mechanism only works
+for commands that modifies the catalog, loan records, borrower records
+or user settings.</p>
+</div>
+<div class="paragraph">
+<p>Below, is the list of commands that can be undone/redone:</p>
+</div>
+<div class="paragraph">
+<p>Undoable/Redoable Commands:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undo the <code>ReversibleCommand</code>.</p>
+<p><code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
+<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After every <code>serve</code>, <code>done</code> and <code>pay</code> command, the command history
+is cleared. This means that you will not be able to undo after entering
+one of the commands above. This is done to ensure that the user
+do not accidentally modify books that have been loaned out and
+that payments are not refundable.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>ReversibleCommand</code> interface specifies that each command contains
+these three operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undoes the <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redo the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redoes the <code>ReversibleCommand</code>.</p>
+</li>
+<li>
+<p><code>ReversibleCommand#getCommandResult()</code>&#8201;&#8212;&#8201;Returns the command result of the <code>ReversibleCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -779,11 +814,12 @@ behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user launches the application for the first time.
-The <code>CommandHistory</code> will be initialized with an empty <code>commandHistoryList</code>.</p>
+The <code>CommandHistory</code> will be initialized with an empty <code>commandHistoryList</code> as
+shown in the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UndoRedoState0.png" alt="UndoRedoState0" width="300">
+<img src="images/UndoRedoState0.png" alt="UndoRedoState0" width="250">
 </div>
 <div class="title">Figure 14. Initial state of CommandHistory</div>
 </div>
@@ -791,22 +827,24 @@ The <code>CommandHistory</code> will be initialized with an empty <code>commandH
 <p>Step 2. The user executes <code>delete 5</code> command to delete the 5th
 book in the catalog. The <code>delete</code> command calls <code>Model#commitCommand()</code>,
 causing the <code>delete 5</code> command to be saved in the <code>commandHistoryList</code>,
-and the <code>currentCommandPointer</code> is pointed to the newly inserted command.</p>
+and the <code>currentCommandPointer</code> is pointed to the newly inserted command
+as shown in the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1" width="300">
+<img src="images/UndoRedoState1.png" alt="UndoRedoState1" width="250">
 </div>
 <div class="title">Figure 15. State of CommandHistory after <code>delete 5</code></div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>add t/Animal Farm &#8230;&#8203;</code> to add a new book.
 The <code>add</code> command also calls <code>Model#commitCommand()</code>, causing the add
-command to be saved into the <code>catalogHistoryList</code>.</p>
+command to be saved into the <code>commandHistoryList</code> as shown in the figure
+below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2" width="300">
+<img src="images/UndoRedoState2.png" alt="UndoRedoState2" width="250">
 </div>
 <div class="title">Figure 16. State of CommandHistory after <code>add t/Animal Farm</code></div>
 </div>
@@ -826,17 +864,18 @@ so the command will not be saved into the <code>commandHistoryList</code>.
 <div class="paragraph">
 <p>Step 4. The user now decides that adding the book was a mistake,
 and decides to undo that action by executing the <code>UndoCommand</code>.
-During the execution of the <code>UndoCommand</code>, <code>Model#undoCommand()</code>
-will be called. This would call <code>CommandHistory#undo()</code>, which
+During the execution of the <code>UndoCommand</code>, <code>Model#getUndoCommand()</code>
+will be called. This would call <code>CommandHistory#getUndoCommand()</code>, which
 will retrieve the most recent <code>ReversibleCommand</code> that was executed, which is
 the <code>add</code> command. <code>ReversibleCommand#getUndoCommand()</code> would then be called
 and the <code>Command</code> returned would be executed, undoing the add command.
 This will then shift the <code>currentCommandPointer</code> once to the left, pointing it
-to the previous <code>ReversibleCommand</code> in the <code>commandListHistory</code>.</p>
+to the previous <code>ReversibleCommand</code> in the <code>commandListHistory</code> as shown in
+the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UndoRedoState3.png" alt="UndoRedoState3" width="300">
+<img src="images/UndoRedoState3.png" alt="UndoRedoState3" width="250">
 </div>
 <div class="title">Figure 17. State of CommandHistory after <code>undo</code></div>
 </div>
@@ -878,7 +917,7 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCommand()</code>,
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#getRedoCommand()</code>,
 which shifts the <code>currentCommandPointer</code> once to the right, pointing to
 the previously undone Command, and executes the redo command from
 <code>ReversibleCommand#getRedoCommand()</code>.</p>
@@ -890,10 +929,11 @@ the previously undone Command, and executes the redo command from
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentCommandPointer</code> is at index <code>catalogHistoryList.size() - 1</code>,
+If the <code>currentCommandPointer</code> is at index <code>commandHistoryList.size() - 1</code>,
 pointing to the latest command, then there are no undone command to redo.
 The <code>redo</code> command uses <code>Model#canRedoCommand()</code> to check if this is the case.
-If so, it will return an error to the user rather than attempting to perform the redo.
+If so, it will return an error to the user rather than attempting to perform
+the redo.
 </td>
 </tr>
 </table>
@@ -901,17 +941,18 @@ If so, it will return an error to the user rather than attempting to perform the
 <div class="paragraph">
 <p>Step 5. The user then decides to execute the command <code>help</code>.
 Commands that do not modify the model, such as <code>help</code>,
-will usually not call <code>Model#commitCommand()</code>,<code>Model#undoCommand()</code> or
-<code>Model#redoCommand()</code>. Thus, the <code>commandHistoryList</code> remains unchanged.</p>
+will usually not call <code>Model#commitCommand()</code>,<code>Model#getUndoCommand()</code> or
+<code>Model#getRedoCommand()</code>. Thus, the <code>commandHistoryList</code> remains unchanged as
+shown in the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UndoRedoState4.png" alt="UndoRedoState4" width="300">
+<img src="images/UndoRedoState4.png" alt="UndoRedoState4" width="250">
 </div>
 <div class="title">Figure 19. State of CommandHistory after <code>help</code></div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCommand()</code>.
+<p>Step 6. The user executes <code>set lp/7</code>, which calls <code>Model#commitCommand()</code>.
 Since the <code>currentCommandPointer</code> is not pointing at the end of the <code>commandHistoryList</code>,
 all commands after the <code>currentCommandPointer</code> will be purged.
 We designed it this way because it no longer makes sense to redo the
@@ -920,16 +961,16 @@ desktop applications follow.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/UndoRedoState5.png" alt="UndoRedoState5" width="300">
+<img src="images/UndoRedoState5.png" alt="UndoRedoState5" width="250">
 </div>
-<div class="title">Figure 20. State of CommandHistory after <code>clear</code></div>
+<div class="title">Figure 20. State of CommandHistory after <code>set lp/7</code></div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="300">
+<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="250">
 </div>
 <div class="title">Figure 21. Activity diagram for committing Command</div>
 </div>
@@ -1009,7 +1050,8 @@ of memory usage.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We chose alternative 1 as it is easier to maintain a single data structure.</p>
+<p>We chose alternative 1 as it is easier to maintain a single data structure and it is
+faster compared to alternative 2.</p>
 </div>
 </div>
 </div>
@@ -2505,6 +2547,47 @@ Use case ends.</p>
 </li>
 </ul>
 </div>
+<h4 id="use-case-setting-loan-period" class="discrete">Use case: Setting loan period</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User wants to change the loan period of a book.</p>
+</li>
+<li>
+<p>User enters the new loan period in days.</p>
+</li>
+<li>
+<p>LiBerry shows the new loan period.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The loan period entered exceeded the maximum loan
+period.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. LiBerry shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h4 id="use-case-paying-a-fine" class="discrete">Use case: Paying a fine</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2895,7 +2978,7 @@ Expected: Similar to previous.</p>
 <p>Prerequisites: LiBerry is in Serve mode, serial number is valid, book exists in the catalog and book is not on loan.</p>
 </li>
 <li>
-<p>Test case: <code>loan sn/VALID_SERIAL_NUMER</code><br>
+<p>Test case: <code>loan sn/VALID_SERIAL_NUMBER</code><br>
 Expected: Book with the given <code>VALID_SERIAL_NUMBER</code> is loaned to the currently served borrower. The book is added
 to the list of currently loaned books in the borrower panel. A box stating "On Loan" and relevant details also appear
 on the book in the UI, beside the label that states its serial number.</p>
@@ -2937,7 +3020,7 @@ capital 'B' character.</p>
 </li>
 <li>
 <p>Test Case: <code>loan sn/INVALID_SERIAL_NUMBER</code><br>
-Expeected: Book is not loaned out. An error stating the correct format of a serial number is shown.</p>
+Expected: Book is not loaned out. An error stating the correct format of a serial number is shown.</p>
 </li>
 </ol>
 </div>
@@ -3113,7 +3196,168 @@ Change given: $0.90" appears on the command results display. The borrower panel 
 </div>
 </div>
 <div class="sect3">
-<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.6.11. Toggling UI theme</a></h4>
+<h4 id="setting-user-settings"><a class="link" href="#setting-user-settings">8.6.11. Setting user settings</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Setting user settings.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Value of each field in user settings does not exceed its limit.</p>
+</li>
+<li>
+<p>Test case: <code>set</code><br>
+Expected: Current user settings would be shown in the result display.</p>
+</li>
+<li>
+<p>Test case: <code>set lp/7</code><br>
+Expected: Sets the loan period to 7 days and the update user settings would be
+displayed in the command result display.</p>
+</li>
+<li>
+<p>Test case: <code>set lp/0</code><br>
+Expected: Current user settings remain the same. An error message would be shown
+in the command result display.</p>
+</li>
+<li>
+<p>Test case: <code>set lp/366</code><br>
+Expected: Same as previous test case (<code>set lp/0</code>).</p>
+</li>
+<li>
+<p>Test case: <code>set lp/-1</code><br>
+Expected: Same as previous test case (<code>set lp/-1</code>).</p>
+</li>
+<li>
+<p>Test case: <code>set lp/7 rp/7 fi/5 mr/2</code><br>
+Expected: Sets the loan period to 7 days, renew period to 7 days,
+fine increment to 5 cents a days and number of max renewals of loan
+to 2. The updated user settings would be displayed in the command result display.</p>
+</li>
+<li>
+<p>Other incorrect pay commands to try: <code>set abc</code>, <code>set 7</code><br>
+Expected: Current user settings remain the same. Error details shown in the command result display.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-previous-command"><a class="link" href="#undoing-previous-command">8.6.12. Undoing previous command</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Undoing a command immediately after a executing an undoable command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Command must be undoable.</p>
+</li>
+<li>
+<p>Undoable Commands:<br>
+<code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
+<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
+</li>
+<li>
+<p>Test case: <code>add t/VALID_TITLE a/VALID_AUTHOR</code>, followed by <code>undo</code><br>
+Expected: When <code>add t/VALID_TITLE a/VALID_AUTHOR</code> is entered, a book
+with <code>VALID_TITLE</code> and <code>VALID_AUTHOR</code> will be added to the catalog. After <code>undo</code>
+is entered, the added book should be removed from the catalog.</p>
+</li>
+<li>
+<p>You can try the undo command with other valid undoable commands as shown above.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Undoing immediately after an undo command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: Must have enough undoable commands to undo.</p>
+</li>
+<li>
+<p>Test case: <code>add t/VALID_TITLE a/VALID_AUTHOR</code>, followed by <code>register n/VALID_NAME
+p/VALID_PHONE_NUMBER e/VALID_EMAIL</code>, <code>undo</code> and <code>undo</code><br>
+Expected: When <code>add t/VALID_TITLE a/VALID_AUTHOR</code> is entered, a book
+with <code>VALID_TITLE</code> and <code>VALID_AUTHOR</code> will be added to the catalog.
+After <code>register n/VALID_NAME p/VALID_PHONE_NUMBER e/VALID_EMAIL</code> is
+entered, a new borrower with <code>VALID_NAME</code>, <code>VALID_PHONE_NUMBER</code> and
+<code>VALID_EMAIL</code> will be added. The following <code>undo</code> should then remove the
+added borrower. The next <code>undo</code> should then remove the book from the catalog.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can try the undo command with other valid sequence of undoable commands.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After every <code>serve</code>, <code>done</code> and <code>pay</code> command, the command history
+is cleared. This means that you will not be able to undo after entering
+one of the commands above. This is done to ensure that the user
+do not accidentally modify books that have been loaned out and
+that payments are not refundable.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-undone-command"><a class="link" href="#redoing-undone-command">8.7. Redoing undone command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Redoing an undone commands.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: No new undoable command and
+<code>serve</code>, <code>done</code> and <code>pay</code> command executed before redoing.</p>
+</li>
+<li>
+<p>Undoable Commands:<br>
+<code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
+<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
+</li>
+<li>
+<p>Test case: <code>add t/VALID_TITLE a/VALID_AUTHOR</code>, followed by <code>undo</code>, <code>clear</code>
+and <code>redo</code><br>
+Expected: When <code>add t/VALID_TITLE a/VALID_AUTHOR</code> is entered, a book
+with <code>VALID_TITLE</code> and <code>VALID_AUTHOR</code> will be added to the catalog. After <code>undo</code>
+is entered, the added book will be removed from the catalog. After <code>clear</code> is entered,
+the catalog view will be refreshed. Since <code>clear</code> is not a undoable command,
+<code>redo</code> will redo the undone command, which adds back the removed book
+into the catalog.</p>
+</li>
+<li>
+<p>Incorrect command to try: <code>redo</code> after an undoable command or <code>serve</code>, <code>done</code> and <code>pay</code><br>
+Expected: No undone command is redone and an "There are no commands to redo!"
+will be displayed in the result display.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="toggling-ui-theme"><a class="link" href="#toggling-ui-theme">8.7.1. Toggling UI theme</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3135,7 +3379,7 @@ Expected: The main GUI switches back to light mode, including those of all other
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.6.12. Removing or corrupting data</a></h4>
+<h4 id="removing-or-corrupting-data"><a class="link" href="#removing-or-corrupting-data">8.7.2. Removing or corrupting data</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3189,7 +3433,7 @@ Expected: The main GUI switches back to light mode, including those of all other
 </div>
 </div>
 <div class="sect3">
-<h4 id="serving-a-borrower"><a class="link" href="#serving-a-borrower">8.6.13. Serving a borrower</a></h4>
+<h4 id="serving-a-borrower"><a class="link" href="#serving-a-borrower">8.7.3. Serving a borrower</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3247,7 +3491,7 @@ Expected: Borrower is not served. An error stating the correct format of a borro
 </div>
 </div>
 <div class="sect3">
-<h4 id="unregistering-a-borrower"><a class="link" href="#unregistering-a-borrower">8.6.14. Unregistering a borrower</a></h4>
+<h4 id="unregistering-a-borrower"><a class="link" href="#unregistering-a-borrower">8.7.4. Unregistering a borrower</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3323,4 +3567,4 @@ Expected: Borrower is not served. An error stating the correct format of a borro
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:28:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:31:13 UTC</div></div></div></body></html>

@@ -17,11 +17,13 @@ with relevant documentation from the user guide and developer guide.</p>
 <h3 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h3>
 <div class="paragraph">
 <p><strong>LiBerry</strong> is a <strong>free</strong>, <strong>single-user</strong>, and <strong>lightweight</strong> library management system,
-that is designed to manage small community and private libraries. It does not
-require any internet connection to function and is optimized for librarians
-who prefer to work with a <strong>Command Line Interface</strong> (CLI). The <strong>Graphical User
-Interface</strong> (GUI) of <strong>LiBerry</strong> is created with <strong>JavaFX</strong> while the entire software
-is written in <strong>Java</strong>.</p>
+developed by my team of 5 people for our software engineering module.
+It is a command line application designed for small community and private libraries in
+rural areas. Considering the lack of internet access in rural areas, the
+application is designed to not require any internet connection to function.</p>
+</div>
+<div class="paragraph">
+<p>The figure below displays the graphical user interface of our application.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -30,8 +32,8 @@ is written in <strong>Java</strong>.</p>
 <div class="title">Figure 1. Screenshot of LiBerry user interface</div>
 </div>
 <div class="paragraph">
-<p>The figure above shows the graphical user interface of our application,
-LiBerry.</p>
+<p>The <strong>Graphical User Interface</strong> (GUI) of <strong>LiBerry</strong>, as shown above,
+is created with <strong>JavaFX</strong> while the entire software is written in <strong>Java</strong>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -284,84 +286,12 @@ and a usage example.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-mistakes-code-undo-code"><a class="link" href="#undoing-mistakes-code-undo-code">Undoing mistakes: <code>undo</code></a></h4>
-<div class="paragraph">
-<p>Undoes the previous command/action.
-This command only works for commands that modifies the
-catalog, loan records, borrower records or user settings.</p>
-</div>
-<div class="paragraph">
-<p>Undoable Commands:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
-<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-After every <code>serve</code>, <code>done</code> or <code>pay</code> command, all previous
-state would be cleared. This means that you would not be able
-to undo to the state before the <code>serve</code>, <code>done</code> or <code>pay</code> command.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Check the commands you made and ensure that they are correct
-before entering a <code>serve</code>, <code>done</code> or <code>pay</code> command.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Format: <code>undo</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="redoing-undone-commands-redo"><a class="link" href="#redoing-undone-commands-redo">Redoing undone commands : redo</a></h4>
-<div class="paragraph">
-<p>Redoes the most recent command that was undone. This
-command only works if there are undone commands.<br></p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Once a new undoable command is entered, you
-may not redo previously undone commands.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Format: <code>redo</code></p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="setting-user-settings-code-set-code"><a class="link" href="#setting-user-settings-code-set-code">Setting User Settings: <code>set</code></a></h4>
 <div class="paragraph">
 <p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: `set [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS] `</p>
+<p>Format: <code>set [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -475,8 +405,11 @@ the technical depth of my contributions to the project.</em></p></td>
 <h4 id="details-of-implementation"><a class="link" href="#details-of-implementation">Details of Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>CommandHistory</code>.
-It contains a undo/redo command history, stored internally as an <code>commandHistoryList</code> and <code>currentCommandPointer</code>.
-Additionally, it implements the following operations:</p>
+It contains a undo/redo command history, stored internally as an
+<code>commandHistoryList</code> and <code>currentCommandPointer</code>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -484,36 +417,67 @@ Additionally, it implements the following operations:</p>
 <p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
 </li>
 <li>
-<p><code>CommandHistory#undo()</code>&#8201;&#8212;&#8201;Undoes the most recent reversible command.</p>
+<p><code>CommandHistory#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns the undo command for the most recent reversible command.</p>
 </li>
 <li>
-<p><code>CommandHistory#redo()</code>&#8201;&#8212;&#8201;Redoes the most recent previously undone command.</p>
-</li>
-<li>
-<p>`CommandHistory#canUndo()&#8201;&#8212;&#8201;</p>
-</li>
-<li>
-<p>`CommandHistory#canRedo()&#8201;&#8212;&#8201;</p>
-</li>
-<li>
-<p>`CommandHistory#reset()&#8201;&#8212;&#8201;</p>
+<p><code>CommandHistory#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns the redo command for the most recent undone command.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCommand()</code>, <code>Model#undoCommand()</code> and <code>Model#redoCommand()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCommand()</code>,
+<code>Model#getUndoCommand()</code> and <code>Model#getRedoCommand()</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>The undo/redo mechanism only works for commands that implements the <code>ReversibleCommand</code> interface.
-The <code>ReversibleCommand</code> interface specifies that the commands these two operations:</p>
+<p>The undo/redo mechanism only works for commands that implements
+the <code>ReversibleCommand</code> interface. Currently, this mechanism only works
+for commands that modifies the catalog, loan records, borrower records
+or user settings.</p>
+</div>
+<div class="paragraph">
+<p>Below, is the list of commands that can be undone/redone:</p>
+</div>
+<div class="paragraph">
+<p>Undoable/Redoable Commands:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undo the <code>ReversibleCommand</code>.</p>
+<p><code>add</code>, <code>delete</code>, <code>edit</code>, <code>loan</code>, <code>register</code>, <code>renew</code>,
+<code>return</code>, <code>set</code>, <code>toggleui</code> and <code>unregister</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After every <code>serve</code>, <code>done</code> and <code>pay</code> command, the command history
+is cleared. This means that you will not be able to undo after entering
+one of the commands above. This is done to ensure that the user
+do not accidentally modify books that have been loaned out and
+that payments are not refundable.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>ReversibleCommand</code> interface specifies that each command contains
+these three operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undoes the <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redo the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redoes the <code>ReversibleCommand</code>.</p>
+</li>
+<li>
+<p><code>ReversibleCommand#getCommandResult()</code>&#8201;&#8212;&#8201;Returns the command result of the <code>ReversibleCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -523,11 +487,12 @@ behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user launches the application for the first time.
-The <code>CommandHistory</code> will be initialized with an empty <code>commandHistoryList</code>.</p>
+The <code>CommandHistory</code> will be initialized with an empty <code>commandHistoryList</code> as
+shown in the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0" width="300">
+<img src="../images/UndoRedoState0.png" alt="UndoRedoState0" width="250">
 </div>
 <div class="title">Figure 6. Initial state of CommandHistory</div>
 </div>
@@ -535,22 +500,24 @@ The <code>CommandHistory</code> will be initialized with an empty <code>commandH
 <p>Step 2. The user executes <code>delete 5</code> command to delete the 5th
 book in the catalog. The <code>delete</code> command calls <code>Model#commitCommand()</code>,
 causing the <code>delete 5</code> command to be saved in the <code>commandHistoryList</code>,
-and the <code>currentCommandPointer</code> is pointed to the newly inserted command.</p>
+and the <code>currentCommandPointer</code> is pointed to the newly inserted command
+as shown in the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1" width="300">
+<img src="../images/UndoRedoState1.png" alt="UndoRedoState1" width="250">
 </div>
 <div class="title">Figure 7. State of CommandHistory after <code>delete 5</code></div>
 </div>
 <div class="paragraph">
 <p>Step 3. The user executes <code>add t/Animal Farm &#8230;&#8203;</code> to add a new book.
 The <code>add</code> command also calls <code>Model#commitCommand()</code>, causing the add
-command to be saved into the <code>catalogHistoryList</code>.</p>
+command to be saved into the <code>commandHistoryList</code> as shown in the figure
+below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2" width="300">
+<img src="../images/UndoRedoState2.png" alt="UndoRedoState2" width="250">
 </div>
 <div class="title">Figure 8. State of CommandHistory after <code>add t/Animal Farm</code></div>
 </div>
@@ -570,17 +537,18 @@ so the command will not be saved into the <code>commandHistoryList</code>.
 <div class="paragraph">
 <p>Step 4. The user now decides that adding the book was a mistake,
 and decides to undo that action by executing the <code>UndoCommand</code>.
-During the execution of the <code>UndoCommand</code>, <code>Model#undoCommand()</code>
-will be called. This would call <code>CommandHistory#undo()</code>, which
+During the execution of the <code>UndoCommand</code>, <code>Model#getUndoCommand()</code>
+will be called. This would call <code>CommandHistory#getUndoCommand()</code>, which
 will retrieve the most recent <code>ReversibleCommand</code> that was executed, which is
 the <code>add</code> command. <code>ReversibleCommand#getUndoCommand()</code> would then be called
 and the <code>Command</code> returned would be executed, undoing the add command.
 This will then shift the <code>currentCommandPointer</code> once to the left, pointing it
-to the previous <code>ReversibleCommand</code> in the <code>commandListHistory</code>.</p>
+to the previous <code>ReversibleCommand</code> in the <code>commandListHistory</code> as shown in
+the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3" width="300">
+<img src="../images/UndoRedoState3.png" alt="UndoRedoState3" width="250">
 </div>
 <div class="title">Figure 9. State of CommandHistory after <code>undo</code></div>
 </div>
@@ -622,7 +590,7 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCommand()</code>,
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#getRedoCommand()</code>,
 which shifts the <code>currentCommandPointer</code> once to the right, pointing to
 the previously undone Command, and executes the redo command from
 <code>ReversibleCommand#getRedoCommand()</code>.</p>
@@ -634,10 +602,11 @@ the previously undone Command, and executes the redo command from
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentCommandPointer</code> is at index <code>catalogHistoryList.size() - 1</code>,
+If the <code>currentCommandPointer</code> is at index <code>commandHistoryList.size() - 1</code>,
 pointing to the latest command, then there are no undone command to redo.
 The <code>redo</code> command uses <code>Model#canRedoCommand()</code> to check if this is the case.
-If so, it will return an error to the user rather than attempting to perform the redo.
+If so, it will return an error to the user rather than attempting to perform
+the redo.
 </td>
 </tr>
 </table>
@@ -645,17 +614,18 @@ If so, it will return an error to the user rather than attempting to perform the
 <div class="paragraph">
 <p>Step 5. The user then decides to execute the command <code>help</code>.
 Commands that do not modify the model, such as <code>help</code>,
-will usually not call <code>Model#commitCommand()</code>,<code>Model#undoCommand()</code> or
-<code>Model#redoCommand()</code>. Thus, the <code>commandHistoryList</code> remains unchanged.</p>
+will usually not call <code>Model#commitCommand()</code>,<code>Model#getUndoCommand()</code> or
+<code>Model#getRedoCommand()</code>. Thus, the <code>commandHistoryList</code> remains unchanged as
+shown in the figure below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4" width="300">
+<img src="../images/UndoRedoState4.png" alt="UndoRedoState4" width="250">
 </div>
 <div class="title">Figure 11. State of CommandHistory after <code>help</code></div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCommand()</code>.
+<p>Step 6. The user executes <code>set lp/7</code>, which calls <code>Model#commitCommand()</code>.
 Since the <code>currentCommandPointer</code> is not pointing at the end of the <code>commandHistoryList</code>,
 all commands after the <code>currentCommandPointer</code> will be purged.
 We designed it this way because it no longer makes sense to redo the
@@ -664,16 +634,16 @@ desktop applications follow.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5" width="300">
+<img src="../images/UndoRedoState5.png" alt="UndoRedoState5" width="250">
 </div>
-<div class="title">Figure 12. State of CommandHistory after <code>clear</code></div>
+<div class="title">Figure 12. State of CommandHistory after <code>set lp/7</code></div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="300">
+<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram" width="250">
 </div>
 <div class="title">Figure 13. Activity diagram for committing Command</div>
 </div>
@@ -753,10 +723,11 @@ of memory usage.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We chose alternative 1 as it is easier to maintain a single data structure.</p>
+<p>We chose alternative 1 as it is easier to maintain a single data structure and it is
+faster compared to alternative 2.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:28:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:31:13 UTC</div></div></div></body></html>
