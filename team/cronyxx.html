@@ -251,7 +251,7 @@ They showcase my ability to write documentation targeting end-users.</em></p></t
 <div class="sect3">
 <h4 id="setting-user-settings-code-set-code"><a class="link" href="#setting-user-settings-code-set-code">Setting User Settings: <code>set</code></a></h4>
 <div class="paragraph">
-<p>Sets the user settings for loan period (in days), renew period (in days), fine increment (in cents) and maximum renews allowed.<br></p>
+<p>Sets the user settings of the application.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>set [lp/LOAN_PERIOD] [rp/RENEW_PERIOD] [fi/FINE_INCREMENT] [mr/MAX_RENEWS]</code></p>
@@ -303,9 +303,8 @@ Shows the current user settings.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The figure below show the user interface
-after the <code>set</code> command has been added. The yellow box shows the change to
-the result display as now it shows the current user settings of the application.</p>
+<p>The yellow box in the figure below is what you will see after
+entering the set command.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -377,13 +376,13 @@ It contains a undo/redo command history, stored internally as an
 <div class="ulist">
 <ul>
 <li>
-<p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
+<p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves <code>ReversibleCommand</code> in command history.</p>
 </li>
 <li>
-<p><code>CommandHistory#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns the undo command for the most recent reversible command.</p>
+<p><code>CommandHistory#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns command to undo <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>CommandHistory#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns the redo command for the most recent undone command.</p>
+<p><code>CommandHistory#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns command to redo <code>ReversibleCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -434,13 +433,13 @@ these three operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undoes the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns command that undoes the <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redoes the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns command that redoes the <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>ReversibleCommand#getCommandResult()</code>&#8201;&#8212;&#8201;Returns the command result of the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getCommandResult()</code>&#8201;&#8212;&#8201;Returns command result of the <code>ReversibleCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -693,4 +692,4 @@ faster compared to alternative 2.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:48:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 04:43:37 UTC</div></div></div></body></html>

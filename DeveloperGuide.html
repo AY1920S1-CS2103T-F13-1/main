@@ -740,13 +740,13 @@ It contains a undo/redo command history, stored internally as an
 <div class="ulist">
 <ul>
 <li>
-<p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves the current reversible command in its command history.</p>
+<p><code>CommandHistory#commit()</code>&#8201;&#8212;&#8201;Saves <code>ReversibleCommand</code> in command history.</p>
 </li>
 <li>
-<p><code>CommandHistory#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns the undo command for the most recent reversible command.</p>
+<p><code>CommandHistory#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns command to undo <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>CommandHistory#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns the redo command for the most recent undone command.</p>
+<p><code>CommandHistory#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns command to redo <code>ReversibleCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -797,13 +797,13 @@ these three operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns a command that undoes the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getUndoCommand()</code>&#8201;&#8212;&#8201;Returns command that undoes the <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns a command that redoes the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getRedoCommand()</code>&#8201;&#8212;&#8201;Returns command that redoes the <code>ReversibleCommand</code>.</p>
 </li>
 <li>
-<p><code>ReversibleCommand#getCommandResult()</code>&#8201;&#8212;&#8201;Returns the command result of the <code>ReversibleCommand</code>.</p>
+<p><code>ReversibleCommand#getCommandResult()</code>&#8201;&#8212;&#8201;Returns command result of the <code>ReversibleCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -3546,4 +3546,4 @@ Expected: The main GUI switches back to light mode, including those of all other
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:48:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 04:43:37 UTC</div></div></div></body></html>
