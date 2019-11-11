@@ -1633,8 +1633,45 @@ the list of borrowers, we add 1 and set it as the borrower ID of the new borrowe
 </div>
 <div class="paragraph">
 <p>However, we decided to implement a new function, which is to allow borrowers to be removed from the library system.
-Therefore, this method does not work anymore. So we decided to change to generate the new ID based on the first-found
-available ID.</p>
+Therefore, this method does not work anymore.</p>
+</div>
+<div class="paragraph">
+<p>So we proposed the following alternatives.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Use a TreeMap to store current Borrower ID</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be efficient in generating the next valid borrower ID.</p>
+</li>
+<li>
+<p>Cons: Will incur additional memory to maintain the TreeMap. Might also result in unexpected behaviour in some edge cases.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (Current choice):</strong> Iterate from the beginning to obtain the first unused Borrower ID.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will be easy to implement.</p>
+</li>
+<li>
+<p>Cons: Will be inefficient once the number of borrowers grow.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>We have decided to go with Alternative 2</strong> and keep it simple to get in line with the <strong>KISS</strong> (Keep it Simple, Stupid) principle of programming.
+Also, we are expecting the number of borrowers to be relatively small (less than 10000) since our target users are small
+community library. Therefore the inefficiency will not be significant.</p>
 </div>
 </div>
 </div>
@@ -3492,4 +3529,4 @@ Expected: The main GUI switches back to light mode, including those of all other
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 04:45:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:03:17 UTC</div></div></div></body></html>
